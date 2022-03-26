@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 const ProductPage = () => {
 
+    const addToCart = () => {
+        console.log("Hej!")
+    }
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -20,22 +23,23 @@ const ProductPage = () => {
         <div className="filterProducts">
           
             <h1>Tech-ila</h1>
-            <ul>
-                <li>Filter 1</li>
-                <li>Filter 2</li>
-                <li>Filter 3</li>
-                <li>Filter 4</li>
-            </ul>
+            <label for="productFilter" >
+                <select name="productFilter" className="productFilter">
+                    <option value="Högsta till lägsta">Högsta till lägsta</option>
+                    <option value="Lägsta till högsta">Lägsta till högsta</option>
+                </select>
+            </label>
         </div>
         <div>
         <h1>Alla grejer</h1>
         {products.map((product) => (
             <div key={product.id}>
                 <img src={`IMG/Products/${product.image}`}></img>
-                <p>{product.name}</p>
-                <p>{product.description}</p>
-                <p>{product.country}</p>
-                <i>{product.price}</i>
+                <p>Namn: {product.name}</p>
+                <p>Beskrivning: {product.description}</p>
+                <p>Land: {product.country}</p>
+                <i>Pris: {product.price}</i>
+                <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
             </div>
         ))}
         </div>
