@@ -27,4 +27,15 @@ const UserSchema = new Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+UserSchema.pre("save", async function () {
+    const userExists = await UserModel.find({
+      email: this.get("email"),
+    })
+      .lean()
+      .exec();
+    if (userExists.length > 0) {
+      throw new Error(errorHandler.errors.REGISTER_email_EXISTS);
+    }
+  });
+
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema);
