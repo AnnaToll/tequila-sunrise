@@ -1,37 +1,43 @@
-const Register = () => {
+import { useState } from 'react'
 
+
+export default function Register() {
   const [details, setDetails] = useState({name: "", email: "", password: "", phone: ""})
 
-  const handleSubmit = async (e) => {
-      e.preventDefault();
+    const registerHandler = async (e) => {
+      e.preventDefault()
 
-      const user = {
-        name: details.name,
-        phone: details.phone,
-        email: details.email,
-        password: details.password
+      const registerUser = {
+          name: details.name,
+          phone: details.phone,
+          email: details.email,
+          password: details.password
       }
-    
+
       fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
+          method: 'POST', 
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(registerUser),
       })
-      .then(res => res.json())
-      .then(data => console.log(data));
-    }
+      .then((res) => {
+        console.log(res)
+          return res.json()
+      })
+      .then((data) => {
+          console.log(data)
+      })
+  }
 
-    return ( 
-        <form>
-        <div className="form-inner" onClick={handleSubmit}>
-
-            <h2>Register</h2> 
-
+  return (
+    <form onSubmit={registerHandler}>
+        <div className="form-inner">
+            <h2>Register</h2>
+            
             <div className="form-group">
                 <label htmlFor='name'>Name:</label>
-                <input type="" name="name" id="name" required onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>
+                <input type="text" name="name" id="name" required onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>
             </div>
 
             <div className="form-group">
@@ -51,8 +57,7 @@ const Register = () => {
 
             <input type="submit" value="REGISTER" />
         </div>
+
     </form>
   )
 }
- 
-export default Register;
