@@ -114,3 +114,10 @@
     flex-direction: column;
   }
 }
+.frontPic{
+  width: 100%;
+  object-fit: cover;
+}
+.Bestsellers{
+text-align: center;
+}
