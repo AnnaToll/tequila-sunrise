@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 
 const Login = () => {
 
-    const [details, setDetails] = useState({email: "", password: ""})
+    const [details, setDetails] = useState({ email: "", password: ""})
   
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -19,8 +19,8 @@ const Login = () => {
           },
           body: JSON.stringify(user)
         })
-        /* .then(res => res.json())
-        .then(data => console.log(data)); */
+        .then(res => res.json())
+        .then(data => console.log(data));
       }
   
       return ( 
