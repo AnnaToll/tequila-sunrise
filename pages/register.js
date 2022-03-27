@@ -21,13 +21,13 @@ export default function Register() {
           },
           body: JSON.stringify(registerUser),
       })
-      .then((res) => {
+     /*  .then((res) => {
         console.log(res)
           return res.json()
       })
       .then((data) => {
           console.log(data)
-      })
+      }) */
   }
 
   return (

@@ -10,11 +10,11 @@ export default async function handler (req, res) {
         const user = new User(req.body)
         const isPasswordCorecct = user.password
     
-        const doesEmailExist = await User.exists(user.email);
-        const isEmailCorecct = await User.find(user.email)
+        const doesEmailExist = await User.exists({ email: user.email});
+        const isEmailCorecct = await User.find({ email: user.email})
     
         if (doesEmailExist) {
-            for(i of isEmailCorecct){
+            for(var i of isEmailCorecct){
             }
             const correcctPassword = i.password
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
@@ -29,6 +29,6 @@ export default async function handler (req, res) {
         }else {
             console.log("Details does not match")
             res.send({message: "Details does not match"})
-        }  
+        }   
     }
   }
