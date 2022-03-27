@@ -48,9 +48,7 @@ const ProductPage = () => {
                 <p>Land: {product.country}</p>
                 <i>Pris: {product.price}</i>
                 <Link 
-                href={{
-                pathname: "/Products/test",
-                query: product._id }}>
+                href={`/Products/${product._id}`} key={product._id}>
                 <a>Läs mer</a>
                 </Link>
                 <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
