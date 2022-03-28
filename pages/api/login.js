@@ -10,7 +10,7 @@ export default async function handler (req, res) {
         const user = new User(req.body)
         const isPasswordCorecct = user.password
     
-        const doesEmailExist = await User.exists({ email: user.email});
+        const doesEmailExist = await User.exists({ email: user.email})
         const isEmailCorecct = await User.find({ email: user.email})
     
         if (doesEmailExist) {
@@ -19,7 +19,8 @@ export default async function handler (req, res) {
             const correcctPassword = i.password
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
                 res.send({
-                    message: "You are now logged in"
+                    message: "You are now logged in", 
+                    loggedIn: true
                 })
                 console.log("You are now logged in")
             } else {

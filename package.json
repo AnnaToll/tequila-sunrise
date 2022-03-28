@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cookies-next": "^2.0.4",
     "mongoose": "^6.2.8",
     "next": "12.1.0",
     "next-redux-wrapper": "^7.0.5",
