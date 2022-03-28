@@ -1,11 +1,11 @@
 import Link from "next/link";
-import logo from "../public/IMG/Logo/Tech-ila.PNG"
+import logo from "../public/IMG/Logo/logo.PNG"
 
 const Header = () => {
     return ( 
         <nav>
-            <img src={logo}></img>
-            <ul>
+            {/* <img src={logo}/> */}
+            <ul className="navbar">
             <li>
            <Link href="/">
                <a>Home</a>
@@ -18,11 +18,13 @@ const Header = () => {
            </li>
            <li>
            <Link href="/Products">
-               <a><button>Logga in</button></a>
+               <a>Logga in</a>
            </Link>
            </li>
            </ul>
+           <hr/>
         </nav>
+        
      );
 }
  

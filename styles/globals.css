@@ -1,12 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+ font-family: 'Bodoni Moda', serif;
     background-color: #999;
 }
 
+nav li, nav button {
+  display: inline-block;
+  margin:  10px;
+  transition: 0.5s ease-in-out;
+  }
+
+  hr {
+    margin: 50px;
+  }
+nav {
+height:fit-content;
+}
+  nav li:hover, nav img:hover, nav button:hover {
+    color: #094420;
+    transition: 0.5s ease-in-out;
+    background-color: white;
+    border: none;
+    }
+
+    nav {
+      max-height: 50px;
+    }
+
+hr{
+  color: white;
+}
+.navbar {
+  list-style: none;
+  font-size: 30px;
+}
 a {
   color: inherit;
   text-decoration: none;
