@@ -32,7 +32,7 @@ export const getServerSideProps = async (context) => {
 };
 
 const singleProductPage = ({ productData }) => {
-    //const [price, setPrice] = useState(productData.price);
+    const [price, setPrice] = useState(productData.price);
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
@@ -50,11 +50,13 @@ const singleProductPage = ({ productData }) => {
 
     const putInCartHandler = async (event) => {
         event.preventDefault();
+        const totalSumItem = price * quantity;
         dispatch({
             type: addProduct,
             product: {
                 ...productData,
-                quantity: quantity
+                quantity: quantity,
+                totalSumItem: totalSumItem
             }
         });
     };
