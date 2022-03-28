@@ -1,12 +1,22 @@
 import dbConnect from '../../lib/dbConnect';
 import Product from '../../models/Products';
 import { ObjectId } from 'mongodb';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Product.module.css'
 import Image from 'next/image';
 import { addProduct } from '../../redux/actions/actionTypes';
 import Link from 'next/link';
+
+useEffect(() => {
+    fetch("/api/product")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+
+        })
+}
 
 export const getServerSideProps = async (context) => {
 
@@ -59,7 +69,7 @@ const singleProductPage = ({ productData }) => {
             </div>
             <div className={styles.right}>
                 <h1 className={styles.title}>{productData.name}</h1>
-                <p>{productData.description}</p>
+                <p className={styles.description}>{productData.description}</p>
                 <p className={styles.price}>{productData.price}:-</p>
                 <p>Ursprungsland: {productData.country}</p>
                 {/* <p>{productData.quantity}</p> */}
