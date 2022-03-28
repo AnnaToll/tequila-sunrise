@@ -17,6 +17,7 @@ export default async function handler (req, res) {
            res.status(200).json({message: "user added to database"})
         } else {
             console.log("Email already in use")
+            res.status(401).json({message: "Email already in use"})
     }
                     
     }

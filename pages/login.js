@@ -1,8 +1,9 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Login = () => {
-
-    const [details, setDetails] = useState({ email: "", password: ""})
+  const router = useRouter()
+  const [details, setDetails] = useState({ email: "", password: ""})
   
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -20,8 +21,16 @@ const Login = () => {
           body: JSON.stringify(user)
         })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then((data) => {
+          if (data.loggedIn) router.push('/profile') 
+        })
       }
+       
+      useEffect(() => {
+        // Prefetch the profile page
+        router.prefetch('/profile')
+      }, [])
+      
   
       return ( 
         <form onSubmit={handleLogin}>
