@@ -8,15 +8,15 @@ import Image from 'next/image';
 import { addProduct } from '../../redux/actions/actionTypes';
 import Link from 'next/link';
 
-useEffect(() => {
-    fetch("/api/product")
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
+// useEffect(() => {
+//     fetch("/api/product")
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((data) => {
 
-        })
-}
+//         })
+// }
 
 export const getServerSideProps = async (context) => {
 
