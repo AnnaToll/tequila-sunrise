@@ -7,16 +7,12 @@ import React from 'react';
 
 export default function Home() {
 
-  //   fetch('/api/frontpage', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({ email: email })
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => console.log(data));
-  // }
+    fetch('/api/frontpage')
+    .then(res => res.json())
+    .then(data => console.log(data));
+
+    
+  
 
   return (
     <div className={styles.container}>
