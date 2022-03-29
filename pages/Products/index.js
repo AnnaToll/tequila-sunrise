@@ -1,34 +1,59 @@
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+
 const ProductPage = () => {
 
-    const getAllProducts = async => {
+    const addToCart = () => {
+        console.log("Hej!")
+    }
+
+    const changeFilter = (event) => {
+        if(event.target.value === "Odefinerad"){
+            console.log("Tjena!")
+        }
+    }
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
         fetch("/api/products")
-            .then((response) => {
-              return response.json()
-          })
-          .then((data) => {
-              console.log(data)
-              })
-      }
-    
+        .then((response) => {
+         return response.json();
+      })
+      .then((data) => {
+        setProducts(data)
+        console.log(data)
+      } )
+
+    }, []) 
     return ( 
         <main>
         <div className="filterProducts">
-            <button onClick={getAllProducts}>Tryck</button>
+          
             <h1>Tech-ila</h1>
-            <ul>
-                <li>Filter 1</li>
-                <li>Filter 2</li>
-                <li>Filter 3</li>
-                <li>Filter 4</li>
-            </ul>
+            <label htmlFor="productFilter">
+                <select name="productFilter" className="productFilter" onChange={changeFilter}>
+                    <option value="Odefinerad"> </option>
+                    <option value="Högsta till lägsta">Högsta till lägsta</option>
+                    <option value="Lägsta till högsta">Lägsta till högsta</option>
+                </select>
+            </label>
         </div>
-        <div className="productPage">
-            <h3>Product:</h3>
-            <h3>Pris:</h3>
-            <h3>Land:</h3>
-            <h3>Procent:</h3>
-            <h3>IMAGE</h3>
-            
+        <div>
+        <h1>Alla grejer</h1>
+        {products.map((product) => (
+            <div key={product._id}>
+                <img src={`IMG/Products/${product.image}`}></img>
+                <p>Namn: {product.name}</p>
+                <p>Land: {product.country}</p>
+                <i>Pris: {product.price}</i>
+                <Link 
+                href={`/Products/${product._id}`} key={product._id}>
+                <a>Läs mer</a>
+                </Link>
+                <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
+            </div>
+        ))}
         </div>
         </main>
      );
