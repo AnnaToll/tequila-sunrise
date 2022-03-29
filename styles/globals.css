@@ -4,15 +4,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-<<<<<<< HEAD
  font-family: 'Bodoni Moda', serif;
     background-color: #999;
-=======
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: #999
-    /* background-color: rgba(249, 249, 249, 1); */
->>>>>>> 1876fafafcec95fa3389d2232631166b31341f6f
 }
 
 nav li, nav button {
