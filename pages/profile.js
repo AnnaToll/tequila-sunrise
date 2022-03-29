@@ -22,18 +22,12 @@ export default function Register() {
   }
 
   const handleUser = () => {
-    fetch('/api/user', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-      })
-      /* .then(res => res.json())
-      .then((data) => {
-       
-          
-        }) */
+    const [products, setProducts] = useState([]);   
+      fetch('/api/user')
+    .then(res => res.json())
+    .then(data => {
+      setProducts(data)
+    })
   }
 
   if(loggedIn) {
