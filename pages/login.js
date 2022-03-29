@@ -4,10 +4,6 @@ import { useRouter } from 'next/router'
 const Login = () => {
   const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
-
-  useEffect(() => {
-    localStorage.setItem('myCat', 'Tom');
-  }, [])
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,13 +22,13 @@ const Login = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.loggedIn) {
-        const cat = localStorage.getItem('myCat');
+        localStorage.setItem('myCat', 'Tom');
         router.push('/profile')
         } 
       })
     }
 
-    useEffect(() => {
+     useEffect(() => {
       // Prefetch the profile page
       router.prefetch('/profile')
     }, [])

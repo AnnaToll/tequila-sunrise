@@ -8,6 +8,11 @@ export default function Register() {
        localStorage.removeItem('myCat');
     }
 
+    useEffect(() => {
+        // Perform localStorage action
+        var item = localStorage.getItem('myCat')
+      }, [])
+
       if("myCat" in localStorage) {
         return ( //If user is signed in this shows
         <div className="welcome">
