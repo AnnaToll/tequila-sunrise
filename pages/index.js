@@ -17,22 +17,52 @@ export default function Home() {
     })
     }, [])
 
-    const array = []; 
-    for (let i = 0; i <= products.length; i++){
-      array.push(products)
-    }
-    for (const numberOfProducts of products){
-      console.log(numberOfProducts)
-      console.log(numberOfProducts.quantity)
-    }
-    
-  
+    // Array -> sortera -> spara den som är lägst -> ta bort -> gör om 5 gånger***
+
+    // const array = []; 
+    // for (const numberOfProducts of products){
+    //   array.push(numberOfProducts.quantity)
+    // }
+    // console.log(array)
+    // array.sort((a,b) => a-b);
+    // const newArray = array.splice(0,5);
+    const productArray = products;
+            var filterMap = {};
+            productArray.forEach(function (item) {
+                if (!filterMap[item.quantity] || filterMap[item.quantity] < item.quantity) {
+                  filterMap[item.quantity] = item;
+                }
+              })
+              var result = [];
+        for (var number in filterMap) {
+            result.push(filterMap[number]);
+          }
+
+
+          result.sort(function(a) {
+             return a.quantity;
+          });
+        
+          console.log(result);       
+          const newArray = result.splice(0,5);
+                console.log(newArray);
+
+      
 
   return (
     <div className={styles.container}>
       <h1>Tech-ila</h1>
       <img src="IMG/Start-img/start-tequila2.jpg" alt="picture of tequila" className={styles.frontPic} /> 
       <h1 className={styles.Bestsellers}>Bästsäljare</h1>
+      <div className={styles.bestsellerProducts}>
+      {newArray.map((product)=>(
+        <div key={product._id}>
+          <h5 className={styles.bestHeadline}>{product.name}</h5>
+          <img className={styles.bestPics} src={`IMG/Products/${product.image}`}/>
+          <p>{product.price}:-</p>
+        </div>
+      ))}
+      </div>
     </div>
   )
 
