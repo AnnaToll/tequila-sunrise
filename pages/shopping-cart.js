@@ -30,7 +30,15 @@ const Cart = ({
     const handleChangeQuantity = async (id, e) => {
 
         let selectedClass = e.target.getAttribute('class');
+        let requestedQuantity = 0;
+        let storageQuantity = 0;
 
+        if (selectedClass === 'add-quantity-cart') {
+            requestedQuantity = e.target.value + 1;
+        } else if (selectedClass === 'custom-quantity-cart') {
+            requestedQuantity = e
+        }
+        
         fetch('/api/check-quantity', {
             method: 'POST',
             headers: {
@@ -38,7 +46,9 @@ const Cart = ({
             },
             body: JSON.stringify({id: id})
         })
-
+        .then(res => res.json()) 
+        .then(data => console.log(data))
+        
         // addQuantityCart(id)
 
     }

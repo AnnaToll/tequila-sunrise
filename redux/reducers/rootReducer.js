@@ -3,7 +3,7 @@ const initState = {
     itemsInCart: 0,
     items: [
         {
-            id: 1,
+            id: '623c4bb7ad3085a867593522',
             title: "tequila 1",
             img: "/dmitry-dreyer-7hHRTw_-1SY-unsplash.jpg",
             price: 299,
@@ -11,7 +11,7 @@ const initState = {
             totalSumItem: 299
         },
         {
-            id: 2,
+            id: '623c4d53ad3085a867593524',
             title: "Tequila 2",
             img: "/fidel-fernando-tfLBYGwDews-unsplash.jpg",
             price: 249,
