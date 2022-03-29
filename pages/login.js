@@ -28,6 +28,7 @@ const Login = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.loggedIn) {
+        console.log(data.userData)
         localStorage.setItem('isLoggedIn', true);
         router.push('/profile')
         } 

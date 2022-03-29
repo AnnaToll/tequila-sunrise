@@ -20,7 +20,8 @@ export default async function handler (req, res) {
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
                 res.send({
                     message: "You are now logged in", 
-                    loggedIn: true
+                    loggedIn: true,
+                    userData: user
                 })
                 console.log("You are now logged in")
             } else {

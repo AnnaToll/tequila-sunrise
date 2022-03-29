@@ -8,7 +8,6 @@ export default function Register() {
   
   useEffect(() => {
    const coockie = localStorage.getItem('isLoggedIn');
-   console.log(coockie)
    if (coockie)
      setLoggedIn(true);
  }, [])
@@ -24,6 +23,9 @@ export default function Register() {
       <div className="welcome">
         <h1>Welcome User</h1>
         <button onClick={logout}> Logout </button>
+
+        <div>  buyhistory </div>
+
       </div>
     )
     } else {
