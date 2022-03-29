@@ -5,8 +5,12 @@ export default async function handler (req, res) {
     
     await dbConnect()
     
-    if(req.method === 'GET'){
-      User.find()
+    if(req.method === 'POST'){
+      const userId = req.body
+      console.log(userId)
+
+      const findUser = await User.find({ id : userId })
+      console.log(findUser)
       .then((data) => {
           res.status(200).json(data);
           console.log(data)

@@ -6,14 +6,6 @@ export default function Register() {
   const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter()
   const userId = router.query.user
-
-  
-  useEffect(() => {
-      const coockie = localStorage.getItem('isLoggedIn');
-      if (coockie)
-      setLoggedIn(true);
-      handleUser
-    }, [])
     
   const logout = () => {
     localStorage.removeItem('isLoggedIn')
@@ -22,13 +14,27 @@ export default function Register() {
   }
 
   const handleUser = () => {
-    const [products, setProducts] = useState([]);   
-      fetch('/api/user')
+    fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userId)
+    })
     .then(res => res.json())
     .then(data => {
-      setProducts(data)
+      setUser(data)
+      console.log(user)
+      console.log(setUser)
     })
   }
+
+  useEffect(() => {
+    const coockie = localStorage.getItem('isLoggedIn');
+    if (coockie)
+    setLoggedIn(true);
+    handleUser
+  })
 
   if(loggedIn) {
     return ( //If user is signed in this shows
