@@ -11,7 +11,6 @@ import {
 const Cart = ({ 
     sum, 
     items, 
-    itemsInCart, 
     addQuantityCart, 
     calcSumAndItems, 
     removeQuantityCart, 
@@ -28,6 +27,22 @@ const Cart = ({
         customQuantityCart(id, parseInt(e.target.value))
     }
 
+    const handleChangeQuantity = async (id, e) => {
+
+        let selectedClass = e.target.getAttribute('class');
+
+        fetch('/api/check-quantity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id: id})
+        })
+
+        // addQuantityCart(id)
+
+    }
+
 
     return ( 
         <main>
@@ -38,21 +53,27 @@ const Cart = ({
                     <div>
                         <h4>{product.title}</h4>
                         <div>
-                            <button onClick={() => removeQuantityCart(product.id)}>-</button>
-                            <input 
+                            <button className="remove-quantity-cart" onClick={() => removeQuantityCart(product.id)}>-</button>
+                            <input
+                                className="custom-quantity-cart"
                                 type="text" 
                                 name="cart-item-quantity" 
                                 id="cart-item-quantity" 
                                 value={product.quantity || ''} 
                                 onChange={(e) => handleChange(product.id, e)} />
-                            <button onClick={() => addQuantityCart(product.id)}>+</button>
+                            <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, e)}>+</button>
                             <button onClick={() => removeItemCart(product.id)}>Ta bort</button>
                         </div>
                         <h5>Price: {product.totalSumItem} kr</h5>
                     </div>
                 </div>
             ))}
-            {items.length > 0 ? <h2>Total sum: {sum} </h2> : <h2>Kundvagnen är tom</h2>}
+            {items.length > 0 ? 
+                <div>
+                    <h2>Total sum: {sum} </h2>  
+                    <button>Checka ut</button>
+                </div>
+                : <h2>Kundvagnen är tom</h2>}
         </main>
      );
 }
@@ -60,7 +81,6 @@ const Cart = ({
 const mapStateToProps = (state) => {
     return {
         sum: state.totalSum,
-        itemsInCart: state.itemsInCart,
         items: state.items 
     }
 }

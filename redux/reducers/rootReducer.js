@@ -27,7 +27,7 @@ const rootReducer = (state = initState, action) => {
     if (action.type === 'CALC_SUM_ITEMS') {
         let newSum = 0;
         let newItemsInCart = 0;
-        if (state.items !== []) {
+        if (state.items.length > 0) {
             for (let item of state.items) {
                 newSum += item.totalSumItem;
                 newItemsInCart += item.quantity;
