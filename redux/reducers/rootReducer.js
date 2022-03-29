@@ -42,7 +42,7 @@ const rootReducer = (state = initState, action) => {
 
 
     if (action.type === 'ADD_QUANTITY_CART') {
-        let updatedItems = [...state.items];
+        let updatedItems = JSON.parse(JSON.stringify(state.items));
         for (let item of updatedItems) {
             if (item.id === action.id) {
                 item.quantity = item.quantity + 1;
@@ -57,10 +57,10 @@ const rootReducer = (state = initState, action) => {
     }
 
     if (action.type === 'REMOVE_QUANTITY_CART') {
-        let updatedItems = [...state.items];
+        let updatedItems = JSON.parse(JSON.stringify(state.items));
         for (let item of updatedItems) {
             if (item.id === action.id) {
-                if (item.quantity !== 1) {
+                if (item.quantity > 1) {
                     item.quantity = item.quantity - 1;
                     item.totalSumItem = item.quantity * item.price;
                 }
@@ -75,7 +75,7 @@ const rootReducer = (state = initState, action) => {
     }
 
     if (action.type === 'CUSTOM_QUANTITY_CART') {
-        let updatedItems = [...state.items];
+        let updatedItems = JSON.parse(JSON.stringify(state.items));
         for (let item of updatedItems) {
             if (item.id === action.payload.id) {
                 if (!action.payload.value) {
