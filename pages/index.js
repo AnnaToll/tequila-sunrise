@@ -1,16 +1,30 @@
 // Skriv här
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import React from 'react';
 
 
 export default function Home() {
 
-    fetch('/api/frontpage')
-    .then(res => res.json())
-    .then(data => console.log(data));
+  const [products, setProducts] = useState([]);   
 
+    useEffect(() => {
+      fetch('/api/frontpage')
+    .then(res => res.json())
+    .then(data => {
+      setProducts(data)
+    })
+    }, [])
+
+    const array = []; 
+    for (let i = 0; i <= products.length; i++){
+      array.push(products)
+    }
+    for (const numberOfProducts of products){
+      console.log(numberOfProducts)
+      console.log(numberOfProducts.quantity)
+    }
     
   
 
