@@ -5,17 +5,35 @@ import { useRouter } from 'next/router'
 export default function Register() {
   const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter()
+  const userId = router.query.user
+
   
   useEffect(() => {
-   const coockie = localStorage.getItem('isLoggedIn');
-   if (coockie)
-     setLoggedIn(true);
- }, [])
-
+      const coockie = localStorage.getItem('isLoggedIn');
+      if (coockie)
+      setLoggedIn(true);
+      handleUser
+    }, [])
+    
   const logout = () => {
     localStorage.removeItem('isLoggedIn')
     setLoggedIn(false);
     router.push('/')
+  }
+
+  const handleUser = () => {
+    fetch('/api/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+      })
+      /* .then(res => res.json())
+      .then((data) => {
+       
+          
+        }) */
   }
 
   if(loggedIn) {
