@@ -5,6 +5,11 @@ const Login = () => {
   const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
   
+  useEffect(() => {
+   // Prefetch the profile page
+   router.prefetch('/profile')
+ }, [])
+   
   const handleLogin = async (e) => {
     e.preventDefault();
   
@@ -22,17 +27,12 @@ const Login = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.loggedIn) {
-        localStorage.setItem('myCat', 'Tom');
+        localStorage.setItem('isLoggedIn', true);
         router.push('/profile')
         } 
       })
     }
 
-     useEffect(() => {
-      // Prefetch the profile page
-      router.prefetch('/profile')
-    }, [])
-      
   
     return ( 
       <form onSubmit={handleLogin}>
