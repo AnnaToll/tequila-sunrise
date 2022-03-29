@@ -11,7 +11,7 @@ const productsReducer = (state = initState, action) => {
         const newState = {
             totalSum: state.totalSum + (action.product.price * action.product.quantity),
             itemsInCart: state.itemsInCart + action.product.quantity,
-            products: [...state.products]
+            products: state.products.map(product => { return { ...product } })
         };
         const product = newState.products.find(product => product._id === action.product._id);
         if (product) {
@@ -22,12 +22,44 @@ const productsReducer = (state = initState, action) => {
             newState.products.push(action.product);
             console.log(newState);
         }
+        console.log('initstate', state.totalSum);
+        console.log('initStateProducts', state.products)
+        console.log('newState', newState.totalSum);
+        console.log('newStateProducts', newState.products);
         return newState;
     }
     return state;
 };
 
 export default productsReducer;
+
+// const productsReducer = (state = initState, action) => { //lite annorlunda sätt att göra exakt samma som ovan.
+//     if (action.type === actionTypes.addProduct) {
+//         const newState = {
+//             ...state,
+//             totalSum: state.totalSum + (action.product.price * action.product.quantity),
+//             itemsInCart: state.itemsInCart + action.product.quantity,
+//             products: state.products.map(product => { return { ...product } })
+//         };
+//         const product = newState.products.find(product => product._id === action.product._id);
+//         if (product) {
+//             product.quantity += action.product.quantity;
+//             product.totalSumItem += action.product.totalSumItem;
+//             console.log('adding quantity', product);
+//         } else {
+//             newState.products.push(action.product);
+//             console.log(newState);
+//         }
+//         console.log('initState', state.totalSum);
+//         console.log('initStateProducts', state.products);
+//         console.log('newState', newState.totalSum);
+//         console.log('newStateProducts', newState.products);
+//         return newState;
+//     }
+//     return state;
+// };
+
+// export default productsReducer;
 
 // const initState = {
 //     products: []
