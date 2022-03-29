@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter()
@@ -50,7 +51,11 @@ const Login = () => {
           </div>
             
           <input type="submit" value="LOGIN" />
-
+          <button>
+           <Link href="/register">
+               <a> REGISTER </a>
+           </Link>
+           </button>
         </div>
       </form>
     )

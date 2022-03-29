@@ -42,7 +42,7 @@ export default function Register() {
 
             <div className="form-group">
                 <label htmlFor='phone'>Phone number:</label>
-                <input type="number" phone="phone" id="phone" required onChange={e =>setDetails({...details, phone: e.target.value})} value={details.phone}/>
+                <input type="text" phone="phone" id="phone" required onChange={e =>setDetails({...details, phone: e.target.value})} value={details.phone}/>
             </div>
 
             <div className="form-group">
@@ -57,7 +57,6 @@ export default function Register() {
 
             <input type="submit" value="REGISTER" />
         </div>
-
     </form>
   )
 }
