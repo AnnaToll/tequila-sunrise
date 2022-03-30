@@ -9,39 +9,6 @@ export const calcSumAndItems = () => {
 }
 
 
-export const addQuantityCart = (idItem) => {
-    return (dispatch) => {
-        dispatch({
-            type: 'ADD_QUANTITY_CART',
-            id: idItem
-        });
-    }
-}
-
-
-export const removeQuantityCart = (idItem) => {
-    return (dispatch) => {
-        dispatch({
-            type: 'REMOVE_QUANTITY_CART',
-            id: idItem
-        });
-    }
-}
-
-
-export const customQuantityCart = (idItem, value) => {
-    return (dispatch) => {
-        dispatch({
-            type: 'CUSTOM_QUANTITY_CART',
-            payload: {
-                id: idItem,
-                value: value
-            }
-        });
-    }
-}
-
-
 export const removeItemCart = (idItem) => {
     return (dispatch) => {
         dispatch({
@@ -50,3 +17,42 @@ export const removeItemCart = (idItem) => {
         });
     }
 }
+
+
+export const changeQuantityCart = (idItem, changeQuantity) => {
+    return async (dispatch) => {
+        if (changeQuantity === 0) {
+            dispatch({
+                type: 'CHANGE_QUANTITY_CART',
+                payload: {
+                    id: idItem,
+                    changeQuantity: changeQuantity,
+                    inStorage: true
+                }
+            });
+        }
+        fetch('/api/check-quantity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                id: idItem,
+                changeQuantity: changeQuantity
+            })
+        })
+        .then(res => res.json()) 
+        .then((data) => {
+            dispatch({
+                type: 'CHANGE_QUANTITY_CART',
+                payload: {
+                    id: idItem,
+                    changeQuantity: changeQuantity,
+                    inStorage: data.inStorage
+                }
+            });
+        })
+        
+    }
+}
+

@@ -1,56 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { 
     calcSumAndItems, 
-    addQuantityCart, 
-    removeQuantityCart, 
-    customQuantityCart, 
-    removeItemCart
+    removeItemCart,
+    changeQuantityCart
 } from "../redux/actions/cartActions";
 
 const Cart = ({ 
     sum, 
     items, 
-    addQuantityCart, 
     calcSumAndItems, 
-    removeQuantityCart, 
-    customQuantityCart,
-    removeItemCart }) => {
+    removeItemCart,
+    changeQuantityCart }) => {
 
-
+    const idChecker = useRef('');
+    const previousQuantity = null;
+    
     useEffect(() => {      
         calcSumAndItems();
     }, [items])
 
 
-    const handleChange = (id, e) => {
-        customQuantityCart(id, parseInt(e.target.value))
-    }
-
-    const handleChangeQuantity = async (id, e) => {
+    const handleChangeQuantity = async (id, currentQuantity, e) => {
 
         let selectedClass = e.target.getAttribute('class');
-        let requestedQuantity = 0;
-        let storageQuantity = 0;
+        let changeQuantity = 0;
 
-        if (selectedClass === 'add-quantity-cart') {
-            requestedQuantity = e.target.value + 1;
-        } else if (selectedClass === 'custom-quantity-cart') {
-            requestedQuantity = e
+        if (idChecker.current !== id) {
+            previousQuantity = parseInt(currentQuantity);
         }
         
-        fetch('/api/check-quantity', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({id: id})
-        })
-        .then(res => res.json()) 
-        .then(data => console.log(data))
-        
-        // addQuantityCart(id)
+        if (selectedClass === 'add-quantity-cart') {
+            if (!currentQuantity) 
+                changeQuantity = 1;
+            else {
+                changeQuantity = 1;
+            }
+        } else if (selectedClass === 'remove-quantity-cart') {
+            if (currentQuantity === 1) return;            
+            changeQuantity = -1;
+        } else if (selectedClass === 'custom-quantity-cart') {
+            if (!e.target.value) {
+                changeQuantity = 0;
+            } else if (e.target.value) {
+                console.log(previousQuantity);
+                changeQuantity = parseInt(e.target.value) - previousQuantity;
+                previousQuantity = parseInt(e.target.value);
+            }
+        }
 
+        idChecker.current = id;
+        changeQuantityCart(id, changeQuantity);        
     }
 
 
@@ -63,15 +63,15 @@ const Cart = ({
                     <div>
                         <h4>{product.title}</h4>
                         <div>
-                            <button className="remove-quantity-cart" onClick={() => removeQuantityCart(product.id)}>-</button>
+                            <button className="remove-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, product.quantity, e)}>-</button>
                             <input
                                 className="custom-quantity-cart"
                                 type="text" 
                                 name="cart-item-quantity" 
                                 id="cart-item-quantity" 
                                 value={product.quantity || ''} 
-                                onChange={(e) => handleChange(product.id, e)} />
-                            <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, e)}>+</button>
+                                onChange={(e) => handleChangeQuantity(product.id, product.quantity, e)} />
+                            <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, product.quantity, e)}>+</button>
                             <button onClick={() => removeItemCart(product.id)}>Ta bort</button>
                         </div>
                         <h5>Price: {product.totalSumItem} kr</h5>
@@ -83,7 +83,8 @@ const Cart = ({
                     <h2>Total sum: {sum} </h2>  
                     <button>Checka ut</button>
                 </div>
-                : <h2>Kundvagnen är tom</h2>}
+                : 
+                <h2>Kundvagnen är tom</h2>}
         </main>
      );
 }
@@ -97,10 +98,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     calcSumAndItems: calcSumAndItems,
-    addQuantityCart: addQuantityCart,
-    removeQuantityCart: removeQuantityCart,
-    customQuantityCart: customQuantityCart,
-    removeItemCart: removeItemCart
+    removeItemCart: removeItemCart,
+    changeQuantityCart: changeQuantityCart
 }
  
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

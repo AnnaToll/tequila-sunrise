@@ -6,10 +6,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-    <Header />
+      <Header />
       <Component {...pageProps} />
-      </> 
-       );
+    </> 
+  );
 }
 
 export default wrapper.withRedux(MyApp);
