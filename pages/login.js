@@ -28,7 +28,7 @@ const Login = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.loggedIn) {
-        const userData = data.userData._id
+        const userData = data.userData
         localStorage.setItem('isLoggedIn', true);
         router.push({
           pathname: "/profile",
@@ -38,7 +38,6 @@ const Login = () => {
       })
     }
 
-  
     return ( 
       <form onSubmit={handleLogin}>
         <div className="form-inner">

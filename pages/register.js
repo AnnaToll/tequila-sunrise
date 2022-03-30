@@ -22,7 +22,6 @@ export default function Register() {
           body: JSON.stringify(registerUser),
       })
       .then((res) => {
-        console.log(res)
           return res.json()
       })
       .then((data) => {

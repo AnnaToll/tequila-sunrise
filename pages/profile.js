@@ -4,9 +4,15 @@ import { useRouter } from 'next/router'
 
 export default function Register() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userName, setUserName] = useState ("");
+  const [userPhone, setUserPhone] = useState ("");
+  const [userEmail, setUserEmail] = useState ("");
+  const [buyHistory, setBuyHistory] = useState ("");
   const router = useRouter()
-  const userId = router.query.user
-    
+  const userId = {
+    _id: router.query.user
+  }
+
   const logout = () => {
     localStorage.removeItem('isLoggedIn')
     setLoggedIn(false);
@@ -21,11 +27,15 @@ export default function Register() {
       },
       body: JSON.stringify(userId)
     })
-    .then(res => res.json())
+    .then((res) => {
+      return res.json()
+    })
     .then(data => {
-      setUser(data)
-      console.log(user)
-      console.log(setUser)
+      console.log(data)
+      setUserName(data.name)
+      setUserEmail(data.email)
+      setUserPhone(data.phone)
+      setBuyHistory(data.buyhistory)
     })
   }
 
@@ -33,16 +43,23 @@ export default function Register() {
     const coockie = localStorage.getItem('isLoggedIn');
     if (coockie)
     setLoggedIn(true);
-    handleUser
-  })
+    handleUser()
+  }, [])
 
   if(loggedIn) {
     return ( //If user is signed in this shows
       <div className="welcome">
-        <h1>Welcome User</h1>
-        <button onClick={logout}> Logout </button>
+        <h1>Welcome {userName}</h1>
 
-        <div>  buyhistory </div>
+        <div>
+          User Info
+            <p>Email: {userEmail} </p>
+            <p>Phone: {userPhone} </p>
+        </div>
+
+        <div> hello {buyHistory} </div>
+
+        <button onClick={logout}> Logout </button>
 
       </div>
     )

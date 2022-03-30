@@ -12,18 +12,19 @@ export default async function handler (req, res) {
     
         const doesEmailExist = await User.exists({ email: user.email})
         const isEmailCorecct = await User.find({ email: user.email})
-    
+        
         if (doesEmailExist) {
             for(var i of isEmailCorecct){
             }
             const correcctPassword = i.password
+            const userId = i._id
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
+                console.log("You are now logged in")
                 res.send({
                     message: "You are now logged in", 
                     loggedIn: true,
-                    userData: user
+                    userData: userId
                 })
-                console.log("You are now logged in")
             } else {
                 console.log("Details does not match")
                 res.send({message: "Details does not match"})
