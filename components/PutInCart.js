@@ -1,5 +1,4 @@
 import { ADD_ITEM } from '/redux/actions/actionTypes';
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from '../styles/Product.module.css';
 

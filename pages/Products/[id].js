@@ -1,7 +1,7 @@
 // import dbConnect from '../../lib/dbConnect';
 // import Product from '../../models/Products';
 // import { ObjectId } from 'mongodb';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Product.module.css'
 import Image from 'next/image';
@@ -36,41 +36,42 @@ const singleProductPage = (/*{ productData }*/) => {
 
     const router = useRouter();
 
-    //början på att hämta data via api-fil så att det blir enhetligt med hur de andra gör
-    //  async function getDataFromBackend() {
-    //      try {
-    //          const { id } = router.query;
-    //          console.log('router', router);
-    //              const response = await fetch("/api/product/" + id);
-    //                  .then((response) => {
-    //                      return response.json();
-    //                  })
-    //                  .then((data) => {
-    //                      setProductData(data);
-    //                      console.log(data);
-    //                  });
-    //          } 
-    //          catch(error) {
-
-    //         }
-    //      } 
-    //     }
-
-
-    useEffect(() => { //början på att hämta data via api-fil så att det blir enhetligt med hur de andra gör
+    // början på att hämta data via api-fil så att det blir enhetligt med hur de andra gör    
+    const getDataFromDB = useCallback(async () => {
         const { id } = router.query;
         console.log('router', router);
         if (id) {
-            fetch("/api/product/" + id)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    setProductData(data);
-                    console.log(data);
-                });
+            try {
+                const response = await fetch("/api/product/" + id);
+                const data = await response.json();
+                console.log(data);
+                return setProductData(data);
+
+            } catch (error) {
+                console.log(error);
+            }
         }
     }, [router]);
+
+    useEffect(() => {
+        getDataFromDB();
+    }, [getDataFromDB, router]);
+
+
+    // useEffect(() => {
+    //     const { id } = router.query;
+    //     console.log('router', router);
+    //     if (id) {
+    //         fetch("/api/product/" + id)
+    //             .then((response) => {
+    //                 return response.json();
+    //             })
+    //             .then((data) => {
+    //                 setProductData(data);
+    //                 console.log(data);
+    //             });
+    //     }
+    // }, [router]);
 
 
     // const putInCartHandler = async (event) => {
