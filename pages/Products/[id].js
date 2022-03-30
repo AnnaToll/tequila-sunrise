@@ -96,7 +96,7 @@ const singleProductPage = (/*{ productData }*/) => {
             <div className={styles.container}>
                 <div className={styles.left}>
                     <div className={styles.imgContainer}>
-                        <Image src={`/img/products/${productData.image}`} objectFit="contain" layout="fill" alt="" />
+                        <Image src={`/img/products/${productData.image}`} objectFit="contain" layout="fill" priority="true" alt="" />
                     </div>
                 </div>
                 <div className={styles.right}>
