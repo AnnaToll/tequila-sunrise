@@ -3,29 +3,29 @@ import * as actionTypes from '../actions/actionTypes';
 const initState = {
     totalSum: 0,
     itemsInCart: 0,
-    products: []
+    items: []
 };
 
 const productsReducer = (state = initState, action) => {
-    if (action.type === actionTypes.addProduct) {
+    if (action.type === actionTypes.ADD_ITEM) {
         const newState = {
-            totalSum: state.totalSum + (action.product.price * action.product.quantity),
-            itemsInCart: state.itemsInCart + action.product.quantity,
-            products: state.products.map(product => { return { ...product } })
+            totalSum: state.totalSum + (action.item.price * action.item.quantity),
+            itemsInCart: state.itemsInCart + action.item.quantity,
+            items: state.items.map(item => { return { ...item } })
         };
-        const product = newState.products.find(product => product._id === action.product._id);
-        if (product) {
-            product.quantity += action.product.quantity;
-            product.totalSumItem += action.product.totalSumItem;
-            console.log('adding quantity', product);
+        const item = newState.items.find(item => item._id === action.item._id);
+        if (item) {
+            item.quantity += action.item.quantity;
+            item.totalSumItem += action.item.totalSumItem;
+            console.log('adding quantity', item);
         } else {
-            newState.products.push(action.product);
+            newState.items.push(action.item);
             console.log(newState);
         }
         console.log('initstate', state.totalSum);
-        console.log('initStateProducts', state.products)
+        console.log('initStateItems', state.items)
         console.log('newState', newState.totalSum);
-        console.log('newStateProducts', newState.products);
+        console.log('newStateItems', newState.items);
         return newState;
     }
     return state;
