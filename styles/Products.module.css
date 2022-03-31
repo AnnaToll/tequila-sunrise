@@ -1,0 +1,65 @@
+.main {
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.938);
+}
+
+.productImage {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.productDiv {
+    text-align: center;
+}
+.productDiv p {
+    margin: 0px;
+}
+
+.singleProduct {
+    min-height: 440px;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0 28px;
+    display: inline-block;
+    margin: 10px 10px;
+    overflow: hidden;
+    transition: ease-in-out 0.7s;
+}
+
+.singleProduct p {
+    margin: 10px;
+}
+
+.singleProduct h2 {
+    font-size: 20px;
+}
+
+.singleProduct:hover {
+    box-shadow: 0 4px 8px 0 #032c13, 0 6px 20px 0 #032c13;
+    transition: ease-in-out 0.3s;
+}
+
+.singleProduct button {
+    background-color: rgba(255, 255, 255, 0.938);
+    border: 2px solid #032c13;
+    transition: ease-in-out 0.3s;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.singleProduct button:hover {
+    box-shadow: 0 1px 1px 0 #032c13, 0 1px 1px 0 #032c13;
+    transition: ease-in-out 0.3s;
+}
+
+.productFilter {
+    width: 200px;
+    margin: 20px;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.014);
+    border: none;
+}

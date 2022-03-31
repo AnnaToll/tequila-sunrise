@@ -1,0 +1,54 @@
+.container {
+
+    height: calc(100vh - 100px);
+    display: flex;
+    padding: 50px;
+    background-color: rgba(249, 249, 249, 1);
+}
+
+.left {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    flex: 2;
+    padding: 20px;
+}
+
+.imgContainer {
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+
+.description {
+    margin: 10px 0;
+    padding: 30px 0;
+    border-bottom: 2px solid rgb(216, 215, 215);
+}
+
+.price {
+    color: #062411;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.quantity {
+    width: 50px;
+    height: 30px;
+}
+
+.btn {
+    height: 30px;
+    margin-left: 10px;
+    background-color: #0f4e27;
+    color: white;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+
+}
