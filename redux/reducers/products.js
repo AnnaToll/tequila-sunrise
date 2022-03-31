@@ -6,6 +6,17 @@ const initState = {
     items: []
 };
 
+
+export const setStateReducer = (state = initState, action) => {
+
+    if (action.type === 'SET_CURRENT_STATE') {  
+
+        return action.store;
+    }
+    return state;
+};
+
+
 export const productsReducer = (state = initState, action) => {
     if (action.type === actionTypes.ADD_ITEM) {
         const newState = {
@@ -26,6 +37,7 @@ export const productsReducer = (state = initState, action) => {
         console.log('initStateItems', state.items)
         console.log('newState', newState.totalSum);
         console.log('newStateItems', newState.items);
+        localStorage.setItem("store", newState);
         return newState;
     }
 

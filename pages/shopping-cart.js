@@ -101,8 +101,8 @@ const Cart = ({
 
 const mapStateToProps = (state) => {
     return {
-        sum: state.totalSum,
-        items: state.items 
+        sum: state.cart.totalSum,
+        items: state.cart.items 
     }
 }
 
