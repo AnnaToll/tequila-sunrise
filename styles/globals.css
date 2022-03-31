@@ -46,3 +46,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.cart-products {
+  display: flex;
+  column-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-products img {
+  width: 200px;
+}

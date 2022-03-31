@@ -18,10 +18,13 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    buyhistory: {
+        type: Array
     }
 
 }, { timestamps: true });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.models.User || mongoose.model('User', UserSchema);
 
 module.exports = User;

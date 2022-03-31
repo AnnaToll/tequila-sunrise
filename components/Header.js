@@ -1,5 +1,5 @@
 import Link from "next/link";
-import logo from "../public/IMG/Logo/logo.PNG"
+/* import logo from "../public/IMG/Logo/logo.PNG" */
 
 const Header = () => {
     return ( 
@@ -17,7 +17,7 @@ const Header = () => {
            </Link>
            </li>
            <li>
-           <Link href="/Products">
+           <Link href="/login">
                <a>Logga in</a>
            </Link>
            </li>

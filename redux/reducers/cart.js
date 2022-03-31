@@ -3,57 +3,30 @@ import * as actionTypes from '../actions/actionTypes';
 const initState = {
     totalSum: 0,
     itemsInCart: 0,
-    items: []
-};
-
-
-
-export const setStateReducer = (state = initState, action) => {
-
-    if (action.type === 'SET_CURRENT_STATE') {  
-
-        return action.store;
-    }
-    return state;
-};
-
-
-export const productsReducer = (state = initState, action) => {
-
-    if (action.type === actionTypes.ADD_ITEM) {
-        const newState = {
-            totalSum: state.totalSum + (action.item.price * action.item.quantity),
-            itemsInCart: state.itemsInCart + action.item.quantity,
-            items: state.items.map(item => { return { ...item } })
-        };
-        const item = newState.items.find(item => item._id === action.item._id);
-        if (item) {
-            item.quantity += action.item.quantity;
-            item.totalSumItem += action.item.totalSumItem;
-            console.log('adding quantity', item);
-        } else {
-            newState.items.push(action.item);
-            console.log(newState);
+    items: [
+        {
+            id: '623c4bb7ad3085a867593522',
+            title: "tequila 1",
+            img: "/dmitry-dreyer-7hHRTw_-1SY-unsplash.jpg",
+            price: 299,
+            quantity: 1,
+            totalSumItem: 299,
+            inStorage: true
+        },
+        {
+            id: '623c4d53ad3085a867593524',
+            title: "Tequila 2",
+            img: "/fidel-fernando-tfLBYGwDews-unsplash.jpg",
+            price: 249,
+            quantity: 2,
+            totalSumItem: 498,
+            inStorage: true
         }
-        console.log('initstate', state.totalSum);
-        console.log('initStateItems', state.items)
-        console.log('newState', newState.totalSum);
-        console.log('newStateItems', newState.items);
-
-
-        localStorage.setItem("store", newState);
-
-        return newState;
-    }
-
-
-    return state;
+    ]
 };
 
-
-export const cartReducer = (state = initState, action) => {
-
-
+const cartReducer = (state = initState, action) => {
+ 
     if (action.type === 'CALC_SUM_ITEMS') {
         let newSum = 0;
         let newItemsInCart = 0;
@@ -79,7 +52,6 @@ export const cartReducer = (state = initState, action) => {
                     item.quantity = ''; 
                 } else {
                     item.quantity = item.quantity + action.payload.changeQuantity;  
-                    // item.quantity = action.payload.prevQuantity + action.payload.changeQuantity;  
                     item.totalSumItem = item.quantity * item.price;
                 }
                 break;
@@ -100,6 +72,8 @@ export const cartReducer = (state = initState, action) => {
         }
     }
 
-    
     return state;
 };
+
+export default cartReducer;
+

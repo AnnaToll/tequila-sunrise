@@ -114,3 +114,36 @@
     flex-direction: column;
   }
 }
+.frontPic{
+  width: 100%;
+  object-fit: cover;
+}
+.Bestsellers{
+text-align: center;
+}
+.bestsellerProducts{
+  display: grid;
+  column-gap: 10px;
+  justify-items: center;
+  grid-template-columns: repeat(5, 1fr);
+}
+.itemCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bestHeadline{
+  font-size: 20px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+.bestPics{
+  object-fit: cover;
+  width: 170px;
+}
+@media (max-width: 600px) {
+  .bestsellerProducts {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+}
