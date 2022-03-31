@@ -35,7 +35,7 @@ const ProductPage = () => {
             <p>Vi på <i>Tech-ila</i> arbetar endast med de bästa producenterna i världen, vårt fokus ligger på fair-trade och ekologiskt odlade råvaror.</p>
             <p>Vår tequila skall helst avnjutas rumstempererad och utan tillbehör, njut t.ex. av Röda hatten en varm sommardag med några vänner och en skön minneslucka. </p>
 
-            <div className="filterProducts">          
+            <div className={styles.filterProducts}>          
           <label htmlFor="productFilter">
               <select name="productFilter" onChange={changeFilter} className={styles.productFilter}>
                   <option value="Odefinerad">Välj ett filter</option>
