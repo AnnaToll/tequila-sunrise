@@ -51,7 +51,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>Tech-ila</h1>
       <img src="IMG/Start-img/start-tequila2.jpg" alt="picture of tequila" className={styles.frontPic} /> 
       <h1 className={styles.Bestsellers}>Bästsäljare</h1>
       <div className={styles.bestsellerProducts}>
