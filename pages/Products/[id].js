@@ -2,10 +2,10 @@
 // import Product from '../../models/Products';
 // import { ObjectId } from 'mongodb';
 import { useEffect, useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Product.module.css'
 import Image from 'next/image';
-import { ADD_ITEM } from '../../redux/actions/actionTypes';
+//import { ADD_ITEM } from '../../redux/actions/actionTypes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PutInCart from '../../components/PutInCart';
@@ -24,19 +24,14 @@ import PutInCart from '../../components/PutInCart';
 // };
 
 const singleProductPage = (/*{ productData }*/) => {
-    const [productData, setProductData] = useState(); //tillhör useEffect-fetch
-    // const price = productData.price;
-    // const [price, setPrice] = useState(productData.price);
+    const [productData, setProductData] = useState();
     const [quantity, setQuantity] = useState(1);
-    const dispatch = useDispatch();
 
-    const cart = useSelector(state => state.products.items); //bara ett test för att se att information skickas vidare. Ska tas bort
-    console.log('cart', cart);
 
 
     const router = useRouter();
 
-    // början på att hämta data via api-fil så att det blir enhetligt med hur de andra gör    
+
     const getDataFromDB = useCallback(async () => {
         const { id } = router.query;
         console.log('router', router);
@@ -110,14 +105,9 @@ const singleProductPage = (/*{ productData }*/) => {
                         onChange={(e) => setQuantity(+ e.target.value)}
                         type="number"
                     />
-                    {/* <input onChange={(e) => setQuantity(+ e.target.value)} type="number" min="1" defaultValue={1} className={styles.quantity} />
-                    <button onClick={putInCartHandler} className={styles.btn}>Lägg i varukorgen</button> */}
                     <Link href="/Products/623c4fc4ad3085a867593526"><a>Röda hatten</a></Link>
                 </div>
                 <div className={styles.add}>
-                    {cart.map(product => (
-                        <div key={product._id}>{product.name} {product.quantity}</div>
-                    ))}
                 </div>
             </div>
         )

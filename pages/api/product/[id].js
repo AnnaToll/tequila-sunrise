@@ -16,5 +16,3 @@ export default async function handler(req, res) {
         console.log(error);
     }
 }
-
-// query: { id: '623c4bb7ad3085a867593522' }

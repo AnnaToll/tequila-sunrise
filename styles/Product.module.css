@@ -1,7 +1,9 @@
 .container {
+
     height: calc(100vh - 100px);
     display: flex;
     padding: 50px;
+    background-color: rgba(249, 249, 249, 1);
 }
 
 .left {
@@ -10,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-right: 2px solid rgb(194, 194, 194); */
 }
 
 .right {
