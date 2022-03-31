@@ -14,7 +14,7 @@ const Cart = ({
     changeQuantityCart }) => {
 
     const idChecker = useRef('');
-    const previousQuantity = null;
+    const previousQuantity = useRef(null);
     
     useEffect(() => {      
         calcSumAndItems();
@@ -26,9 +26,17 @@ const Cart = ({
         let selectedClass = e.target.getAttribute('class');
         let changeQuantity = 0;
 
-        if (idChecker.current !== id) {
-            previousQuantity = parseInt(currentQuantity);
+        console.log(e.target.value);
+        console.log(parseInt(e.target.value));
+
+
+        if (currentQuantity !== '' || idChecker.current !== id) {
+            // e.target.setAttribute('data-prev-value', currentQuantity)
+            previousQuantity.current = parseInt(currentQuantity);
+            // console.log(previousQuantity.current);
         }
+
+        // let previousQuantity = e.target.getAttribute()
         
         if (selectedClass === 'add-quantity-cart') {
             if (!currentQuantity) 
@@ -40,17 +48,18 @@ const Cart = ({
             if (currentQuantity === 1) return;            
             changeQuantity = -1;
         } else if (selectedClass === 'custom-quantity-cart') {
-            if (!e.target.value) {
+            // prev - current = correct change
+            if (e.target.value === '') {
                 changeQuantity = 0;
-            } else if (e.target.value) {
-                console.log(previousQuantity);
-                changeQuantity = parseInt(e.target.value) - previousQuantity;
-                previousQuantity = parseInt(e.target.value);
+            } else if (e.target.value !== '') {
+                console.log(e.target.value);
+                console.log(previousQuantity.current);
+                changeQuantity = previousQuantity.current - parseInt(e.target.value);
             }
         }
 
         idChecker.current = id;
-        changeQuantityCart(id, changeQuantity);        
+        changeQuantityCart(id, changeQuantity, previousQuantity.current);        
     }
 
 
@@ -70,6 +79,7 @@ const Cart = ({
                                 name="cart-item-quantity" 
                                 id="cart-item-quantity" 
                                 value={product.quantity || ''} 
+                                data-prev-value=""
                                 onChange={(e) => handleChangeQuantity(product.id, product.quantity, e)} />
                             <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, product.quantity, e)}>+</button>
                             <button onClick={() => removeItemCart(product.id)}>Ta bort</button>

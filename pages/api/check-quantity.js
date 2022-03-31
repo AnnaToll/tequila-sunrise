@@ -19,7 +19,7 @@ export default async function handler (req, res) {
                     res.status(200).json({ inStorage: false })
                 }
             })
-            .catch(err => res.status(400).json({ error: err }))
+            // .catch(err => res.status(400).json({ error: err }))
     }
 
   }

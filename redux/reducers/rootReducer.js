@@ -51,6 +51,7 @@ const rootReducer = (state = initState, action) => {
                     item.quantity = ''; 
                 } else {
                     item.quantity = item.quantity + action.payload.changeQuantity;  
+                    // item.quantity = action.payload.prevQuantity + action.payload.changeQuantity;  
                     item.totalSumItem = item.quantity * item.price;
                 }
                 break;
