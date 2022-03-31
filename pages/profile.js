@@ -52,7 +52,7 @@ export default function Register() {
         <h1>Welcome {userName}</h1>
 
         <div>
-          User Info
+          User Info:
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
         </div>
