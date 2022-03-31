@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import styles from '../../styles/Products.module.css'
 
 const ProductPage = () => {
 
-    const addToCart = () => {
+    const addToCart = (e) => {
+        e.preventDefault();
         console.log("Hej!")
     }
 
@@ -22,40 +24,41 @@ const ProductPage = () => {
       })
       .then((data) => {
         setProducts(data)
-        console.log(data)
       } )
 
     }, []) 
     return ( 
-        <main>
-        <div className="filterProducts">
-          
-            <h1>Tech-ila</h1>
-            <label htmlFor="productFilter">
-                <select name="productFilter" className="productFilter" onChange={changeFilter}>
-                    <option value="Odefinerad"> </option>
-                    <option value="Högsta till lägsta">Högsta till lägsta</option>
-                    <option value="Lägsta till högsta">Lägsta till högsta</option>
-                </select>
-            </label>
-        </div>
-        <div>
-        <h1>Alla grejer</h1>
-        {products.map((product) => (
-            <div key={product._id}>
-                <img src={`IMG/Products/${product.image}`}></img>
-                <p>Namn: {product.name}</p>
-                <p>Land: {product.country}</p>
-                <i>Pris: {product.price}</i>
-                <Link 
-                href={`/Products/${product._id}`} key={product._id}>
-                <a>Läs mer</a>
-                </Link>
-                <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
-            </div>
-        ))}
-        </div>
-        </main>
+        <main className={styles.main}>
+     
+        <div className={styles.productDiv}>
+            <h1>Vårt urval av Tequila</h1>
+            <p>Vi på <i>Tech-ila</i> arbetar endast med de bästa producenterna i världen, vårt fokus ligger på fair-trade och ekologiskt odlade råvaror.</p>
+            <p>Vår tequila skall helst avnjutas rumstempererad och utan tillbehör, njut t.ex. av Röda hatten en varm sommardag med några vänner och en skön minneslucka. </p>
+
+            <div className="filterProducts">          
+          <label htmlFor="productFilter">
+              <select name="productFilter" onChange={changeFilter} className={styles.productFilter}>
+                  <option value="Odefinerad">Välj ett filter</option>
+                  <option value="Högsta till lägsta">Högsta till lägsta</option>
+                  <option value="Lägsta till högsta">Lägsta till högsta</option>
+              </select>
+          </label>
+  </div>
+                 {products.map((product) => (
+                      <Link 
+                      href={`/Products/${product._id}`} key={product._id}>
+                         <a>
+                     <div key={product._id} className={styles.singleProduct}>
+                     <h2>{product.name}</h2>                    
+                      <img src={`IMG/Products/${product.image}`} className={styles.productImage}></img>
+                     <p>Ursprungsland: {product.country}</p>
+                     <p>Pris: {product.price}:-</p>
+                    <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
+                </div>
+                        </a></Link>
+                ))}
+     </div>
+ </main>
      );
 }
  

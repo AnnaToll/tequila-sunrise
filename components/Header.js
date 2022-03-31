@@ -4,7 +4,7 @@ import logo from "../public/IMG/Logo/logo.PNG"
 const Header = () => {
     return ( 
         <nav>
-            {/* <img src={logo}/> */}
+            <img src={logo}/>
             <ul className="navbar">
             <li>
            <Link href="/">
