@@ -17,14 +17,14 @@ export default async function handler (req, res) {
             for(var i of isEmailCorecct){
             }
             const correcctPassword = i.password
-            const userId = i._id
+            const userId = i._id // Get ID of the user to use for geting data later
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
-                console.log("You are now logged in")
                 res.send({
                     message: "You are now logged in", 
                     loggedIn: true,
                     userData: userId
                 })
+                console.log("You are now logged in")
             } else {
                 console.log("Details does not match")
                 res.send({message: "Details does not match"})

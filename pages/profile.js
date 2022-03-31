@@ -4,28 +4,27 @@ import { useRouter } from 'next/router'
 
 export default function Register() {
   const [loggedIn, setLoggedIn] = useState(false);
+
   const [userName, setUserName] = useState ("");
   const [userPhone, setUserPhone] = useState ("");
   const [userEmail, setUserEmail] = useState ("");
-  const [buyHistory, setBuyHistory] = useState ("");
+  /* const [buyHistory, setBuyHistory] = useState (""); */
+
   const router = useRouter()
-  const userId = {
-    _id: router.query.user
-  }
 
   const logout = () => {
-    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('userID')
     setLoggedIn(false);
     router.push('/')
   }
 
-  const handleUser = () => {
+  const handleUser = (userID) => {
     fetch('/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userId)
+      body: JSON.stringify(userID)
     })
     .then((res) => {
       return res.json()
@@ -35,15 +34,16 @@ export default function Register() {
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
-      setBuyHistory(data.buyhistory)
+      etBuyHistory(data.buyhistory)
     })
   }
 
   useEffect(() => {
-    const coockie = localStorage.getItem('isLoggedIn');
-    if (coockie)
-    setLoggedIn(true);
-    handleUser()
+    const userID = localStorage.getItem("userID")
+    if (userID != null) {
+      setLoggedIn(true);
+      handleUser(userID) // Get all data about the user to make page dynamic
+    }
   }, [])
 
   if(loggedIn) {
@@ -52,12 +52,12 @@ export default function Register() {
         <h1>Welcome {userName}</h1>
 
         <div>
-          User Info:
+          User Info
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
         </div>
 
-        <div> hello {buyHistory} </div>
+        <div> hello {/* {buyHistory} */} </div>
 
         <button onClick={logout}> Logout </button>
 

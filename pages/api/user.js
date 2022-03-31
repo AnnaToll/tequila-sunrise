@@ -7,8 +7,8 @@ export default async function handler (req, res) {
     
     if (req.method === 'POST') {
 
-        const userId = req.body._id
-
+        const userId = req.body
+        
         const findUser = await User.findById(userId)
         res.send(findUser) 
     }

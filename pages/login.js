@@ -29,10 +29,9 @@ const Login = () => {
     .then((data) => {
       if (data.loggedIn) {
         const userData = data.userData
-        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem("userID", userData)
         router.push({
-          pathname: "/profile",
-          query: { user: userData },
+          pathname: "/profile"
          });
         } 
       })
