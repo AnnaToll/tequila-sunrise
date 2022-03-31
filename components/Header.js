@@ -4,7 +4,7 @@ import Link from "next/link";
 const Header = () => {
     return ( 
         <nav>
-            {/* <img src={logo}/> */}
+            <img src={logo}/>
             <ul className="navbar">
             <li>
            <Link href="/">
