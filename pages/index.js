@@ -56,7 +56,7 @@ export default function Home() {
       <h1 className={styles.Bestsellers}>Bästsäljare</h1>
       <div className={styles.bestsellerProducts}>
       {newArray.map((product)=>(
-        <div key={product._id}>
+        <div className={styles.itemCard} key={product._id}>
           <h5 className={styles.bestHeadline}>{product.name}</h5>
           <img className={styles.bestPics} src={`IMG/Products/${product.image}`}/>
           <p>{product.price}:-</p>

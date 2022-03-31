@@ -125,14 +125,25 @@ text-align: center;
   display: grid;
   column-gap: 10px;
   justify-items: center;
-  align-items: start;
   grid-template-columns: repeat(5, 1fr);
 }
+.itemCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .bestHeadline{
-  padding-bottom: 20px;
+  font-size: 20px;
+  padding-bottom: 15px;
+  margin: 0;
 }
 .bestPics{
-  place-self: center;
   object-fit: cover;
-  width: 100px;
+  width: 170px;
+}
+@media (max-width: 600px) {
+  .bestsellerProducts {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
 }
