@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { 
@@ -55,7 +55,7 @@ const Cart = ({
                                 disabled
                             />
                             <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
-                            <button onClick={() => removeItemCart(product._id)}>Ta bort</button>
+                            <button onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
                         </div>
                         <h5>Price: {product.totalSumItem} kr</h5>
                     </div>

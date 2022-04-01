@@ -35,7 +35,6 @@ const Header = ({ itemsInCart }) => {
            </ul>
            <hr />
         </nav>
-        
      );
 
 }
