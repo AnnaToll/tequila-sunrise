@@ -10,7 +10,7 @@ const Checkout = ({ sum, items, clearCartPurchase }) => {
     const router = useRouter();
 
     const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
 
 
     useEffect(() => {
