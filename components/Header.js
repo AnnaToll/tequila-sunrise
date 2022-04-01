@@ -23,6 +23,11 @@ const Header = ({ itemsInCart }) => {
                     </Link>
                 </li>
                 <li>
+                    <Link href="/profile">
+                        <a>Profil</a>
+                    </Link>
+                </li>
+                <li>
                     <Link href="/shopping-cart">
                         <a>Kundvagn {itemsInCart ? itemsInCart : ''}</a>
                     </Link>
