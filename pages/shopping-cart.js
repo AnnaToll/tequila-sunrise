@@ -13,16 +13,8 @@ const Cart = ({
     calcSumAndItems,
     removeItemCart,
     changeQuantityCart }) => {
-<<<<<<< HEAD
     
     useEffect(() => {      
-=======
-
-    const idChecker = useRef('');
-    const previousQuantity = useRef(null);
-
-    useEffect(() => {
->>>>>>> main
         calcSumAndItems();
     }, [items])
 
@@ -55,7 +47,6 @@ const Cart = ({
                             <button className="remove-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>-</button>
                             <input
                                 className="custom-quantity-cart"
-<<<<<<< HEAD
                                 type="text" 
                                 name="cart-item-quantity" 
                                 id="cart-item-quantity" 
@@ -65,16 +56,6 @@ const Cart = ({
                             />
                             <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
                             <button onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
-=======
-                                type="text"
-                                name="cart-item-quantity"
-                                id="cart-item-quantity"
-                                value={product.quantity || ''}
-                                data-prev-value=""
-                                onChange={(e) => handleChangeQuantity(product.id, product.quantity, e)} />
-                            <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product.id, product.quantity, e)}>+</button>
-                            <button onClick={() => removeItemCart(product.id)}>Ta bort</button>
->>>>>>> main
                         </div>
                         <h5>Price: {product.totalSumItem} kr</h5>
                     </div>
@@ -83,7 +64,6 @@ const Cart = ({
             {items.length > 0 ?
                 <div>
                     <h2>Total sum: {sum} </h2>
-<<<<<<< HEAD
                     <Link href="/checkout">
                         <a>
                             <button>Checka ut</button>
@@ -93,12 +73,6 @@ const Cart = ({
                 : 
                 <h2>Kundvagnen är tom</h2>
             }
-=======
-                    <button>Checka ut</button>
-                </div>
-                :
-                <h2>Kundvagnen är tom</h2>}
->>>>>>> main
         </main>
     );
 }
@@ -106,11 +80,7 @@ const Cart = ({
 const mapStateToProps = (state) => {
     return {
         sum: state.totalSum,
-<<<<<<< HEAD
         items: state.items 
-=======
-        items: state.items
->>>>>>> main
     }
 }
 
