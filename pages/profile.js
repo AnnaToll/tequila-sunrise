@@ -8,7 +8,7 @@ export default function Register() {
   const [userName, setUserName] = useState ("");
   const [userPhone, setUserPhone] = useState ("");
   const [userEmail, setUserEmail] = useState ("");
-  /* const [buyHistory, setBuyHistory] = useState (""); */
+  const [buyHistory, setBuyHistory] = useState ("");
 
   const router = useRouter()
 
@@ -34,7 +34,7 @@ export default function Register() {
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
-      etBuyHistory(data.buyhistory)
+      setBuyHistory(data.buyhistory)
     })
   }
 
@@ -57,7 +57,9 @@ export default function Register() {
             <p>Phone: {userPhone} </p>
         </div>
 
-        <div> hello {/* {buyHistory} */} </div>
+        {/* { for(let historydata of buyHistory) {
+          
+        } } */}
 
         <button onClick={logout}> Logout </button>
 
