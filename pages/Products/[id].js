@@ -34,12 +34,10 @@ const singleProductPage = (/*{ productData }*/) => {
 
     const getDataFromDB = useCallback(async () => {
         const { id } = router.query;
-        console.log('router', router);
         if (id) {
             try {
                 const response = await fetch("/api/product/" + id);
                 const data = await response.json();
-                console.log(data);
                 return setProductData(data);
 
             } catch (error) {

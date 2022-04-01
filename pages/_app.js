@@ -8,18 +8,19 @@ function MyApp({ Component, pageProps }) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const currentState = localStorage.getItem("store");
+    // const currentState = localStorage.getItem("store");
 
-    if (currentState) {
-      dispatch({
-        type: 'SET_CURRENT_STATE',
-        store: currentState
-      })
-    }
+    // console.log(currentState);
 
-  })
+  //   if (currentState) {
+  //     dispatch({
+  //       type: 'SET_CURRENT_STATE',
+  //       store: currentState
+  //     })
+  //   }
+  // })
 
   return (
     <>
