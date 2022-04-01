@@ -34,7 +34,7 @@ export default function Register() {
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
-      etBuyHistory(data.buyhistory)
+      // etBuyHistory(data.buyhistory)
     })
   }
 
