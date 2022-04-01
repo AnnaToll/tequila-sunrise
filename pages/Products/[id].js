@@ -105,7 +105,6 @@ const singleProductPage = (/*{ productData }*/) => {
                         onChange={(e) => setQuantity(+ e.target.value)}
                         type="number"
                     />
-                    <Link href="/Products/623c4fc4ad3085a867593526"><a>Röda hatten</a></Link>
                 </div>
                 <div className={styles.add}>
                 </div>
