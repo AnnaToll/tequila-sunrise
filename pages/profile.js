@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import styles from '../styles/Home.module.css' 
 
 
 export default function Register() {
@@ -30,7 +31,6 @@ export default function Register() {
       return res.json()
     })
     .then(data => {
-      console.log(data)
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
@@ -38,6 +38,22 @@ export default function Register() {
     })
   }
 
+  const item = []
+  for( let produkt of buyHistory) {
+    item.push(
+      <div className={styles.singleProduct}>
+      <p>--------------------</p>
+      <p>{produkt.name}</p>
+      <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
+      <p>{produkt.price} :-</p>
+      <p>{produkt.country}</p>
+      <p>{produkt.description}</p>
+      <p>{produkt.quantity}</p>
+      <p>--------------------</p>
+      </div>
+    )
+  }
+  
   useEffect(() => {
     const userID = localStorage.getItem("userID")
     if (userID != null) {
@@ -48,7 +64,7 @@ export default function Register() {
 
   if(loggedIn) {
     return ( //If user is signed in this shows
-      <div className="welcome">
+      <div className={styles.container}>
         <h1>Welcome {userName}</h1>
 
         <div>
@@ -57,10 +73,8 @@ export default function Register() {
             <p>Phone: {userPhone} </p>
         </div>
 
-        {/* { for(let historydata of buyHistory) {
-          
-        } } */}
-
+        {item}
+        
         <button onClick={logout}> Logout </button>
 
       </div>
