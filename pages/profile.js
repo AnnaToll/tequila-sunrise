@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Link from "next/link";
 import styles from '../styles/Home.module.css' 
 
 
@@ -42,14 +43,12 @@ export default function Register() {
   for( let produkt of buyHistory) {
     item.push(
       <div className={styles.singleProduct}>
-      <p>--------------------</p>
-      <p>{produkt.name}</p>
-      <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
-      <p>{produkt.price} :-</p>
-      <p>{produkt.country}</p>
-      <p>{produkt.description}</p>
-      <p>{produkt.quantity}</p>
-      <p>--------------------</p>
+        <h5 className={styles.bestHeadline} >{produkt.name}</h5>
+        <p>{produkt.country}</p>
+        <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
+        <p className={styles.bestPics} >{produkt.price} :-</p>
+        <p>{produkt.description}</p>
+        <p>--------------------</p>
       </div>
     )
   }
@@ -72,10 +71,10 @@ export default function Register() {
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
         </div>
+        <button onClick={logout}> Logout </button>
 
         {item}
         
-        <button onClick={logout}> Logout </button>
 
       </div>
     )
@@ -83,7 +82,16 @@ export default function Register() {
         return ( // If user isn´t singed in this shows
           <div className='welcome'>
             <h2> Please Sign in or register before visiting this page </h2>
-            <button></button> 
+            <button>
+              <Link href="/login">
+                <a>Sign in</a>
+              </Link>
+            </button> 
+            <button>
+              <Link href="/register">
+                <a>Register</a>
+              </Link>
+            </button> 
           </div>
           )
         } 
