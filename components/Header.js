@@ -2,10 +2,17 @@ import Link from "next/link";
 import { connect } from "react-redux";
 /* import logo from "../public/IMG/Logo/logo.PNG" */
 
+<<<<<<< HEAD
 const Header = ({ itemsInCart }) => {
     return ( 
         <nav>
             {/* <img src={logo}/> */}
+=======
+const Header = () => {
+    return (
+        <nav>
+            {/*  <img src={logo}/> */}
+>>>>>>> main
             <ul className="navbar">
                 <li>
                     <Link href="/">
@@ -23,6 +30,7 @@ const Header = ({ itemsInCart }) => {
                     </Link>
                 </li>
                 <li>
+<<<<<<< HEAD
                     <Link href="/profile">
                         <a>Profil</a>
                     </Link>
@@ -46,3 +54,17 @@ const mapStateToProps = (state) => {
 }
  
 export default connect(mapStateToProps)(Header);
+=======
+                    <Link href="/shopping-cart">
+                        <a>Kundvagn</a>
+                    </Link>
+                </li>
+            </ul>
+            <hr />
+        </nav>
+
+    );
+}
+
+export default Header;
+>>>>>>> main
