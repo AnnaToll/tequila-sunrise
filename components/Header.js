@@ -21,6 +21,11 @@ const Header = () => {
                         <a>Logga in</a>
                     </Link>
                 </li>
+                <li>
+                    <Link href="/shopping-cart">
+                        <a>Kundvagn</a>
+                    </Link>
+                </li>
             </ul>
             <hr />
         </nav>

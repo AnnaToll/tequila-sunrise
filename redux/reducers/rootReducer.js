@@ -49,11 +49,11 @@ const rootReducer = (state = initState, action) => {
                 newItemsInCart += item.quantity;
             }
         }
-        // localStorage.setItem("store", JSON.stringify({
-        //     ...state,
-        //     totalSum: newSum,
-        //     itemsInCart: newItemsInCart
-        // }));
+        localStorage.setItem("store", JSON.stringify({
+            ...state,
+            totalSum: newSum,
+            itemsInCart: newItemsInCart
+        }));
         return {
             ...state,
             totalSum: newSum,
