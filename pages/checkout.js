@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import LoginComponent from "../components/LoginComponent";
-import {} from "../redux/actions/cartActions";
+import { useRouter } from 'next/router';
+import { clearCartPurchase } from "../redux/actions/cartActions";
 
 
-const Checkout = ({ sum, items }) => {
+const Checkout = ({ sum, items, clearCartPurchase }) => {
+
+    const router = useRouter();
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState({})
@@ -23,12 +25,13 @@ const Checkout = ({ sum, items }) => {
               },
               body: JSON.stringify(userId)
           })
-          .then((res) => res.json())
-          .then((data) => {
+          .then(res => res.json())
+          .then(data => {
               setUser({
                   name: data.name, 
                   phone: data.phone,
-                  email: data.email
+                  email: data.email,
+                  id: userId
               });
           })
         }
@@ -56,6 +59,26 @@ const Checkout = ({ sum, items }) => {
             buyHistory.push(purchaseObject);
         }
         console.log(buyHistory);
+        
+        fetch('/api/user', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: user.id,
+                purchases: buyHistory
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                clearCartPurchase();
+                router.push({
+                    pathname: '/success'
+                });
+            }
+        })
     }
 
 
@@ -68,8 +91,8 @@ const Checkout = ({ sum, items }) => {
                     type="text"
                     id="name"
                     name="name"
-                    value={user.name}
                     onChange={handleChange}
+                    value={user.name || ''}
                     required
                 />    
                 <label htmlFor="adress">Adress</label>
@@ -98,8 +121,8 @@ const Checkout = ({ sum, items }) => {
                     type="text"
                     id="phone"
                     name="phone"
-                    value={user.phone}
                     onChange={handleChange}
+                    value={user.phone || ''}
                     required
                 />    
                 <label htmlFor="email">Epost</label>
@@ -107,8 +130,8 @@ const Checkout = ({ sum, items }) => {
                     type="email"
                     id="email"
                     name="email"
-                    value={user.email}
                     onChange={handleChange}
+                    value={user.email || ''}
                     required
                 />
                 <h3>Betalningsmetod</h3> 
@@ -128,7 +151,7 @@ const Checkout = ({ sum, items }) => {
                     value="card"
                     required
                 />
-                <h2>Total sum: {sum} </h2>
+                <h2>Att betala: {sum} kr</h2>
                 <button>Betala och slutför beställning</button>
             </form>
 
@@ -143,5 +166,9 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = {
+    clearCartPurchase: clearCartPurchase
+}
+
  
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

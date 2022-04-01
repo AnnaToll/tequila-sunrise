@@ -12,6 +12,10 @@ const rootReducer = (state = initState, action) => {
         return action.store;
     } */
 
+    if (action.type === 'CLEAR_CART_PURCHASE') {
+        return initState;
+    }
+
 
     if (action.type === actionTypes.ADD_ITEM) {
         const newState = {

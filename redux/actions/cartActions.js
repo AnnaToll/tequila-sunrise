@@ -47,6 +47,16 @@ export const changeQuantityCart = (idItem, changeQuantity) => {
         
     }
 }
+
+export const clearCartPurchase = () => {
+    return (dispatch) => {
+        dispatch({
+            type: 'CLEAR_CART_PURCHASE'
+        });
+    }
+}
+
+
 /* export const changeQuantityCart = (idItem, changeQuantity, prevQuantity) => {
     return async (dispatch) => {
         if (changeQuantity === 0) {
