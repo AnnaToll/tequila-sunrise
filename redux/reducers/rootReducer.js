@@ -14,6 +14,12 @@ const rootReducer = (state = initState, action) => {
     }
 
 
+    if (action.type === 'CLEAR_CART_PURCHASE') {
+        localStorage.removeItem('store');
+        return initState;
+    }
+
+
     if (action.type === actionTypes.ADD_ITEM) {
         const newState = {
             totalSum: state.totalSum + (action.item.price * action.item.quantity),
