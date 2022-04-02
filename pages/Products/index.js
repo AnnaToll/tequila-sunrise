@@ -31,17 +31,20 @@ const ProductPage = () => {
 
     const changeFilter = (filters) => {
         console.log(filters)
-        
         const differentFilters  = {
-            price: 'price'
+            highest: 'price',
+            lowest: 'price'
         };
 
-        const sortFilter = differentFilters[filters];
-        const sorted = [...products].sort((a, b) => b[sortFilter] - a[sortFilter])
-            setProducts(sorted)
-
-        
-          console.log(sorted)
+        if (filters == "highest"){
+            const sortFilter = differentFilters[filters];
+            const sorted = [...products].sort((a, b) => b[sortFilter] - a[sortFilter])
+                setProducts(sorted)
+        }   if (filters == "lowest"){
+            const sortFilter = differentFilters[filters];
+            const sorted = [...products].sort((a, b) => a[sortFilter] - b[sortFilter])
+                setProducts(sorted)
+        }     
     }
 
 
@@ -66,9 +69,9 @@ const ProductPage = () => {
             <div className={styles.filterProducts}>          
           <label htmlFor="productFilter" className={styles.labelFilter}>
               <select name="productFilter" onChange={(e) => changeFilter(e.target.value)} className={styles.productFilter}>
-                  <option value="Odefinerad">Välj ett filter</option>
-                  <option value="price">Högsta till lägsta</option>
-                  <option value="price">Lägsta till högsta</option>
+                  <option value="Odefinerad" selected>Välj ett filter</option>
+                  <option value="highest">Högsta till lägsta</option>
+                  <option value="lowest">Lägsta till högsta</option>
               </select>
           </label>
   </div>
