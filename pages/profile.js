@@ -72,6 +72,7 @@ export default function Register() {
             <p>Phone: {userPhone} </p>
         </div>
         <button onClick={logout}> Logout </button>
+        <p>-------------</p>
 
         {item}
         
