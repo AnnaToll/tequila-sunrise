@@ -46,6 +46,7 @@ const Register = ({ userID }) => {
   const item = []
   for( let produkt of buyHistory) {
     item.push(
+      <Link href={`/Products/${produkt._id}`} key={produkt._id}>
       <div className={styles.singleProduct}>
         <h5 className={styles.bestHeadline} > {produkt.name} </h5>
         <p> {produkt.country} </p>
@@ -53,6 +54,7 @@ const Register = ({ userID }) => {
         <p className={styles.bestPics} > {produkt.price} :- </p>
         <p> {produkt.description} </p>
       </div>
+      </Link>
     )
   }
   

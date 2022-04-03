@@ -49,6 +49,7 @@ const Checkout = ({ sum, items, clearCartPurchase }) => {
         let buyHistory = [];
         for (let item of items) {
             let purchaseObject = {
+                _id: item._id,
                 name: item.name,
                 price: item.totalSumItem,
                 description: item.description,
