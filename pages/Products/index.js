@@ -2,32 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import styles from '../../styles/Products.module.css'
 import PutInCart from '../../components/PutInCart';
-import { useRouter } from 'next/router';
+
 
 const ProductPage = () => {
 
     const [products, setProducts] = useState([]);
-    const [productData, setProductData] = useState();
     const [quantity, setQuantity] = useState(1);
-    const router = useRouter();
-
-    const getDataFromDB = useCallback(async () => {
-        const { id } = router.query;
-        if (id) {
-            try {
-                const response = await fetch("/api/product/" + id);
-                const data = await response.json();
-                return setProductData(data);
-
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    }, [router]);
-
-    useEffect(() => {
-        getDataFromDB();
-    }, [getDataFromDB, router]);
 
     const changeFilter = (filters) => {
         console.log(filters)
@@ -86,8 +66,8 @@ const ProductPage = () => {
                      <p>Pris: {product.price}:-</p>
                      <PutInCart
                         quantity={quantity}
-                        productData={productData}
-                        onChange={(e) => setQuantity(+ e.target.value)}
+                        productData={products}
+                        onChange={(e) => setProducts(+ e.target.value)}
                         type="number"/>
                 </div>
                         </a></Link>
