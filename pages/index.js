@@ -1,5 +1,6 @@
 // Skriv här
 import Head from 'next/head'
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import React from 'react';
@@ -52,14 +53,18 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <img src="IMG/Start-img/start-tequila2.jpg" alt="picture of tequila" className={styles.frontPic} /> 
-      <h1 className={styles.Bestsellers}>Bästsäljare</h1>
-      <div className={styles.bestsellerProducts}>
-      {newArray.map((product)=>(
-        <div className={styles.itemCard} key={product._id}>
-          <h5 className={styles.bestHeadline}>{product.name}</h5>
-          <img className={styles.bestPics} src={`IMG/Products/${product.image}`}/>
-          <p>{product.price}:-</p>
-        </div>
+        <h1 className={styles.Bestsellers}>Bästsäljare</h1>
+          <div className={styles.bestsellerProducts}>
+    {newArray.map((product)=>(
+        <Link 
+        href={`/Products/${product._id}`} key={product._id}>
+           <a>
+              <div className={styles.itemCard} key={product._id}>
+                <h5 className={styles.bestHeadline}>{product.name}</h5>
+              <img className={styles.bestPics} src={`IMG/Products/${product.image}`}/>
+            <p>{product.price}:-</p>
+          </div>
+        </a></Link>
       ))}
       </div>
     </div>
