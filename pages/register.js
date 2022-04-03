@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from '../styles/Login.module.css' 
 
 
 export default function Register() {
@@ -30,31 +31,31 @@ export default function Register() {
   }
 
   return (
-    <form onSubmit={registerHandler}>
-        <div className="form-inner">
+    <form onSubmit={registerHandler} className={styles.container}>
+        <div className={styles.formInner}>
             <h2>Register</h2>
             
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor='name'>Name:</label>
                 <input type="text" name="name" id="name" required onChange={e =>setDetails({...details, name: e.target.value})} value={details.name}/>
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor='phone'>Phone number:</label>
                 <input type="text" phone="phone" id="phone" required onChange={e =>setDetails({...details, phone: e.target.value})} value={details.phone}/>
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor='email'>Email:</label>
                 <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
                 <label htmlFor='password'>Password:</label>
                 <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
             </div>
 
-            <input type="submit" value="REGISTER" />
+            <input type="submit" value="REGISTER" className={styles.btn}/>
         </div>
     </form>
   )

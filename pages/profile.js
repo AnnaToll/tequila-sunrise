@@ -8,13 +8,13 @@ import { useDispatch } from 'react-redux';
 
 const Register = ({ userID }) => {
   const dispatch = useDispatch();
+  const router = useRouter()
 
   const [userName, setUserName] = useState ("");
   const [userPhone, setUserPhone] = useState ("");
   const [userEmail, setUserEmail] = useState ("");
   const [buyHistory, setBuyHistory] = useState ("");
 
-  const router = useRouter()
 
   const logout = () => {
     dispatch({
@@ -66,14 +66,13 @@ const Register = ({ userID }) => {
     return ( //If user is signed in this shows
       <div className={styles.container}>
         <h1>Welcome {userName}</h1>
-
         <div>
           User Info
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
         <button onClick={logout}> Logout </button>
         </div>
-
+        <p>Buy history:</p>
         {item}
         
 
@@ -81,19 +80,22 @@ const Register = ({ userID }) => {
     )
     } else {
         return ( // If user isn´t singed in this shows
-          <div className='welcome'>
+        <form className={styles.container2}>
+          <div className={styles.formInner}>
             <h2> Please Sign in or register before visiting this page </h2>
-            <button>
-              <Link href="/login">
-                <a>Sign in</a>
+            <button className={styles.btn}>
+              <Link href="/login" >
+                <a> LOGIN </a>
               </Link>
-            </button> 
-            <button>
-              <Link href="/register">
-                <a>Register</a>
+            </button>
+
+            <button className={styles.btn}>
+              <Link href="/register" >
+                <a> REGISTER </a>
               </Link>
-            </button> 
+            </button>
           </div>
+        </form>
           )
         } 
      }

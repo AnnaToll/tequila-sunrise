@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from "next/link";
 import { useDispatch } from 'react-redux';
+import styles from '../styles/Login.module.css' 
 
 const LoginComponent = ({ pathName }) => {
 
@@ -10,9 +11,7 @@ const LoginComponent = ({ pathName }) => {
   const [details, setDetails] = useState({ email: "", password: ""})
   
   useEffect(() => {
-    console.log(pathName);
-   // Prefetch the profile page
-   router.prefetch(pathName)
+   router.prefetch(pathName) // Prefetch the profile page
  }, [])
    
   const handleLogin = async (e) => {
@@ -37,7 +36,6 @@ const LoginComponent = ({ pathName }) => {
           type: 'SET_LOGGED_IN',
           id: userData
         })
-        // localStorage.setItem("userID", userData)
         router.push({
           pathname: pathName
          });
@@ -46,23 +44,23 @@ const LoginComponent = ({ pathName }) => {
     }
 
     return ( 
-      <form onSubmit={handleLogin}>
-        <div className="form-inner">
+      <form onSubmit={handleLogin} className={styles.container}>
+        <div className={styles.formInner}>
           <h2>Login</h2>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor='email'>Email:</label>
             <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor='password'>Password:</label>
             <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
           </div>
             
-          <input type="submit" value="LOGIN" />
-          <button>
-           <Link href="/register">
+          <input type="submit" value="LOGIN" className={styles.btn}/>
+          <button className={styles.btn}>
+           <Link href="/register" >
                <a> REGISTER </a>
            </Link>
            </button>
