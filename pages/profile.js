@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from "next/link";
-import styles from '../styles/Home.module.css' 
+import styles from '../styles/Profile.module.css' 
 import { connect } from "react-redux";
 import { useDispatch } from 'react-redux';
 
 
 const Register = ({ userID }) => {
-
   const dispatch = useDispatch();
-
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const [userName, setUserName] = useState ("");
   const [userPhone, setUserPhone] = useState ("");
@@ -24,7 +21,6 @@ const Register = ({ userID }) => {
       type: 'SET_LOGGED_IN',
       id: null
     })
-    setLoggedIn(false);
     router.push('/')
   }
 
@@ -51,19 +47,17 @@ const Register = ({ userID }) => {
   for( let produkt of buyHistory) {
     item.push(
       <div className={styles.singleProduct}>
-        <h5 className={styles.bestHeadline} >{produkt.name}</h5>
-        <p>{produkt.country}</p>
+        <h5 className={styles.bestHeadline} > {produkt.name} </h5>
+        <p> {produkt.country} </p>
         <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
-        <p className={styles.bestPics} >{produkt.price} :-</p>
-        <p>{produkt.description}</p>
-        <p>--------------------</p>
+        <p className={styles.bestPics} > {produkt.price} :- </p>
+        <p> {produkt.description} </p>
       </div>
     )
   }
   
   useEffect(() => {
     if (userID != null) {
-      setLoggedIn(true);
       handleUser(userID) // Get all data about the user to make page dynamic
     }
   }, [])
@@ -77,9 +71,8 @@ const Register = ({ userID }) => {
           User Info
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
-        </div>
         <button onClick={logout}> Logout </button>
-        <p>-------------</p>
+        </div>
 
         {item}
         

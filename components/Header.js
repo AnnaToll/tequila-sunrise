@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { connect } from "react-redux";
+import { useDispatch } from 'react-redux';
 /* import logo from "../public/IMG/Logo/logo.PNG" */
 
 const Header = ({ itemsInCart, userID }) => {
+    const dispatch = useDispatch();
 
     const logout = () => {
         dispatch({
           type: 'SET_LOGGED_IN',
           id: null
         })
-        setLoggedIn(false);
         router.push('/')
       }
 
