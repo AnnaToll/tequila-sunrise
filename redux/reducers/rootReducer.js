@@ -23,9 +23,12 @@ const rootReducer = (state = initState, action) => {
 
 
     if (action.type === 'CLEAR_CART_PURCHASE') {
-        localStorage.removeItem('store');
-        localStorage.removeItem('persist:root');
-        return initState;
+        return {
+            ...state,
+            totalSum: 0,
+            itemsInCart: 0,
+            items: []
+        }
     }
 
 
