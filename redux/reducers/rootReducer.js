@@ -1,12 +1,20 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initState = {
+    userID: null,
     totalSum: 0,
     itemsInCart: 0,
     items: []
 };
 
 const rootReducer = (state = initState, action) => {
+
+    if (action.type === 'SET_LOGGED_IN') {
+        return {
+            ...state,
+            userID: action.id
+        }
+    }
 
     if (action.type === 'SET_CURRENT_STATE') {
         console.log("set-current-state", action.store);
@@ -16,6 +24,7 @@ const rootReducer = (state = initState, action) => {
 
     if (action.type === 'CLEAR_CART_PURCHASE') {
         localStorage.removeItem('store');
+        localStorage.removeItem('persist:root');
         return initState;
     }
 

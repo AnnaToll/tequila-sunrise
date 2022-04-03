@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css' 
+import { connect } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 
-export default function Register() {
+const Register = ({ userID }) => {
+
+  const dispatch = useDispatch();
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [userName, setUserName] = useState ("");
@@ -14,7 +19,10 @@ export default function Register() {
   const router = useRouter()
 
   const logout = () => {
-    localStorage.removeItem('userID')
+    dispatch({
+      type: 'SET_LOGGED_IN',
+      id: null
+    })
     setLoggedIn(false);
     router.push('/')
   }
@@ -55,14 +63,13 @@ export default function Register() {
   }
   
   useEffect(() => {
-    const userID = localStorage.getItem("userID")
     if (userID != null) {
       setLoggedIn(true);
       handleUser(userID) // Get all data about the user to make page dynamic
     }
   }, [])
 
-  if(loggedIn) {
+  if(userID) {
     return ( //If user is signed in this shows
       <div className={styles.container}>
         <h1>Welcome {userName}</h1>
@@ -88,4 +95,12 @@ export default function Register() {
           )
         } 
      }
+
+     const mapStateToProps = (state) => {
+      return {
+          userID: state.userID
+      }
+  }
+
+     export default connect(mapStateToProps)(Register);
   

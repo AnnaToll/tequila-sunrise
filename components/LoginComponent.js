@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from "next/link";
+import { useDispatch } from 'react-redux';
 
 const LoginComponent = ({ pathName }) => {
+
+  const dispatch = useDispatch();
   const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
   
@@ -30,7 +33,11 @@ const LoginComponent = ({ pathName }) => {
     .then((data) => {
       if (data.loggedIn) {
         const userData = data.userData
-        localStorage.setItem("userID", userData)
+        dispatch({
+          type: 'SET_LOGGED_IN',
+          id: userData
+        })
+        // localStorage.setItem("userID", userData)
         router.push({
           pathname: pathName
          });
