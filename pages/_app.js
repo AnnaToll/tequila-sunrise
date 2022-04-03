@@ -14,13 +14,13 @@ function MyApp({ Component, pageProps }) {
   //   JSON.parse(localStorage.getItem("store")) : []
   // const currentState = localStorage.getItem("store");
 
-  if (typeof window !== "undefined" && localStorage.getItem("store")) {
-    const currentState = JSON.parse(localStorage.getItem("store"));
-    dispatch({
-      type: 'SET_CURRENT_STATE',
-      store: currentState
-    })
-  }
+  // if (typeof window !== "undefined" && localStorage.getItem("store")) {
+  //   const currentState = JSON.parse(localStorage.getItem("store"));
+  //   dispatch({
+  //     type: 'SET_CURRENT_STATE',
+  //     store: currentState
+  //   })
+  // }
 
   // })
 
