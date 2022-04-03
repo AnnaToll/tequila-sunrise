@@ -56,21 +56,23 @@ const ProductPage = () => {
           </label>
   </div>
                  {products.map((product) => (
-                      <Link 
+                     
+                     <div key={product._id} className={styles.singleProduct}>
+                          <Link 
                       href={`/Products/${product._id}`} key={product._id}>
                          <a>
-                     <div key={product._id} className={styles.singleProduct}>
-                     <h2>{product.name}</h2>                    
+                     <h2>{product.name}</h2>        
+                     </a></Link>            
                       <img src={`IMG/Products/${product.image}`} className={styles.productImage}></img>
                      <p>Ursprungsland: {product.country}</p>
                      <p>Pris: {product.price}:-</p>
                      <PutInCart
                         quantity={quantity}
                         productData={products}
-                        onChange={(e) => setProducts(+ e.target.value)}
+                        onChange={(e) => setQuantity(+ e.target.value)}
                         type="number"/>
                 </div>
-                        </a></Link>
+                        
                 ))}
      </div>
  </main>
