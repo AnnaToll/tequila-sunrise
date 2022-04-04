@@ -36,7 +36,7 @@ export default function Register() {
     <form onSubmit={registerHandler} className={styles.container}>
         <div className={styles.formInner}>
             <h2>Register</h2>
-            <p> {message} </p>
+            <p> {message} </p> {/* error or success message for the user */}
             
             <div className={styles.formGroup}>
                 <label htmlFor='name'>Name:</label>

@@ -107,3 +107,7 @@
     box-shadow: 0 1px 1px 0 #032c13, 0 1px 1px 0 #032c13;
     transition: ease-in-out 0.3s;
 }
+
+.userInfo {
+    border-bottom: solid #032c13;
+}

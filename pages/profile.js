@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import styles from '../styles/Profile.module.css' 
 import { useRouter } from 'next/router'
 import Link from "next/link";
-import styles from '../styles/Profile.module.css' 
-import { connect } from "react-redux";
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from "react-redux";
 
 
 const Register = ({ userID }) => {
@@ -15,6 +14,7 @@ const Register = ({ userID }) => {
   const [userEmail, setUserEmail] = useState ("");
   const [buyHistory, setBuyHistory] = useState ("");
 
+  const item = []
 
   const logout = () => {
     dispatch({
@@ -35,7 +35,7 @@ const Register = ({ userID }) => {
     .then((res) => {
       return res.json()
     })
-    .then(data => {
+    .then(data => { // data about the user
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
@@ -43,7 +43,6 @@ const Register = ({ userID }) => {
     })
   }
 
-  const item = []
   for( let produkt of buyHistory) {
     item.push(
       <Link href={`/Products/${produkt._id}`} key={produkt._id}>
@@ -66,16 +65,23 @@ const Register = ({ userID }) => {
   if(userID) {
     return ( //If user is signed in this shows
       <div className={styles.main}>
-        <h1>Welcome {userName} <button onClick={logout} className={styles.btn} > Logout </button></h1>
+
         <div>
-          User Info
-            <p>Email: {userEmail} </p>
-            <p>Phone: {userPhone} </p>
+          <h1>Welcome {userName} 
+          <button onClick={logout} className={styles.btn} > Logout </button>
+          </h1>
         </div>
 
-        <p>Buy history:</p>
-        {item}
-        
+        <div className={styles.userInfo} >
+          <p> User Info </p>
+          <p>Email: {userEmail} </p>
+          <p>Phone: {userPhone} </p>
+        </div>
+
+        <div>
+          <p>Buy history:</p>
+          {item}
+        </div>
 
       </div>
     )
