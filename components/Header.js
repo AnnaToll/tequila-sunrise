@@ -29,7 +29,6 @@ const Header = () => {
                     </Link>
                 </li>
             </ul>
-            <hr />
         </nav>
 
     );
