@@ -48,11 +48,10 @@ const Register = ({ userID }) => {
     item.push(
       <Link href={`/Products/${produkt._id}`} key={produkt._id}>
       <div className={styles.singleProduct}>
-        <h5 className={styles.bestHeadline} > {produkt.name} </h5>
+        <h2> {produkt.name} </h2>
         <p> {produkt.country} </p>
-        <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
-        <p className={styles.bestPics} > {produkt.price} :- </p>
-        <p> {produkt.description} </p>
+        <img className={styles.productImage} src={`IMG/Products/${produkt.image}`}/>
+        <p> {produkt.price} :- </p>
       </div>
       </Link>
     )
@@ -66,14 +65,14 @@ const Register = ({ userID }) => {
 
   if(userID) {
     return ( //If user is signed in this shows
-      <div className={styles.container}>
-        <h1>Welcome {userName}</h1>
+      <div className={styles.main}>
+        <h1>Welcome {userName} <button onClick={logout} className={styles.btn} > Logout </button></h1>
         <div>
           User Info
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
-        <button onClick={logout}> Logout </button>
         </div>
+
         <p>Buy history:</p>
         {item}
         
@@ -82,21 +81,25 @@ const Register = ({ userID }) => {
     )
     } else {
         return ( // If user isn´t singed in this shows
-        <form className={styles.container2}>
+        <form className={styles.notLoggedInContainer}>
+
           <div className={styles.formInner}>
             <h2> Please Sign in or register before visiting this page </h2>
-            <button className={styles.btn}>
-              <Link href="/login" >
-                <a> LOGIN </a>
-              </Link>
-            </button>
 
             <button className={styles.btn}>
               <Link href="/register" >
                 <a> REGISTER </a>
               </Link>
             </button>
+
+            <button className={styles.btn}>
+              <Link href="/login" >
+                <a> LOGIN </a>
+              </Link>
+            </button>
+
           </div>
+
         </form>
           )
         } 

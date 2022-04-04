@@ -9,6 +9,7 @@ const LoginComponent = ({ pathName }) => {
   const dispatch = useDispatch();
   const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
+  const [error, setError] = useState("")
   
   useEffect(() => {
    router.prefetch(pathName) // Prefetch the profile page
@@ -38,8 +39,10 @@ const LoginComponent = ({ pathName }) => {
         })
         router.push({
           pathname: pathName
-         });
-        } 
+        });
+      } else {
+        setError(data.message)
+      }
       })
     }
 
@@ -47,6 +50,7 @@ const LoginComponent = ({ pathName }) => {
       <form onSubmit={handleLogin} className={styles.container}>
         <div className={styles.formInner}>
           <h2>Login</h2>
+          <p> {error} </p>
 
           <div className={styles.formGroup}>
             <label htmlFor='email'>Email:</label>

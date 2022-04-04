@@ -4,6 +4,7 @@ import styles from '../styles/Login.module.css'
 
 export default function Register() {
   const [details, setDetails] = useState({name: "", email: "", password: "", phone: ""})
+  const [message, setMessage] = useState("")
 
     const registerHandler = async (e) => {
       e.preventDefault()
@@ -27,6 +28,7 @@ export default function Register() {
       })
       .then((data) => {
           console.log(data)
+          setMessage(data.message)
       })
   }
 
@@ -34,6 +36,7 @@ export default function Register() {
     <form onSubmit={registerHandler} className={styles.container}>
         <div className={styles.formInner}>
             <h2>Register</h2>
+            <p> {message} </p>
             
             <div className={styles.formGroup}>
                 <label htmlFor='name'>Name:</label>
