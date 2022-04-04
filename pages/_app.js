@@ -3,9 +3,9 @@ import { wrapper } from '../redux/store';
 import Header from '../components/Header';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Footer from '../components/Footer';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { useStore } from 'react-redux';
-
 
 function MyApp({ Component, pageProps }) {
 
@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
     <PersistGate loading={null} persistor={store._persistor}>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </PersistGate>
 
   );
@@ -32,13 +33,13 @@ export default wrapper.withRedux(MyApp);
   //   JSON.parse(localStorage.getItem("store")) : []
   // const currentState = localStorage.getItem("store");
 
-  if (typeof window !== "undefined" && localStorage.getItem("store")) {
-    const currentState = JSON.parse(localStorage.getItem("store"));
-    dispatch({
-      type: 'SET_CURRENT_STATE',
-      store: currentState
-    })
-  }
+  // if (typeof window !== "undefined" && localStorage.getItem("store")) {
+  //   const currentState = JSON.parse(localStorage.getItem("store"));
+  //   dispatch({
+  //     type: 'SET_CURRENT_STATE',
+  //     store: currentState
+  //   })
+  // }
 
   // })
 
@@ -46,6 +47,7 @@ export default wrapper.withRedux(MyApp);
     <>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }
