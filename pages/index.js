@@ -52,7 +52,13 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Link 
+        href='/Products/6241e404c49a3352fa93205d'>
+           <a>
       <img src="IMG/Start-img/start-tequila2.jpg" alt="picture of tequila" className={styles.frontPic} /> 
+      <h2 className={styles.frontHeadline}>Espolon</h2>
+      <p className={styles.frontText}>Espolon Tequila Blanco är en tequila som produceras vid Destiladora San Nicola i de berömda kullarna i Los Altos i Jalisco, där de blå agaveplantorna växer frodig som ingen annanstans. Agavas hjärta, piñas, tillagas långsamt i en autoklav och krossas sedan för att extrahera sockerarterna och lämnas till jäsning för att låta dem förvandlas till alkohol.</p>
+      </a></Link>
         <h1 className={styles.Bestsellers}>Bästsäljare</h1>
           <div className={styles.bestsellerProducts}>
     {newArray.map((product)=>(

@@ -118,6 +118,17 @@
   width: 100%;
   object-fit: cover;
 }
+.frontHeadline,
+.frontText{
+  margin-top: 3px;
+  text-align: center;
+}
+.frontHeadline:hover{
+  color: yellow;
+}
+.frontText{
+  margin-bottom: 55px;
+}
 .Bestsellers{
 text-align: center;
 padding: 7px;
@@ -151,6 +162,12 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   object-fit: cover;
   width: 170px;
   height: 170px;
+}
+@media screen and (max-width: 960px) 
+and (min-width:601px){
+  .bestsellerProducts{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 600px) {
   .bestsellerProducts {
