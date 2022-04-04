@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import styles from '../../styles/Products.module.css'
+import PutInCart from '../../components/PutInCart';
+
 
 const ProductPage = () => {
 
-    const addToCart = (e) => {
-        e.preventDefault();
-        console.log("Hej!")
-    }
-
-    const changeFilter = (event) => {
-        if(event.target.value === "Odefinerad"){
-            console.log("Tjena!")
-        }
-    }
-
     const [products, setProducts] = useState([]);
+    const [quantity, setQuantity] = useState(1);
+
+    const changeFilter = (filters) => {
+        console.log(filters)
+        const differentFilters  = {
+            highest: 'price',
+            lowest: 'price'
+        };
+
+        if (filters == "highest"){
+            const sortFilter = differentFilters[filters];
+            const sorted = [...products].sort((a, b) => b[sortFilter] - a[sortFilter])
+                setProducts(sorted)
+        }   if (filters == "lowest"){
+            const sortFilter = differentFilters[filters];
+            const sorted = [...products].sort((a, b) => a[sortFilter] - b[sortFilter])
+                setProducts(sorted)
+        }     
+    }
+
 
     useEffect(() => {
         fetch("/api/products")
@@ -36,26 +47,34 @@ const ProductPage = () => {
             <p>Vår tequila skall helst avnjutas rumstempererad och utan tillbehör, njut t.ex. av Röda hatten en varm sommardag med några vänner och en skön minneslucka. </p>
 
             <div className={styles.filterProducts}>          
-          <label htmlFor="productFilter">
-              <select name="productFilter" onChange={changeFilter} className={styles.productFilter}>
-                  <option value="Odefinerad">Välj ett filter</option>
-                  <option value="Högsta till lägsta">Högsta till lägsta</option>
-                  <option value="Lägsta till högsta">Lägsta till högsta</option>
+          <label htmlFor="productFilter" className={styles.labelFilter}>
+              <select name="productFilter" onChange={(e) => changeFilter(e.target.value)} className={styles.productFilter}>
+                  <option value="Odefinerad" selected>Välj ett filter</option>
+                  <option value="highest">Högsta till lägsta</option>
+                  <option value="lowest">Lägsta till högsta</option>
               </select>
           </label>
   </div>
                  {products.map((product) => (
-                      <Link 
+                     <div key={product._id} className={styles.singleProduct}>
+                          <Link 
                       href={`/Products/${product._id}`} key={product._id}>
                          <a>
-                     <div key={product._id} className={styles.singleProduct}>
-                     <h2>{product.name}</h2>                    
+                     <h2>{product.name}</h2>        
+                              
                       <img src={`IMG/Products/${product.image}`} className={styles.productImage}></img>
+                     
                      <p>Ursprungsland: {product.country}</p>
                      <p>Pris: {product.price}:-</p>
-                    <button className='addToCart' onClick={addToCart}>Lägg till i varukorg</button>
+                     
+                    </a></Link>   
+                    <PutInCart
+                        quantity={quantity}
+                        productData={products}
+                        onChange={(e) => setQuantity(+ e.target.value)}
+                        type="number"/>
                 </div>
-                        </a></Link>
+                        
                 ))}
      </div>
  </main>
