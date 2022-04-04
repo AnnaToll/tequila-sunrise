@@ -3,6 +3,7 @@ import { wrapper } from '../redux/store';
 import Header from '../components/Header';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Footer from '../components/Footer';
 
 function MyApp({ Component, pageProps }) {
 
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }
