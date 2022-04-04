@@ -98,7 +98,7 @@ const Register = ({ userID }) => {
 
      const mapStateToProps = (state) => {
       return {
-          userID: state.userID
+          userID: state.user.userID
       }
   }
 
