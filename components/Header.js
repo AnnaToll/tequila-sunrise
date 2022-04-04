@@ -73,7 +73,6 @@ const Header = ({ itemsInCart, userID }) => {
                             </Link>
                         </li>
                    </ul>
-                   <hr />
                 </nav>
              );
          }
