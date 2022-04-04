@@ -44,7 +44,6 @@ const Header = ({ itemsInCart, userID }) => {
                     </li>
                     <button onClick={logout}> LOGGA UT </button>
                </ul>
-               <hr />
             </nav>
          )} else {
             return ( 
@@ -74,7 +73,6 @@ const Header = ({ itemsInCart, userID }) => {
                             </Link>
                         </li>
                    </ul>
-                   <hr />
                 </nav>
              );
          }
