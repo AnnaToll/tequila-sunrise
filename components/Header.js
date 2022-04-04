@@ -44,7 +44,6 @@ const Header = ({ itemsInCart, userID }) => {
                     </li>
                     <button onClick={logout}> LOGGA UT </button>
                </ul>
-               <hr />
             </nav>
          )} else {
             return ( 
