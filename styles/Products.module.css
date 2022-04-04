@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 20px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.938);
+    background-color: rgba(248, 248, 248, 0.932);
 }
 
 .productImage {
@@ -48,7 +48,7 @@
     border: 2px solid #032c13;
     transition: ease-in-out 0.3s;
     border-radius: 10px;
-    padding: 15px;
+    color: black;
 }
 
 .singleProduct button:hover {
@@ -60,6 +60,7 @@
     width: 200px;
     margin: 20px;
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.014);
     border: none;
+    background-color: rgba(248, 245, 245, 0.699);
 }
+
