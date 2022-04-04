@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -10,42 +14,37 @@ body {
 
 nav li {
   display: inline-block;
-  margin:  15px;
+  margin:  0 20px;
   transition: 0.5s ease-in-out;
   border-radius: 10px;
   }
 
-
   nav img{
-    display: inline-block;
     width: 150px;
   }
 
   nav li:hover {
-    background-color: white;
-    transition: 0.5s ease-in-out;
-    border: none;
-    border-radius: 10px;
+    text-decoration: underline;
     }
 
-
-
 hr{
-  color: white;
+  color:  rgb(218, 218, 218);
+  line-height: 0.2px;
 }
 .navbar {
   list-style: none;
-  font-size: 30px;
+  font-size: 24px;
 }
 a {
   color: inherit;
   text-decoration: none;
 }
-
-* {
-  box-sizing: border-box;
+footer {
+  margin:  0 20px;
 }
-
+footer h2 {
+  text-align: center;
+}
 .cart-products {
   display: flex;
   column-gap: 20px;
