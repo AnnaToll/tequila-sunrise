@@ -117,6 +117,7 @@
 .frontPic{
   width: 100%;
   object-fit: cover;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .frontHeadline,
 .frontText{
@@ -126,8 +127,11 @@
 .frontHeadline:hover{
   color: yellow;
 }
-.frontText{
-  margin-bottom: 55px;
+.frontTextContainer{
+box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background-color: #a8a8a8;
+padding: 37px;
+margin-bottom: 27px;
 }
 .Bestsellers{
 text-align: center;
