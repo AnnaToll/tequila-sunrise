@@ -81,3 +81,14 @@ footer {
 .cart-products img {
   width: 200px;
 }
+
+.form-checkout input {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.form-checkout input[type=radio] {
+  display: inline-block;
+}
+
+
