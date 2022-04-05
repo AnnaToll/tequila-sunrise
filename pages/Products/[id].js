@@ -1,33 +1,13 @@
-// import dbConnect from '../../lib/dbConnect';
-// import Product from '../../models/Products';
-// import { ObjectId } from 'mongodb';
 import { useEffect, useState, useCallback } from 'react';
-//import { useDispatch, useSelector } from 'react-redux';
 import styles from '../../styles/Product.module.css';
 import Image from 'next/image';
-//import { ADD_ITEM } from '../../redux/actions/actionTypes';
-//import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PutInCart from '../../components/PutInCart';
 
-// export const getServerSideProps = async (context) => { //sättet jag fetchade på från början
 
-//     await dbConnect();
-
-//     let productData = await Product.findOne({ _id: new ObjectId(context.params.id) });
-//     productData = JSON.parse(JSON.stringify(productData));
-
-//     console.log(productData);
-//     return {
-//         props: { productData },
-//     };
-// };
-
-const singleProductPage = (/*{ productData }*/) => {
+const singleProductPage = () => {
     const [productData, setProductData] = useState();
     const [quantity, setQuantity] = useState(1);
-
-
 
     const router = useRouter();
 
@@ -53,21 +33,6 @@ const singleProductPage = (/*{ productData }*/) => {
     }, [getDataFromDB, router]);
 
 
-    // useEffect(() => {
-    //     const { id } = router.query;
-    //     console.log('router', router);
-    //     if (id) {
-    //         fetch("/api/product/" + id)
-    //             .then((response) => {
-    //                 return response.json();
-    //             })
-    //             .then((data) => {
-    //                 setProductData(data);
-    //                 console.log(data);
-    //             });
-    //     }
-    // }, [router]);
-
     if (!productData) {
         return (
             <div></div>
@@ -77,7 +42,7 @@ const singleProductPage = (/*{ productData }*/) => {
             <main className={styles.container}>
                 <div className={styles.left}>
                     <div className={styles.imgContainer}>
-                        <Image src={`/img/products/${productData.image}`} objectFit="contain" layout="fill" priority="true" alt="" />
+                        <Image src={`/img/products/${productData.image}`} objectFit="contain" layout="fill" priority="true" alt={productData.name} />
                     </div>
                 </div>
                 <div className={styles.right}>
