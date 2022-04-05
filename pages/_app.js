@@ -1,10 +1,8 @@
 import '../styles/globals.css'
 import { wrapper } from '../redux/store';
 import Header from '../components/Header';
-import { PersistGate } from 'redux-persist/lib/integration/react';
 import { useStore } from 'react-redux';
 import CookiesAndPersist from '../components/CookiesAndPersist';
-
 
 function MyApp({ Component, pageProps }) {
 

@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import styles from '../styles/Home.module.css' 
+import Link from "next/link";
+import styles from '../styles/Profile.module.css' 
 import { connect } from "react-redux";
 import { useDispatch } from 'react-redux';
 
 
 const Register = ({ userID }) => {
-
   const dispatch = useDispatch();
-
-  const [loggedIn, setLoggedIn] = useState(false);
+  const router = useRouter()
 
   const [userName, setUserName] = useState ("");
   const [userPhone, setUserPhone] = useState ("");
   const [userEmail, setUserEmail] = useState ("");
   const [buyHistory, setBuyHistory] = useState ("");
 
-  const router = useRouter()
 
   const logout = () => {
     dispatch({
       type: 'SET_LOGGED_IN',
       id: null
     })
-    setLoggedIn(false);
     router.push('/')
   }
 
@@ -49,22 +46,20 @@ const Register = ({ userID }) => {
   const item = []
   for( let produkt of buyHistory) {
     item.push(
+      <Link href={`/Products/${produkt._id}`} key={produkt._id}>
       <div className={styles.singleProduct}>
-      <p>--------------------</p>
-      <p>{produkt.name}</p>
-      <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
-      <p>{produkt.price} :-</p>
-      <p>{produkt.country}</p>
-      <p>{produkt.description}</p>
-      <p>{produkt.quantity}</p>
-      <p>--------------------</p>
+        <h5 className={styles.bestHeadline} > {produkt.name} </h5>
+        <p> {produkt.country} </p>
+        <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
+        <p className={styles.bestPics} > {produkt.price} :- </p>
+        <p> {produkt.description} </p>
       </div>
+      </Link>
     )
   }
   
   useEffect(() => {
     if (userID != null) {
-      setLoggedIn(true);
       handleUser(userID) // Get all data about the user to make page dynamic
     }
   }, [])
@@ -73,25 +68,36 @@ const Register = ({ userID }) => {
     return ( //If user is signed in this shows
       <div className={styles.container}>
         <h1>Welcome {userName}</h1>
-
         <div>
           User Info
             <p>Email: {userEmail} </p>
             <p>Phone: {userPhone} </p>
+        <button onClick={logout}> Logout </button>
         </div>
-
+        <p>Buy history:</p>
         {item}
         
-        <button onClick={logout}> Logout </button>
 
       </div>
     )
     } else {
         return ( // If user isn´t singed in this shows
-          <div className='welcome'>
+        <form className={styles.container2}>
+          <div className={styles.formInner}>
             <h2> Please Sign in or register before visiting this page </h2>
-            <button></button> 
+            <button className={styles.btn}>
+              <Link href="/login" >
+                <a> LOGIN </a>
+              </Link>
+            </button>
+
+            <button className={styles.btn}>
+              <Link href="/register" >
+                <a> REGISTER </a>
+              </Link>
+            </button>
           </div>
+        </form>
           )
         } 
      }
