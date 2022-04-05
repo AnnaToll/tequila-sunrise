@@ -1,5 +1,5 @@
 import { ADD_ITEM } from '/redux/actions/actionTypes';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch /*useSelector*/ } from 'react-redux';
 import styles from '../styles/Product.module.css';
 
 function PutInCart(props) {
