@@ -3,10 +3,10 @@
 // import { ObjectId } from 'mongodb';
 import { useEffect, useState, useCallback } from 'react';
 //import { useDispatch, useSelector } from 'react-redux';
-import styles from '../../styles/Product.module.css'
+import styles from '../../styles/Product.module.css';
 import Image from 'next/image';
 //import { ADD_ITEM } from '../../redux/actions/actionTypes';
-import Link from 'next/link';
+//import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PutInCart from '../../components/PutInCart';
 
@@ -68,27 +68,13 @@ const singleProductPage = (/*{ productData }*/) => {
     //     }
     // }, [router]);
 
-
-    // const putInCartHandler = async (event) => {
-    //     event.preventDefault();
-    //     const totalSumItem = productData.price * quantity;
-    //     dispatch({
-    //         type: ADD_ITEM,
-    //         item: {
-    //             ...productData,
-    //             quantity: quantity,
-    //             totalSumItem: totalSumItem
-    //         }
-    //     });
-    // };
-
     if (!productData) {
         return (
             <div></div>
         )
     } else {
         return (
-            <div className={styles.container}>
+            <main className={styles.container}>
                 <div className={styles.left}>
                     <div className={styles.imgContainer}>
                         <Image src={`/img/products/${productData.image}`} objectFit="contain" layout="fill" priority="true" alt="" />
@@ -97,8 +83,8 @@ const singleProductPage = (/*{ productData }*/) => {
                 <div className={styles.right}>
                     <h1 className={styles.title}>{productData.name}</h1>
                     <p className={styles.description}>{productData.description}</p>
-                    <p className={styles.price}>{productData.price}:-</p>
-                    <p>Ursprungsland: {productData.country}</p>
+                    <p className={styles.country}>Ursprungsland: {productData.country}</p>
+                    <p className={styles.price}>Pris: {productData.price}:-</p>
                     <PutInCart
                         quantity={quantity}
                         productData={productData}
@@ -106,9 +92,7 @@ const singleProductPage = (/*{ productData }*/) => {
                         type="number"
                     />
                 </div>
-                <div className={styles.add}>
-                </div>
-            </div>
+            </main>
         )
     };
 }
