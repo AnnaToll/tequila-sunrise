@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { connect } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
-/* import logo from "../public/IMG/Logo/logo.PNG" */
+import Link from "next/link";
 
 const Header = ({ itemsInCart, userID }) => {
     const dispatch = useDispatch();
@@ -19,66 +18,67 @@ const Header = ({ itemsInCart, userID }) => {
     if (userID) {
         return (
             <nav>
-                {/* <img src={logo}/> */}
                 <ul className="navbar">
+                    <Link href="/">
+                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
+                    </Link>
                     <li>
                         <Link href="/">
-                            <a>Home</a>
+                            <a>HEM</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/Products">
-                            <a>Products</a>
+                            <a>PRODUKTER</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/profile">
-                            <a>Profil</a>
+                            <a>PROFIL</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/shopping-cart">
-                            <a>Kundvagn {itemsInCart ? itemsInCart : ''}</a>
+                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
                         </Link>
                     </li>
-                    <button onClick={logout}> Logout </button>
+
+                    <button onClick={logout}> LOGGA UT </button>
                 </ul>
-                <hr />
             </nav>
         )
     } else {
         return (
             <nav>
-                {/* <img src={logo}/> */}
                 <ul className="navbar">
+                    <Link href="/">
+                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
+                    </Link>
                     <li>
                         <Link href="/">
-                            <a>Home</a>
+                            <a>HEM</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/Products">
-                            <a>Products</a>
+                            <a>PRODUKTER</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/login">
-                            <a>Logga in</a>
+                            <a>MEDLEM</a>
                         </Link>
                     </li>
                     <li>
                         <Link href="/shopping-cart">
-                            <a>Kundvagn {itemsInCart ? itemsInCart : ''}</a>
+                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
                         </Link>
                     </li>
                 </ul>
-                <hr />
             </nav>
         );
     }
 }
-
-
 
 
 const mapStateToProps = (state) => {
