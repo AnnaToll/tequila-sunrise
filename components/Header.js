@@ -83,8 +83,8 @@ const Header = ({ itemsInCart, userID }) => {
 
 const mapStateToProps = (state) => {
     return {
-        itemsInCart: state.itemsInCart,
-        userID: state.userID
+        itemsInCart: state.cart.itemsInCart,
+        userID: state.user.userID
     }
 }
 
