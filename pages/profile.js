@@ -24,7 +24,23 @@ const Register = ({ userID }) => {
     router.push('/')
   }
 
-  const handleUser = (userID) => {
+  const deleteBuyHistory = () => {
+    fetch('/api/user', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userID)
+    })
+    /* .then((res) => {
+      return res.json()
+    })
+    .then(data => { // data about the user
+      console.log(data)
+    }) */
+  }
+
+  const handleUser = () => {
     fetch('/api/user', {
       method: 'POST',
       headers: {
@@ -45,7 +61,7 @@ const Register = ({ userID }) => {
 
   for( let produkt of buyHistory) {
     item.push(
-      <Link href={`/Products/${produkt._id}`} key={produkt._id}>
+      <Link href={`/Products/${produkt._id}`} key={Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}>
       <div className={styles.singleProduct}>
         <h2> {produkt.name} </h2>
         <p> {produkt.country} </p>
@@ -79,7 +95,10 @@ const Register = ({ userID }) => {
         </div>
 
         <div>
-          <p>Köp historik:</p>
+          <p>
+          Köp historik:
+          <button className='btn' onClick={deleteBuyHistory}> Töm historik </button>
+          </p>
           {item}
         </div>
 
