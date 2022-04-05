@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
 import Link from "next/link";
 
+
 const Header = ({ itemsInCart, userID }) => {
     const dispatch = useDispatch();
     const router = useRouter()
@@ -20,7 +21,7 @@ const Header = ({ itemsInCart, userID }) => {
             <ul className="navbar">
 
                 <Link href="/">
-                    <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
+                    <img src="IMG/Logo/logo2.png" alt="logo" className="navbarIMG" />
                 </Link>
 
                 <li>
@@ -55,7 +56,7 @@ const Header = ({ itemsInCart, userID }) => {
                 </li>
                 
                 {userID ? 
-                    <button onClick={logout}> LOGGA UT </button>
+                    <button onClick={logout} className="btn" > LOGGA UT </button>
                 :
                     ""
                 }
