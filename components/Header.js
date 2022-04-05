@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
 import Link from "next/link";
 
+
 const Header = ({ itemsInCart, userID }) => {
     const dispatch = useDispatch();
     const router = useRouter()
@@ -15,71 +16,55 @@ const Header = ({ itemsInCart, userID }) => {
         router.push('/')
     }
 
-    if (userID) {
-        return (
-            <nav>
-                <ul className="navbar">
-                    <Link href="/">
-                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
-                    </Link>
-                    <li>
-                        <Link href="/">
-                            <a>HEM</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/Products">
-                            <a>PRODUKTER</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/profile">
-                            <a>PROFIL</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/shopping-cart">
-                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
-                        </Link>
-                    </li>
+    return (
+        <nav>
+            <ul className="navbar">
 
-                    <button onClick={logout}> LOGGA UT </button>
-                </ul>
-            </nav>
-        )
-    } else {
-        return (
-            <nav>
-                <ul className="navbar">
+                <Link href="/">
+                    <a><img src="IMG/Logo/logo2.png" alt="logo"/></a>
+                </Link>
+
+                <li>
                     <Link href="/">
-                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
+                        <a>HEM</a>
                     </Link>
-                    <li>
-                        <Link href="/">
-                            <a>HEM</a>
+                </li>
+
+                <li>
+                    <Link href="/Products">
+                        <a>PRODUKTER</a>
+                    </Link>
+                </li>
+
+                <li>
+                    {userID ?  
+                        <Link href="/profile">
+                        <a>PROFIL</a>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/Products">
-                            <a>PRODUKTER</a>
-                        </Link>
-                    </li>
-                    <li>
+                    : 
                         <Link href="/login">
                             <a>MEDLEM</a>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/shopping-cart">
-                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
-                        </Link>
-                    </li>
+                    }
+                </li>
+
+                <li>
+                    <Link href="/shopping-cart"> 
+                        <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
+                    </Link>
+                    
+                </li>
+                
+                {userID ? 
+                    <button onClick={logout} className="btn" > LOGGA UT </button>
+                :
+                    ""
+                }
+
                 </ul>
             </nav>
-        );
-    }
-}
-
+        )
+    } 
 
 const mapStateToProps = (state) => {
     return {
