@@ -57,13 +57,13 @@ const Cart = ({
                             <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
                             <button onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
                         </div>
-                        <h5>Price: {product.totalSumItem} kr</h5>
+                        <h5>Summa: {product.totalSumItem} kr</h5>
                     </div>
                 </div>
             ))}
             {items.length > 0 ?
                 <div>
-                    <h2>Total sum: {sum} </h2>
+                    <h2>Totalsumma: {sum} </h2>
                     <Link href="/checkout">
                         <a>
                             <button>Checka ut</button>
