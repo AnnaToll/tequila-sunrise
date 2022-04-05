@@ -21,7 +21,7 @@ const Header = ({ itemsInCart, userID }) => {
             <ul className="navbar">
 
                 <Link href="/">
-                    <img src="IMG/Logo/logo2.png" alt="logo" className="navbarIMG" />
+                    <img src="IMG/Logo/logo2.png" alt="logo"/>
                 </Link>
 
                 <li>

@@ -24,6 +24,8 @@ nav li {
 
   nav img{
     width: 150px;
+    position: relative;
+    top: +17px
   }
 
   nav li:hover {
@@ -104,9 +106,4 @@ footer {
 .btn:hover {
   box-shadow: 0 1px 1px 0 #032c13, 0 1px 1px 0 #032c13;
   transition: ease-in-out 0.3s;
-}
-
-.navbarIMG {  
-  position: relative;
-  top: +17px
 }
