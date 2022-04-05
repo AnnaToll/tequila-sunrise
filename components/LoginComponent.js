@@ -50,23 +50,23 @@ const LoginComponent = ({ pathName }) => {
     return ( 
       <form onSubmit={handleLogin} className={styles.container}>
         <div className={styles.formInner}>
-          <h2>Login</h2>
+          <h2>Logga in</h2>
           <p> {error} </p> {/* message for the user if details does not match */}
 
           <div className={styles.formGroup}>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor='email'>Epost:</label>
             <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor='password'>Password:</label>
+            <label htmlFor='password'>Lössenord:</label>
             <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
           </div>
             
-          <input type="submit" value="LOGIN" className={styles.btn}/>
+          <input type="submit" value="LOGGA IN" className={styles.btn}/>
           <button className={styles.btn}>
            <Link href="/register" >
-               <a> REGISTER </a>
+               <a> REGISTRERA </a>
            </Link>
            </button>
         </div>
