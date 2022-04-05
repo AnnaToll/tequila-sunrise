@@ -7,8 +7,9 @@ import styles from '../styles/Login.module.css'
 const LoginComponent = ({ pathName }) => {
 
   const dispatch = useDispatch();
-  const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
+  const [error, setError] = useState("")
+  const router = useRouter()
   
   useEffect(() => {
    router.prefetch(pathName) // Prefetch the profile page
@@ -21,6 +22,7 @@ const LoginComponent = ({ pathName }) => {
       email: details.email,
       password: details.password
     }
+
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -34,19 +36,22 @@ const LoginComponent = ({ pathName }) => {
         const userData = data.userData
         dispatch({
           type: 'SET_LOGGED_IN',
-          id: userData
-        })
-        router.push({
-          pathname: pathName
-         });
-        } 
+          id: userData // setting userID as id for later us and as validation for profile-Page
       })
-    }
+        router.push({
+          pathname: pathName //redirecting to profile page if details match
+        });
+      } else {
+        setError(data.message)
+      }
+    })
+  }
 
     return ( 
       <form onSubmit={handleLogin} className={styles.container}>
         <div className={styles.formInner}>
           <h2>Login</h2>
+          <p> {error} </p> {/* message for the user if details does not match */}
 
           <div className={styles.formGroup}>
             <label htmlFor='email'>Email:</label>

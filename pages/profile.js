@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import styles from '../styles/Profile.module.css' 
 import { useRouter } from 'next/router'
 import Link from "next/link";
-import styles from '../styles/Profile.module.css' 
-import { connect } from "react-redux";
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch } from "react-redux";
 
 
 const Register = ({ userID }) => {
@@ -15,6 +14,7 @@ const Register = ({ userID }) => {
   const [userEmail, setUserEmail] = useState ("");
   const [buyHistory, setBuyHistory] = useState ("");
 
+  const item = []
 
   const logout = () => {
     dispatch({
@@ -35,7 +35,7 @@ const Register = ({ userID }) => {
     .then((res) => {
       return res.json()
     })
-    .then(data => {
+    .then(data => { // data about the user
       setUserName(data.name)
       setUserEmail(data.email)
       setUserPhone(data.phone)
@@ -43,16 +43,14 @@ const Register = ({ userID }) => {
     })
   }
 
-  const item = []
   for( let produkt of buyHistory) {
     item.push(
       <Link href={`/Products/${produkt._id}`} key={produkt._id}>
       <div className={styles.singleProduct}>
-        <h5 className={styles.bestHeadline} > {produkt.name} </h5>
+        <h2> {produkt.name} </h2>
         <p> {produkt.country} </p>
-        <img className={styles.bestPics} src={`IMG/Products/${produkt.image}`}/>
-        <p className={styles.bestPics} > {produkt.price} :- </p>
-        <p> {produkt.description} </p>
+        <img className={styles.productImage} src={`IMG/Products/${produkt.image}`}/>
+        <p> {produkt.price} :- </p>
       </div>
       </Link>
     )
@@ -66,37 +64,48 @@ const Register = ({ userID }) => {
 
   if(userID) {
     return ( //If user is signed in this shows
-      <div className={styles.container}>
-        <h1>Welcome {userName}</h1>
+      <div className={styles.main}>
+
         <div>
-          User Info
-            <p>Email: {userEmail} </p>
-            <p>Phone: {userPhone} </p>
-        <button onClick={logout}> Logout </button>
+          <h1>Welcome {userName} 
+          <button onClick={logout} className={styles.btn} > Logout </button>
+          </h1>
         </div>
-        <p>Buy history:</p>
-        {item}
-        
+
+        <div className={styles.userInfo} >
+          <p> User Info </p>
+          <p>Email: {userEmail} </p>
+          <p>Phone: {userPhone} </p>
+        </div>
+
+        <div>
+          <p>Buy history:</p>
+          {item}
+        </div>
 
       </div>
     )
     } else {
         return ( // If user isn´t singed in this shows
-        <form className={styles.container2}>
+        <form className={styles.notLoggedInContainer}>
+
           <div className={styles.formInner}>
             <h2> Please Sign in or register before visiting this page </h2>
-            <button className={styles.btn}>
-              <Link href="/login" >
-                <a> LOGIN </a>
-              </Link>
-            </button>
 
             <button className={styles.btn}>
               <Link href="/register" >
                 <a> REGISTER </a>
               </Link>
             </button>
+
+            <button className={styles.btn}>
+              <Link href="/login" >
+                <a> LOGIN </a>
+              </Link>
+            </button>
+
           </div>
+
         </form>
           )
         } 
@@ -104,7 +113,7 @@ const Register = ({ userID }) => {
 
      const mapStateToProps = (state) => {
       return {
-          userID: state.userID
+          userID: state.user.userID
       }
   }
 

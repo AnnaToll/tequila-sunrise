@@ -5,20 +5,14 @@ import { clearCartPurchase } from "../redux/actions/cartActions";
 import LoginComponent from "../components/LoginComponent";
 
 
-const Checkout = ({ sum, items, clearCartPurchase }) => {
+const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
 
     const router = useRouter();
-
-    const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState({});
-
 
     useEffect(() => {
 
-        const userId = localStorage.getItem("userID")
-        if (userId != null) {
-          setLoggedIn(true);
-
+        if (userId) {
           fetch('/api/user', {
               method: 'POST',
               headers: {
@@ -37,7 +31,7 @@ const Checkout = ({ sum, items, clearCartPurchase }) => {
           })
         }
 
-    }, [])
+    }, [userId])
 
 
     const handleChange = (e) => {
@@ -84,8 +78,8 @@ const Checkout = ({ sum, items, clearCartPurchase }) => {
 
     return ( 
         <main>
-            {!loggedIn && <LoginComponent pathName='/checkout' />}
-            {loggedIn && <>
+            {!userId && <LoginComponent pathName='/checkout' />}
+            {userId && <>
                 <h1>Checka ut</h1>
                 <form className="form-checkout" onSubmit={handleSubmit}>
                     <label htmlFor="name">Namn</label>
@@ -164,8 +158,9 @@ const Checkout = ({ sum, items, clearCartPurchase }) => {
 
 const mapStateToProps = (state) => {
     return {
-        sum: state.totalSum,
-        items: state.items
+        sum: state.cart.totalSum,
+        items: state.cart.items,
+        userId: state.user.userID
     }
 }
 
