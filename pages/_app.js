@@ -15,7 +15,8 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
     </PersistGate>
-  );
+    
+   );
 }
 
 export default wrapper.withRedux(MyApp);
