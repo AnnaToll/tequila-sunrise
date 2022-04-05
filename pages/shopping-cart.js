@@ -37,7 +37,7 @@ const Cart = ({
 
     return (
         <main>
-            <h1>Shoppingcart</h1>
+            <h1>Kundvagn</h1>
             {items.map(product => (
                 <div key={product._id} className="cart-products">
                     <img src={`/img/products/${product.image}`} />
