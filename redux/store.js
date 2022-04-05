@@ -3,6 +3,7 @@ import { createStore, applyMiddleware, compose } from "redux"
 import { createWrapper } from "next-redux-wrapper"
 import thunk from "redux-thunk"
 import { persistStore } from 'redux-persist';
+import { useEffect } from 'react';
 
 
 const middleware = [thunk]
@@ -12,11 +13,6 @@ const makeStore = ({ isServer }) => {
     if (isServer) {
        return createStore(rootReducer, compose(applyMiddleware(...middleware)))
     } else {
-        const userCookie = localStorage.getItem('persist:user');
-        // if (typeof window !== 'undefined') {
-        //     const cartCookie = localStorage.getItem('persist:user');
-            
-        // }
         const store = createStore(persistedRootReducer, compose(applyMiddleware(...middleware)))
         store._persistor = persistStore(store);
 
