@@ -1,11 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
-import LoginComponent from "../components/LoginComponent";
-import {} from "../redux/actions/cartActions";
 
-
-const Checkout = ({ sum, items }) => {
-
+const Checkout = () => {
 
     return ( 
         <main>
@@ -15,12 +9,4 @@ const Checkout = ({ sum, items }) => {
      );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        sum: state.totalSum,
-        items: state.items
-    }
-}
-
- 
-export default connect(mapStateToProps)(Checkout);
+export default Checkout;

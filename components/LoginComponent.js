@@ -7,8 +7,9 @@ import styles from '../styles/Login.module.css'
 const LoginComponent = ({ pathName }) => {
 
   const dispatch = useDispatch();
-  const router = useRouter()
   const [details, setDetails] = useState({ email: "", password: ""})
+  const [error, setError] = useState("")
+  const router = useRouter()
   
   useEffect(() => {
    router.prefetch(pathName) // Prefetch the profile page
@@ -21,6 +22,7 @@ const LoginComponent = ({ pathName }) => {
       email: details.email,
       password: details.password
     }
+
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -34,34 +36,37 @@ const LoginComponent = ({ pathName }) => {
         const userData = data.userData
         dispatch({
           type: 'SET_LOGGED_IN',
-          id: userData
-        })
-        router.push({
-          pathname: pathName
-         });
-        } 
+          id: userData // setting userID as id for later us and as validation for profile-Page
       })
-    }
+        router.push({
+          pathname: pathName //redirecting to profile page if details match
+        });
+      } else {
+        setError(data.message)
+      }
+    })
+  }
 
     return ( 
       <form onSubmit={handleLogin} className={styles.container}>
         <div className={styles.formInner}>
-          <h2>Login</h2>
+          <h2>Logga in</h2>
+          <p> {error} </p> {/* message for the user if details does not match */}
 
           <div className={styles.formGroup}>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor='email'>Epost:</label>
             <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor='password'>Password:</label>
+            <label htmlFor='password'>Lössenord:</label>
             <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
           </div>
             
-          <input type="submit" value="LOGIN" className={styles.btn}/>
+          <input type="submit" value="LOGGA IN" className={styles.btn}/>
           <button className={styles.btn}>
            <Link href="/register" >
-               <a> REGISTER </a>
+               <a> REGISTRERA </a>
            </Link>
            </button>
         </div>
