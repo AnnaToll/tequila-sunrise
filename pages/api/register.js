@@ -13,9 +13,9 @@ export default async function handler (req, res) {
         
        if (isEmailAlreadyRegistered.length === 0 ) {
            newUser.save()
-           res.status(200).json({message: "You are now registered"})
+           res.status(200).json({message: "Du är nu registrerad"})
         } else {
-            res.status(401).json({message: "Email already in use"})
+            res.status(401).json({message: "Eposten du angav används redan"})
     }
                     
     }

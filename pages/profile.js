@@ -67,19 +67,19 @@ const Register = ({ userID }) => {
       <div className={styles.main}>
 
         <div>
-          <h1>Welcome {userName} 
-          <button onClick={logout} className={styles.btn} > Logout </button>
+          <h1>Välkommen {userName} 
+          <button onClick={logout} className={styles.btn} > Logga ut </button>
           </h1>
         </div>
 
         <div className={styles.userInfo} >
-          <p> User Info </p>
-          <p>Email: {userEmail} </p>
-          <p>Phone: {userPhone} </p>
+          <p> Användar information </p>
+          <p>Epost: {userEmail} </p>
+          <p>Mobil: {userPhone} </p>
         </div>
 
         <div>
-          <p>Buy history:</p>
+          <p>Köp historik:</p>
           {item}
         </div>
 
@@ -90,17 +90,17 @@ const Register = ({ userID }) => {
         <form className={styles.notLoggedInContainer}>
 
           <div className={styles.formInner}>
-            <h2> Please Sign in or register before visiting this page </h2>
+            <h2> Vänligen logga in eller registrera för att komma åt profilsidan </h2>
 
             <button className={styles.btn}>
               <Link href="/register" >
-                <a> REGISTER </a>
+                <a> REGISTRERA </a>
               </Link>
             </button>
 
             <button className={styles.btn}>
               <Link href="/login" >
-                <a> LOGIN </a>
+                <a> LOGGA IN </a>
               </Link>
             </button>
 
