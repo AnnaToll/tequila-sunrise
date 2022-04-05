@@ -63,7 +63,7 @@ const Cart = ({
             ))}
             {items.length > 0 ?
                 <div>
-                    <h2>Totalsumma: {sum} </h2>
+                    <h2>Totalsumma: {sum} kr </h2>
                     <Link href="/checkout">
                         <a>
                             <button>Checka ut</button>
