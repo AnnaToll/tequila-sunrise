@@ -42,7 +42,11 @@ const Cart = ({
                 <div key={product._id} className="cart-products">
                     <img src={`/img/products/${product.image}`} />
                     <div>
-                        <h4>{product.name}</h4>
+                        <Link href={`/Products/${product._id}`}>
+                            <a>
+                                <h4>{product.name}</h4>
+                            </a>
+                        </Link>
                         <div>
                             <button className="remove-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>-</button>
                             <input
