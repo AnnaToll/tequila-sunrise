@@ -24,13 +24,10 @@ export default async function handler (req, res) {
                     loggedIn: true,
                     userData: userId
                 })
-                console.log("You are now logged in")
             } else {
-                console.log("Details does not match")
                 res.send({message: "Details does not match"})
             }
         }else {
-            console.log("Details does not match")
             res.send({message: "Details does not match"})
         }   
     }
