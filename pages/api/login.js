@@ -20,15 +20,15 @@ export default async function handler (req, res) {
             const userId = i._id // Get ID of the user to use for geting data later
             if (isEmailCorecct && correcctPassword == isPasswordCorecct) {
                 res.send({
-                    message: "You are now logged in", 
+                    message: "Du är nu inloggad", 
                     loggedIn: true,
                     userData: userId
                 })
             } else {
-                res.send({message: "Details does not match"})
+                res.send({message: "Uppgifterna du gav är felaktiga"})
             }
         }else {
-            res.send({message: "Details does not match"})
+            res.send({message: "Uppgifterna du gav är felaktiga"})
         }   
     }
   }
