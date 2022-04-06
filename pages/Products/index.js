@@ -56,8 +56,9 @@ const ProductPage = () => {
           </label>
   </div>
                  {products.map((product) => (
+                   
                      <div key={product._id} className={styles.singleProduct}>
-                          <Link 
+                            <Link 
                       href={`/Products/${product._id}`} key={product._id}>
                          <a>
                      <h2>{product.name}</h2>        
@@ -66,15 +67,16 @@ const ProductPage = () => {
                      
                      <p>Ursprungsland: {product.country}</p>
                      <p>Pris: {product.price}:-</p>
+                     </a></Link> 
                      
-                    </a></Link>   
                     <PutInCart
                         quantity={quantity}
-                        productData={products}
+                        productData={product}
                         onChange={(e) => setQuantity(+ e.target.value)}
                         type="number"/>
-                </div>
                         
+                </div>
+            
                 ))}
      </div>
  </main>
