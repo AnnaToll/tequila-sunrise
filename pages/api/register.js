@@ -16,7 +16,6 @@ export default async function handler (req, res) {
            res.status(200).json({message: "Du är nu registrerad"})
         } else {
             res.status(401).json({message: "Eposten du angav används redan"})
+    }              
     }
-                    
-    }
-  }
+}
