@@ -15,13 +15,13 @@ function PutInCart(props) {
     // const isItemInStock = changeQuantityCart(props.productData.id, props.quantity);
     // console.log('isItemInStock', isItemInStock);
 
-    const [outOfStock, setOutOfStock] = useState(false);
+    const [notEnoughInStock, setNotEnoughInStock] = useState(false);
 
     const updateStockValue = async () => {
 
         try {
             const response = await fetch('/api/check-quantity', {
-                method: 'POST',
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -39,7 +39,7 @@ function PutInCart(props) {
     }
 
     const putInCartHandler = async (event) => {
-        setOutOfStock(false);
+        setNotEnoughInStock(false);
         const data = await updateStockValue();
         event.preventDefault();
         const totalSumItem = props.productData.price * props.quantity;
@@ -54,14 +54,14 @@ function PutInCart(props) {
             });
         } else {
             console.log('varan är slut');
-            setOutOfStock(true);
+            setNotEnoughInStock(true);
         }
     };
 
     if (props.productData.quantity == 0) {
         return (
             <div>
-                <p className={styles.outOfStock}>Varan är tyvärr slutsåld</p>
+                <p className={styles.outOfStock}>Tyvärr slutsåld</p>
             </div>
         )
     } else {
@@ -74,9 +74,9 @@ function PutInCart(props) {
                 <button className={styles.btn}
                     onClick={putInCartHandler}
                 >Köp</button>
-                {outOfStock ?
+                {notEnoughInStock ?
                     (
-                        <div>
+                        <div className={styles.notEnoughInStock}>
                             Tyvärr inte tillräckligt många i lager.
                         </div>
                     ) : null

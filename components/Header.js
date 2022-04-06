@@ -51,7 +51,7 @@ const Header = ({ itemsInCart, userID }) => {
                     <Link href="/shopping-cart">
                         <a id="cart-icon-container">
                             {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
-                            <i class="bi bi-bag-fill"></i>
+                            <i className="bi bi-bag-fill"></i>
                         </a>
                     </Link>
                 </li>
