@@ -1,0 +1,29 @@
+.products {
+    display: flex;
+    column-gap: 20px;
+    margin-bottom: 51px;
+  }
+  
+  .products img {
+    width: 200px;
+  }
+
+  .products input {
+      width: 40px;
+  }
+
+  .changeQuantityContainer {
+    display: flex;
+    column-gap: 5px;
+  }
+
+  .changeQuantityContainer button {
+    border-radius: 0;
+    padding: 0.27em 0.77em;
+    border: 1px solid #032c13;
+  }
+
+  .changeQuantityContainer .deletItemBtn {
+      margin-left: 5px;
+      border-radius: 4px;
+  }

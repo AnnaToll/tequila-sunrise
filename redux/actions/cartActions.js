@@ -39,7 +39,7 @@ export const changeQuantityCart = (idItem, changeQuantity) => {
     return async (dispatch) => {
 
         fetch('/api/check-quantity', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -61,6 +61,32 @@ export const changeQuantityCart = (idItem, changeQuantity) => {
         }) 
     }
 }
+/* export const changeQuantityCart = (idItem, changeQuantity) => {
+    return async (dispatch) => {
+
+        fetch('/api/check-quantity', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                id: idItem,
+                changeQuantity: changeQuantity
+            })
+        })
+        .then(res => res.json()) 
+        .then((data) => {
+            dispatch({
+                type: 'CHANGE_QUANTITY_CART',
+                payload: {
+                    id: idItem,
+                    changeQuantity: changeQuantity,
+                    inStorage: data.inStorage,
+                }
+            });
+        }) 
+    }
+} */
 
 export const clearCartPurchase = () => {
     return (dispatch) => {
