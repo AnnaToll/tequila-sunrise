@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { useRouter } from 'next/router';
 import { clearCartPurchase } from "../redux/actions/cartActions";
 import LoginComponent from "../components/LoginComponent";
+import styles from '../styles/Checkout.module.css';
 
 
 const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
 
     const router = useRouter();
     const [user, setUser] = useState({});
+    const [errorZipCode, setErrorZip] = useState('');
 
     useEffect(() => {
 
@@ -35,8 +37,9 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
 
 
     const handleChange = (e) => {
-        setUser(prevUser => ({...prevUser, [e.target.name]: e.target.value}))
+        setUser(prevUser => ({...prevUser, [e.target.name]: e.target.value}));
     } 
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -81,7 +84,7 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
             {!userId && <LoginComponent pathName='/checkout' />}
             {userId && <>
                 <h1>Checka ut</h1>
-                <form className="form-checkout" onSubmit={handleSubmit}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <label htmlFor="name">Namn</label>
                     <input 
                         type="text"
@@ -103,6 +106,8 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
                         type="number"
                         id="zip-code"
                         name="zip-code"
+                        min="5"
+                        max="5"
                         required
                     />    
                     <label htmlFor="city">Postort</label>
@@ -131,12 +136,12 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
                         required
                     />
                     <h3>Betalningsmetod</h3> 
-                    <label htmlFor="cash">Kontant</label>
+                    <label htmlFor="klarna">Klarna</label>
                     <input 
                         type="radio"
-                        id="cash"
+                        id="klarna"
                         name="payment"
-                        value="cash"
+                        value="klarna"
                         required
                     />
                     <label htmlFor="card">Kort</label>

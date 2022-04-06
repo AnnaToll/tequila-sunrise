@@ -39,7 +39,7 @@ export const changeQuantityCart = (idItem, changeQuantity) => {
     return async (dispatch) => {
 
         fetch('/api/check-quantity', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },

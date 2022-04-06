@@ -50,17 +50,18 @@ const Header = ({ itemsInCart, userID }) => {
 
                 <li>
                     <Link href="/shopping-cart"> 
-                        <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
+                        <a id="cart-icon-container">
+                            {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
+                            <i class="bi bi-bag-fill"></i> 
+                        </a>
                     </Link>
-                    
                 </li>
-                
+        
                 {userID ? 
                     <button onClick={logout} className="btn" > LOGGA UT </button>
                 :
                     ""
                 }
-
                 </ul>
             </nav>
         )
