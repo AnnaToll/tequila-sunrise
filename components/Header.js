@@ -57,7 +57,7 @@ const Header = ({ itemsInCart, userID }) => {
                 </li>
 
                 {userID ?
-                    <button onClick={logout} className="btn" > LOGGA UT </button>
+                    <button onClick={logout} className="button-small" > LOGGA UT </button>
                     :
                     ""
                 }
