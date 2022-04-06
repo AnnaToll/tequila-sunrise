@@ -1,5 +1,3 @@
-// Skriv här
-import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
@@ -18,25 +16,22 @@ export default function Home() {
     })
     }, [])
 
-    const productArray = products;
             var filterMap = {};
-            productArray.forEach(function (item) {
+            products.forEach(function (item) {
                 if (!filterMap[item.quantity] || filterMap[item.quantity] < item.quantity) {
                   filterMap[item.quantity] = item;
                 }
               })
-              var result = [];
-        for (var number in filterMap) {
-            result.push(filterMap[number]);
-          }
 
-          result.sort(function(a) {
-             return a.quantity;
-          });
-        
-          console.log(result);       
-          const newArray = result.splice(0,5);
-                console.log(newArray);
+              var result = [];
+              for (var number in filterMap) {
+                result.push(filterMap[number]);
+              }
+            
+          const sorterdArray = result.sort((a, b) => a - b);
+          console.log(sorterdArray)
+          const newArray = sorterdArray.splice(0, 5);
+          console.log(newArray)
 
   return (
     <div className={styles.container}>
@@ -48,8 +43,8 @@ export default function Home() {
       <div className={styles.frontTextContainer}>
       <p className={styles.frontText}>Espolon Tequila Blanco är en tequila som produceras vid Destiladora San Nicola i de berömda kullarna i Los Altos i Jalisco, där de blå agaveplantorna växer frodig som ingen annanstans. Agavas hjärta, piñas, tillagas långsamt i en autoklav och krossas sedan för att extrahera sockerarterna och lämnas till jäsning för att låta dem förvandlas till alkohol.</p>
       </div>
-      <img src="IMG/Start-img/orange2.jpg" alt="picture of oranges" className={styles.frontPic} />
       </a></Link>
+      <img src="IMG/Start-img/orange2.jpg" alt="picture of oranges" className={styles.frontPic} />
         <h1 className={styles.Bestsellers}>Bästsäljare</h1>
           <div className={styles.bestsellerProducts}>
     {newArray.map((product)=>(
