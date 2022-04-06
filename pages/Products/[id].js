@@ -8,11 +8,12 @@ import PutInCart from '../../components/PutInCart';
 const singleProductPage = () => {
     const [productData, setProductData] = useState();
     const [quantity, setQuantity] = useState(1);
+    const [internalErrorMessage, setInternalErrorMessage] = useState("");
 
     const router = useRouter();
 
 
-    const getDataFromDB = useCallback(async () => {
+    const getDataFromDB = async () => {
         const { id } = router.query;
         console.log('router', router);
         if (id) {
@@ -20,22 +21,30 @@ const singleProductPage = () => {
                 const response = await fetch("/api/product/" + id);
                 const data = await response.json();
                 console.log(data);
+
+                if (!response.ok) {
+                    throw new Error("Något gick fel, prova att uppdatera sidan.");
+                }
+
                 return setProductData(data);
 
             } catch (error) {
-                console.log(error);
+                console.log("Internt fel", error);
+                setInternalErrorMessage(error.message);
             }
         }
-    }, [router]);
+    };
 
     useEffect(() => {
         getDataFromDB();
-    }, [getDataFromDB, router]);
+    }, [router]);
 
 
     if (!productData) {
         return (
-            <div></div>
+            <div className={styles.internalErrorMessage}>
+                {internalErrorMessage}
+            </div>
         )
     } else {
         return (

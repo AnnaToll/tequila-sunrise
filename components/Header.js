@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
 import Link from "next/link";
 
+
 const Header = ({ itemsInCart, userID }) => {
     const dispatch = useDispatch();
     const router = useRouter()
@@ -15,69 +16,54 @@ const Header = ({ itemsInCart, userID }) => {
         router.push('/')
     }
 
-    if (userID) {
-        return (
-            <nav>
-                <ul className="navbar">
+    return (
+        <nav>
+            <ul className="navbar">
+                <Link href="/">
+                    <a><img src="/IMG/Logo/logo2.png" alt="logo" /></a>
+                </Link>
+
+                <li>
                     <Link href="/">
-                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
+                        <a>HEM</a>
                     </Link>
-                    <li>
-                        <Link href="/">
-                            <a>HEM</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/Products">
-                            <a>PRODUKTER</a>
-                        </Link>
-                    </li>
-                    <li>
+                </li>
+
+                <li>
+                    <Link href="/Products">
+                        <a>PRODUKTER</a>
+                    </Link>
+                </li>
+
+                <li>
+                    {userID ?
                         <Link href="/profile">
                             <a>PROFIL</a>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/shopping-cart">
-                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
-                        </Link>
-                    </li>
-
-                    <button onClick={logout}> LOGGA UT </button>
-                </ul>
-            </nav>
-        )
-    } else {
-        return (
-            <nav>
-                <ul className="navbar">
-                    <Link href="/">
-                        <a><img src="IMG/Logo/logo2.png" alt="logo" /></a>
-                    </Link>
-                    <li>
-                        <Link href="/">
-                            <a>HEM</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/Products">
-                            <a>PRODUKTER</a>
-                        </Link>
-                    </li>
-                    <li>
+                        :
                         <Link href="/login">
                             <a>MEDLEM</a>
                         </Link>
-                    </li>
-                    <li>
-                        <Link href="/shopping-cart">
-                            <a>KUNDVAGN {itemsInCart ? itemsInCart : ''}</a>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-        );
-    }
+                    }
+                </li>
+
+                <li>
+                    <Link href="/shopping-cart">
+                        <a id="cart-icon-container">
+                            {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
+                            <i className="bi bi-bag-fill"></i>
+                        </a>
+                    </Link>
+                </li>
+
+                {userID ?
+                    <button onClick={logout} className="button-small" > LOGGA UT </button>
+                    :
+                    ""
+                }
+            </ul>
+        </nav>
+    )
 }
 
 

@@ -24,7 +24,7 @@ const Register = ({ userID }) => {
     router.push('/')
   }
 
-  const handleUser = (userID) => {
+  const handleUser = () => {
     fetch('/api/user', {
       method: 'POST',
       headers: {
@@ -45,7 +45,7 @@ const Register = ({ userID }) => {
 
   for( let produkt of buyHistory) {
     item.push(
-      <Link href={`/Products/${produkt._id}`} key={produkt._id}>
+      <Link href={`/Products/${produkt._id}`} key={Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}>
       <div className={styles.singleProduct}>
         <h2> {produkt.name} </h2>
         <p> {produkt.country} </p>
@@ -79,7 +79,7 @@ const Register = ({ userID }) => {
         </div>
 
         <div>
-          <p>Köp historik:</p>
+          <p> Köp historik: </p>
           {item}
         </div>
 
