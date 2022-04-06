@@ -21,7 +21,7 @@ const Header = ({ itemsInCart, userID }) => {
             <ul className="navbar">
 
                 <Link href="/">
-                    <a><img src="IMG/Logo/logo2.png" alt="logo"/></a>
+                    <a><img src="/IMG/Logo/logo2.png" alt="logo"/></a>
                 </Link>
 
                 <li>
@@ -52,13 +52,13 @@ const Header = ({ itemsInCart, userID }) => {
                     <Link href="/shopping-cart"> 
                         <a id="cart-icon-container">
                             {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
-                            <i class="bi bi-bag-fill"></i> 
+                            <i className="bi bi-bag-fill"></i> 
                         </a>
                     </Link>
                 </li>
         
                 {userID ? 
-                    <button onClick={logout} className="btn" > LOGGA UT </button>
+                    <button onClick={logout} className="button-small" > LOGGA UT </button>
                 :
                     ""
                 }
