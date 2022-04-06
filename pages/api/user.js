@@ -30,15 +30,4 @@ export default async function handler (req, res) {
             .catch(err => res.status(400).json({ success: false, err: err }))
     }
     
-    if (req.method === 'DELETE') {
-
-        const userId = req.body
-        console.log(userId)
-        
-        const findUser = await User.findById(userId)
-            
-        for( let products of findUser.buyhistory) {
-            products.remove({})
-        }
-    }
 }

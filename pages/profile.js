@@ -24,22 +24,6 @@ const Register = ({ userID }) => {
     router.push('/')
   }
 
-  const deleteBuyHistory = () => {
-    fetch('/api/user', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userID)
-    })
-    /* .then((res) => {
-      return res.json()
-    })
-    .then(data => { // data about the user
-      console.log(data)
-    }) */
-  }
-
   const handleUser = () => {
     fetch('/api/user', {
       method: 'POST',
@@ -95,10 +79,7 @@ const Register = ({ userID }) => {
         </div>
 
         <div>
-          <p>
-          Köp historik:
-          <button className='btn' onClick={deleteBuyHistory}> Töm historik </button>
-          </p>
+          <p> Köp historik: </p>
           {item}
         </div>
 
