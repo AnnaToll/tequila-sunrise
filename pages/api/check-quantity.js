@@ -5,7 +5,7 @@ export default async function handler (req, res) {
     
     await dbConnect()
     
-    if (req.method === 'POST') {
+    if (req.method === 'PATCH') {
 
         Products.findById(req.body.id)
             .then((product) => {

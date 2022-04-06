@@ -22,6 +22,7 @@ const cartReducer = (state = initState, action) => {
 
     if (action.type === actionTypes.ADD_ITEM) {
         const newState = {
+            ...state,
             totalSum: state.totalSum + (action.item.price * action.item.quantity),
             itemsInCart: state.itemsInCart + action.item.quantity,
             items: state.items.map(item => { return { ...item } })
