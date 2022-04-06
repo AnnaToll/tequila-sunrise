@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useRouter } from 'next/router';
 import { clearCartPurchase } from "../redux/actions/cartActions";
 import LoginComponent from "../components/LoginComponent";
+import styles from '../styles/Checkout.module.css';
 
 
 const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
@@ -83,7 +84,7 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
             {!userId && <LoginComponent pathName='/checkout' />}
             {userId && <>
                 <h1>Checka ut</h1>
-                <form className="form-checkout" onSubmit={handleSubmit}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <label htmlFor="name">Namn</label>
                     <input 
                         type="text"
