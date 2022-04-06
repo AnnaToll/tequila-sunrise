@@ -16,18 +16,16 @@ const Cart = ({
         calcSumAndItems();
     }, [items])
 
-    const [error, setError] = useState('');
+    const [maxAmount, setMaxAmount] = useState('Maxköp per produkt uppnådd. Vänligen kontankta oss för att köpa mer.');
 
 
     const handleChangeQuantity = async (id, currentQuantity, e) => {
 
         let selectedClass = e.target.getAttribute('class');
         let changeQuantity = 0;
-        setError('');
         
         if (selectedClass === 'add-quantity-cart') {
             if (currentQuantity === 10) {
-                setError('Maxantal per produkt uppnådd. Kontakta kundtjänst för att köpa mer.');
                 return;
             } else {
                 changeQuantity = 1;
@@ -68,7 +66,8 @@ const Cart = ({
                                 <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
                                 <button className={`${styles.deletItemBtn} button-small`} onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
                             </div>
-                            {error}
+                            {product.quantity >= 10 ? maxAmount : ''}
+                            {product.inStorage ? '' : 'Kan inte lägga till varan, lagersaldot är för lågt.'}
                             <h5>Summa: {product.totalSumItem} kr</h5>
                         </div>
                     </div>
