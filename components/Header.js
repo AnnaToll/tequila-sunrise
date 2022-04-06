@@ -19,9 +19,8 @@ const Header = ({ itemsInCart, userID }) => {
     return (
         <nav>
             <ul className="navbar">
-
                 <Link href="/">
-                    <a><img src="IMG/Logo/logo2.png" alt="logo"/></a>
+                    <a><img src="/IMG/Logo/logo2.png" alt="logo" /></a>
                 </Link>
 
                 <li>
@@ -37,11 +36,11 @@ const Header = ({ itemsInCart, userID }) => {
                 </li>
 
                 <li>
-                    {userID ?  
+                    {userID ?
                         <Link href="/profile">
-                        <a>PROFIL</a>
+                            <a>PROFIL</a>
                         </Link>
-                    : 
+                        :
                         <Link href="/login">
                             <a>MEDLEM</a>
                         </Link>
@@ -49,23 +48,24 @@ const Header = ({ itemsInCart, userID }) => {
                 </li>
 
                 <li>
-                    <Link href="/shopping-cart"> 
+                    <Link href="/shopping-cart">
                         <a id="cart-icon-container">
                             {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
-                            <i class="bi bi-bag-fill"></i> 
+                            <i className="bi bi-bag-fill"></i>
                         </a>
                     </Link>
                 </li>
-        
-                {userID ? 
+
+                {userID ?
                     <button onClick={logout} className="btn" > LOGGA UT </button>
-                :
+                    :
                     ""
                 }
-                </ul>
-            </nav>
-        )
-    } 
+            </ul>
+        </nav>
+    )
+}
+
 
 const mapStateToProps = (state) => {
     return {
