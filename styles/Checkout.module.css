@@ -1,8 +1,30 @@
 .form input {
-    display: block;
-    margin-bottom: 20px;
-  }
+  display: block;
+  margin-bottom: 20px;
+}
   
-  .form input[type=radio] {
-    display: inline-block;
-  }
+.form input[type=radio] {
+  display: inline-block;
+}
+
+.form > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form > div > div {
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+.payment > div > h2,
+.details > h2 {
+  margin-bottom: 30px;
+}
+
+.payment {
+  margin-left: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -10,29 +10,54 @@ html,
 body {
   padding: 0;
   margin: 0;
- font-family: 'Bodoni Moda', serif;
-    background-color: rgb(241, 241, 241);
-  }
+  font-family: 'Bodoni Moda', serif;
+  background-color: rgb(241, 241, 241);
+}
 
-  nav{
-    border-bottom: solid gray 1.5px;
-    margin: 0 20px;
-  }
+main {
+  box-sizing: border-box;
+  min-height: calc(100vh - 100px);
+  margin: 20px;
+  padding: 20px 60px;
+  background-color: rgba(248, 248, 248, 0.932);
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.938);
+  border: 2px solid #032c13;
+  transition: ease-in-out 0.3s;
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 14px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.button-small {
+  padding: 0.4em 0.9em;
+  border-radius: 7px;
+}
+
+nav{
+  border-bottom: solid gray 1.5px;
+  margin: 0 20px;
+}
 
 nav li {
   display: inline-block;
   margin:  0 20px;
-  }
+}
 
-  nav img{
-    width: 150px;
-    position: relative;
-    top: +17px
-  }
+nav img{
+  width: 150px;
+  position: relative;
+  top: +17px
+}
 
-  nav li:hover {
-    text-decoration: underline;
-    }
+nav li:hover {
+  text-decoration: underline;
+}
 
 .navbar {
   list-style: none;
@@ -98,8 +123,31 @@ footer {
   z-index: 1;
 }
 
+.cart-container {
+  background-color: #FFF;
+  padding: 68px 30px;
+  padding-left: 55px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-.btn {
+.cart-headline {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.cart-container hr {
+  margin-bottom: 40px;
+  border-top: 1px solid rgb(229, 229, 229);
+}
+
+.cart-container button {
+  margin-left: 0;
+}
+
+
+/* .btn {
   background-color: rgba(255, 255, 255, 0.938);
   border: 2px solid #032c13;
   transition: ease-in-out 0.3s;
@@ -111,4 +159,4 @@ footer {
 .btn:hover {
   box-shadow: 0 1px 1px 0 #032c13, 0 1px 1px 0 #032c13;
   transition: ease-in-out 0.3s;
-}
+} */
