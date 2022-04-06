@@ -67,8 +67,13 @@ const cartReducer = (state = initState, action) => {
         let updatedItems = JSON.parse(JSON.stringify(state.items));
         for (let item of updatedItems) {
             if (item._id === action.payload.id) {
-                item.quantity = item.quantity + action.payload.changeQuantity;
-                item.totalSumItem = item.quantity * item.price;
+                if (action.payload.inStorage || action.payload.changeQuantity === -1) {
+                    item.inStorage = action.payload.inStorage;
+                    item.quantity = item.quantity + action.payload.changeQuantity;
+                    item.totalSumItem = item.quantity * item.price;
+                } else {
+                    item.inStorage = action.payload.inStorage;
+                }
                 break;
             }
         }

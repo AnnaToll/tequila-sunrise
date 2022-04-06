@@ -49,7 +49,8 @@ function PutInCart(props) {
                 item: {
                     ...props.productData,
                     quantity: props.quantity,
-                    totalSumItem: totalSumItem
+                    totalSumItem: totalSumItem,
+                    inStorage: true
                 }
             });
         } else {

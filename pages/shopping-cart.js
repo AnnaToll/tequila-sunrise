@@ -16,24 +16,19 @@ const Cart = ({
         calcSumAndItems();
     }, [items])
 
-    const [error, setError] = useState('');
-
 
     const handleChangeQuantity = async (id, currentQuantity, e) => {
 
         let selectedClass = e.target.getAttribute('class');
         let changeQuantity = 0;
-        setError('');
         
         if (selectedClass === 'add-quantity-cart') {
-            if (currentQuantity === 10) {
-                setError('Maxantal per produkt uppnådd. Kontakta kundtjänst för att köpa mer.');
+            if (currentQuantity >= 10 || e.target.previousElementSibling.value >= 10) 
                 return;
-            } else {
-                changeQuantity = 1;
-            }
+            changeQuantity = 1;
         } else if (selectedClass === 'remove-quantity-cart') {
-            if (currentQuantity === 1) return;
+            if (currentQuantity === 1 || e.target.nextElementSibling.value === 1) 
+                return;
             changeQuantity = -1;
         } 
 
@@ -42,48 +37,56 @@ const Cart = ({
 
 
     return (
-        <main>
-            <h1>Kundvagn</h1>
-            {items.map(product => (
-                <div key={product._id} className={styles.products}>
-                    <img src={`/img/products/${product.image}`} />
-                    <div>
-                        <Link href={`/Products/${product._id}`}>
-                            <a>
-                                <h4>{product.name}</h4>
-                            </a>
-                        </Link>
-                        <div className={styles.changeQuantityContainer}>
-                            <button className="remove-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>-</button>
-                            <input
-                                className="custom-quantity-cart"
-                                type="text" 
-                                name="cart-item-quantity" 
-                                id="cart-item-quantity" 
-                                value={product.quantity || ''} 
-                                onChange={(e) => handleChangeQuantity(product._id, product.quantity, e)} 
-                                disabled
-                            />
-                            <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
-                            <button className={styles.deletItemBtn} onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
+        <main >
+            <h1 className="cart-headline">Kundvagn</h1>
+            <div className="cart-container">
+                {items.map(product => (
+                    <div key={product._id} className={styles.products}>
+                        <img src={`/img/products/${product.image}`} />
+                        <div>
+                            <Link href={`/Products/${product._id}`}>
+                                <a>
+                                    <h4>{product.name}</h4>
+                                </a>
+                            </Link>
+                            <div className={styles.changeQuantityContainer}>
+                                <button className="remove-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>-</button>
+                                <input
+                                    className="custom-quantity-cart"
+                                    type="text" 
+                                    name="cart-item-quantity" 
+                                    id="cart-item-quantity" 
+                                    value={product.quantity || ''} 
+                                    onChange={(e) => handleChangeQuantity(product._id, product.quantity, e)} 
+                                    disabled
+                                />
+                                <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
+                                <button className={`${styles.deletItemBtn} button-small`} onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
+                            </div>
+                            {product.quantity >= 10 ? 
+                                <p>Maxköp per produkt uppnådd. Vänligen kontankta oss för att köpa mer.</p> 
+                                : ''}
+                            {product.inStorage ? 
+                                '' 
+                                : <p>Kan inte lägga {product.quantity + 1} st av denna vara, lagersaldot är för lågt.</p>}
+                            <h5>Summa: {product.totalSumItem} kr</h5>
                         </div>
-                        {error}
-                        <h5>Summa: {product.totalSumItem} kr</h5>
                     </div>
-                </div>
-            ))}
-            {items.length > 0 ?
-                <div>
-                    <h2>Totalsumma: {sum} kr </h2>
-                    <Link href="/checkout">
-                        <a>
-                            <button>Checka ut</button>
-                        </a>
-                    </Link> 
-                </div>
-                : 
-                <h2>Kundvagnen är tom</h2>
-            }
+                ))}
+                {items.length > 0 ?
+                    <div>
+                        <hr />
+                        <h2>Totalsumma: {sum} kr </h2>
+                        <Link href="/checkout">
+                            <a>
+                                <button>Checka ut</button>
+                            </a>
+                        </Link> 
+                    </div>
+                    : 
+                    <h2>Kundvagnen är tom</h2>
+                }
+            </div>
         </main>
     );
 }
