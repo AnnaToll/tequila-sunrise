@@ -51,6 +51,10 @@
     transition: ease-in-out 0.3s;
 }
 
+.quantity:focus {
+    box-shadow: none;
+}
+
 .outOfStock {
     font-size: 23px;
     color: rgb(160, 2, 2);
@@ -81,4 +85,15 @@
 
 .country {
     margin-bottom: 30px;
+}
+
+.internalErrorMessage {
+    margin: 20px;
+    padding: 50px;
+    text-align: center;
+    width: auto;
+    height: 200px;
+    background-color: rgba(249, 249, 249, 1);
+    font-size: 24px;
+    color:rgb(160, 2, 2);
 }
