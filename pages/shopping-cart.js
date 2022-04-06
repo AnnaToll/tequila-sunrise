@@ -16,8 +16,6 @@ const Cart = ({
         calcSumAndItems();
     }, [items])
 
-    const [maxAmount, setMaxAmount] = useState('Maxköp per produkt uppnådd. Vänligen kontankta oss för att köpa mer.');
-
 
     const handleChangeQuantity = async (id, currentQuantity, e) => {
 
@@ -25,13 +23,12 @@ const Cart = ({
         let changeQuantity = 0;
         
         if (selectedClass === 'add-quantity-cart') {
-            if (currentQuantity === 10) {
+            if (currentQuantity >= 10 || e.target.previousElementSibling.value >= 10) 
                 return;
-            } else {
-                changeQuantity = 1;
-            }
+            changeQuantity = 1;
         } else if (selectedClass === 'remove-quantity-cart') {
-            if (currentQuantity === 1) return;
+            if (currentQuantity === 1 || e.target.nextElementSibling.value === 1) 
+                return;
             changeQuantity = -1;
         } 
 
@@ -66,8 +63,12 @@ const Cart = ({
                                 <button className="add-quantity-cart" onClick={(e) => handleChangeQuantity(product._id, product.quantity, e)}>+</button>
                                 <button className={`${styles.deletItemBtn} button-small`} onClick={() => removeItemCart(product._id, product.quantity)}>Ta bort</button>
                             </div>
-                            {product.quantity >= 10 ? maxAmount : ''}
-                            {product.inStorage ? '' : 'Kan inte lägga till varan, lagersaldot är för lågt.'}
+                            {product.quantity >= 10 ? 
+                                <p>Maxköp per produkt uppnådd. Vänligen kontankta oss för att köpa mer.</p> 
+                                : ''}
+                            {product.inStorage ? 
+                                '' 
+                                : <p>Kan inte lägga {product.quantity + 1} st av denna vara, lagersaldot är för lågt.</p>}
                             <h5>Summa: {product.totalSumItem} kr</h5>
                         </div>
                     </div>
