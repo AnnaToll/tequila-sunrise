@@ -1,19 +1,11 @@
 import { ADD_ITEM } from '/redux/actions/actionTypes';
-import { useDispatch /*useSelector*/ } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from '../styles/Product.module.css';
-import { changeQuantityCart } from '../redux/actions/cartActions';
 import { useState } from 'react';
+
 
 function PutInCart(props) {
     const dispatch = useDispatch();
-    // const itemInStock = useSelector(state => state.items.find(item => item._id === props.productData._id).quantity);
-    // console.log('itemInStock', itemInStock);
-
-    // const [inStock, setInStock] = useState();
-
-
-    // const isItemInStock = changeQuantityCart(props.productData.id, props.quantity);
-    // console.log('isItemInStock', isItemInStock);
 
     const [notEnoughInStock, setNotEnoughInStock] = useState(false);
 

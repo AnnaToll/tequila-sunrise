@@ -129,7 +129,7 @@
 }
 .frontHeadline:hover{
   color: #041c0d;
-  text-decoration: underline;
+  border-bottom: 1px solid black;
 }
 .frontTextContainer{
 box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -161,6 +161,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color:#f9f9f9;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 50px;
+  transition: 0.5s ease-in-out;
+}
+.itemCard:hover {
+  transition: 0.5s ease-in-out;
+  border-radius: 10%;
 }
 .bestHeadline{
   text-align: center;
