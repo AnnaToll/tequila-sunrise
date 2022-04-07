@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { calcSumAndItems, removeItemCart, changeQuantityCart } from "../redux/actions/cartActions";

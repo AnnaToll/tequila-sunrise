@@ -10,7 +10,6 @@ const Checkout = ({ sum, items, clearCartPurchase, userId }) => {
 
     const router = useRouter();
     const [user, setUser] = useState({});
-    const [errorZipCode, setErrorZip] = useState('');
 
     useEffect(() => {
 
