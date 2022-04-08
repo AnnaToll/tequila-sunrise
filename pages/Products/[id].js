@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../../styles/Product.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -23,9 +23,8 @@ const singleProductPage = () => {
                 console.log(data);
 
                 if (!response.ok) {
-                    throw new Error("Något gick fel, prova att uppdatera sidan.");
+                    throw new Error("Oj nu blev något fel från vårt håll, prova att uppdatera sidan och kvarstår problemet ber vi dig besöka oss senare igen.");
                 }
-
                 return setProductData(data);
 
             } catch (error) {
