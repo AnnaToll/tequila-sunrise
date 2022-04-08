@@ -28,10 +28,8 @@ export default function Home() {
                 result.push(filterMap[number]);
               }
             
-          const sorterdArray = result.sort((a, b) => a - b);
-          console.log(sorterdArray)
-          const newArray = sorterdArray.splice(0, 5);
-          console.log(newArray)
+        const sorterdArray = result.sort((a, b) => a - b);
+        const newArray = sorterdArray.splice(0, 5);
 
   return (
     <div className={styles.container}>
