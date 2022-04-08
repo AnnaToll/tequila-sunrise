@@ -10,7 +10,6 @@ function PutInCart(props) {
     const [notEnoughInStock, setNotEnoughInStock] = useState(false);
 
     const updateStockValue = async () => {
-
         try {
             const response = await fetch('/api/check-quantity', {
                 method: 'PATCH',
@@ -23,8 +22,8 @@ function PutInCart(props) {
                 })
             })
             const data = await response.json();
-            console.log('updateStockValue', data);
             return data;
+
         } catch (error) {
             console.log(error);
         }
@@ -46,7 +45,6 @@ function PutInCart(props) {
                 }
             });
         } else {
-            console.log('varan är slut');
             setNotEnoughInStock(true);
         }
     };
@@ -77,7 +75,6 @@ function PutInCart(props) {
             </div>
         )
     }
-
 }
 
 export default PutInCart;

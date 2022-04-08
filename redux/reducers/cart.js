@@ -31,17 +31,10 @@ const cartReducer = (state = initState, action) => {
         if (item) {
             item.quantity += action.item.quantity;
             item.totalSumItem += action.item.totalSumItem;
-            console.log('adding quantity', item);
         } else {
             newState.items.push(action.item);
-            console.log(newState);
         }
-        console.log('initstate', state.totalSum);
-        console.log('initStateItems', state.items)
-        console.log('newState', newState.totalSum);
-        console.log('newStateItems', newState.items);
 
-        console.log('add-item', newState);
         return newState;
     }
 
@@ -83,7 +76,7 @@ const cartReducer = (state = initState, action) => {
         }
 
     }
- 
+
 
     if (action.type === 'REMOVE_ITEM_CART') {
         let updatedItems = state.items.filter(item => item._id !== action.id);
