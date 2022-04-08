@@ -22,8 +22,8 @@ function PutInCart(props) {
                 })
             })
             const data = await response.json();
-            console.log('updateStockValue', data);
             return data;
+
         } catch (error) {
             console.log(error);
         }
