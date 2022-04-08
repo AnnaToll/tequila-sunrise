@@ -12,15 +12,12 @@ const singleProductPage = () => {
 
     const router = useRouter();
 
-
     const getDataFromDB = async () => {
         const { id } = router.query;
-        console.log('router', router);
         if (id) {
             try {
                 const response = await fetch("/api/product/" + id);
                 const data = await response.json();
-                console.log(data);
 
                 if (!response.ok) {
                     throw new Error("Oj nu blev något fel från vårt håll, prova att uppdatera sidan och kvarstår problemet ber vi dig besöka oss senare igen.");
