@@ -20,7 +20,7 @@ const Header = ({ itemsInCart, userID }) => {
         <nav>
             <ul className="navbar">
                 <Link href="/">
-                    <a><img src="/IMG/Logo/logo2.png" alt="logo" /></a>
+                    <a><img src="/IMG/Logo/logo.png" alt="logo" /></a>
                 </Link>
 
                 <li>
@@ -31,7 +31,7 @@ const Header = ({ itemsInCart, userID }) => {
 
                 <li>
                     <Link href="/Products">
-                        <a>PRODUKTER</a>
+                        <a>MEDLEMMAR</a>
                     </Link>
                 </li>
 
@@ -42,19 +42,11 @@ const Header = ({ itemsInCart, userID }) => {
                         </Link>
                         :
                         <Link href="/login">
-                            <a>MEDLEM</a>
+                            <a>LOGGA IN</a>
                         </Link>
                     }
                 </li>
 
-                <li>
-                    <Link href="/shopping-cart">
-                        <a id="cart-icon-container">
-                            {itemsInCart ? <div id="cart-icon-amount">{itemsInCart}</div> : ''}
-                            <i className="bi bi-bag-fill"></i>
-                        </a>
-                    </Link>
-                </li>
 
                 {userID ?
                     <button onClick={logout} className="button-small" > LOGGA UT </button>

@@ -9,6 +9,40 @@ const ProductPage = () => {
     const [products, setProducts] = useState([]);
     const [quantity, setQuantity] = useState(1);
 
+    const arrayOfMembers = [
+        {
+        name: "Lena Handén",
+        image: "IMG/Products/Lena.png",
+        age: "36",
+        description: "En bra bok och en kopp té, det är en riktig fredagskväll"
+    },
+    {
+        name: "James Breden",
+        image: "IMG/Products/James.jpg",
+        age: "27",
+        description: "Letar efter den rätta som tuggar med stängd mun"
+    },
+    {
+        name: "Serafina Pahntbaunk",
+        image: "IMG/Products/Serafina.png",
+        age: "25",
+        description: "Carpe Diem"
+    },
+    {
+        name: "Jafafar Månsson",
+        image: "IMG/Products/Jafafar.jpg",
+        age: "32",
+        description: "Vill bara dansa"
+    },
+    {
+        name: "Alma Harth",
+        image: "IMG/Products/Alma.png",
+        age: "24",
+        description: "Dricker helst röda hatten på första dejten"
+    }
+]
+
+
     const changeFilter = (filters) => {
         console.log(filters)
         const differentFilters = {
@@ -46,35 +80,14 @@ const ProductPage = () => {
                 <p>Vi på <i>Tech-ila</i> arbetar endast med de bästa producenterna i världen, vårt fokus ligger på fair-trade och ekologiskt odlade råvaror.</p>
                 <p>Vår tequila skall helst avnjutas rumstempererad och utan tillbehör, njut t.ex. av Röda hatten en varm sommardag med några vänner och en skön minneslucka. </p>
 
-                <div className={styles.filterProducts}>
-                    <label htmlFor="productFilter" className={styles.labelFilter}>
-                        <select name="productFilter" defaultValue="Odefinerad" onChange={(e) => changeFilter(e.target.value)} className={styles.productFilter}>
-                            <option value="Odefinerad">Välj ett filter</option>
-                            <option value="highest">Högsta till lägsta</option>
-                            <option value="lowest">Lägsta till högsta</option>
-                        </select>
-                    </label>
-                </div>
-                {products.map((product) => (
+                {arrayOfMembers.map((product) => (
 
-                    <div key={product._id} className={styles.singleProduct}>
-                        <Link
-                            href={`/Products/${product._id}`} key={product._id}>
-                            <a>
+                    <div className={styles.singleProduct}>
+                       
                                 <h2>{product.name}</h2>
-
-                                <img src={`IMG/Products/${product.image}`} className={styles.productImage}></img>
-
-                                <p>Ursprungsland: {product.country}</p>
-                                <p>Pris: {product.price}:-</p>
-                            </a></Link>
-
-                        <PutInCart
-                            quantity={quantity}
-                            productData={product}
-                            onChange={(e) => setQuantity(+ e.target.value)}
-                            type="number" />
-
+                                <img src={product.image} className={styles.productImage}></img>
+                                <p>Ålder: {product.age} år</p>
+                                <p> {product.description}</p>
                     </div>
 
                 ))}

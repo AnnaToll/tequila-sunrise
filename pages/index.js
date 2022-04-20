@@ -6,58 +6,67 @@ import React from 'react';
 
 export default function Home() {
 
-  const [products, setProducts] = useState([]);   
-
-    useEffect(() => {
-      fetch('/api/frontpage')
-    .then(res => res.json())
-    .then(data => {
-      setProducts(data)
-    })
-    }, [])
-
-            var filterMap = {};
-            products.forEach(function (item) {
-                if (!filterMap[item.quantity] || filterMap[item.quantity] < item.quantity) {
-                  filterMap[item.quantity] = item;
-                }
-              })
-
-              var result = [];
-              for (var number in filterMap) {
-                result.push(filterMap[number]);
-              }
-            
-          const sorterdArray = result.sort((a, b) => a - b);
-          console.log(sorterdArray)
-          const newArray = sorterdArray.splice(0, 5);
-          console.log(newArray)
-
   return (
     <div className={styles.container}>
-      <Link 
-        href='/Products/6241e404c49a3352fa93205d'>
-           <a>
-      <img src="IMG/Start-img/start-tequila2.jpg" alt="picture of tequila" className={styles.frontPic} /> 
-      <h2 className={styles.frontHeadline}>Espolon</h2>
+
       <div className={styles.frontTextContainer}>
-      <p className={styles.frontText}>Espolon Tequila Blanco är en tequila som produceras vid Destiladora San Nicola i de berömda kullarna i Los Altos i Jalisco, där de blå agaveplantorna växer frodig som ingen annanstans. Agavas hjärta, piñas, tillagas långsamt i en autoklav och krossas sedan för att extrahera sockerarterna och lämnas till jäsning för att låta dem förvandlas till alkohol.</p>
+      <p className={styles.frontText}>Den här mångsidiga humörboosten är en av de få saker du har tillgänglig varje dag utan att det kostar dig en krona. </p>
+      <p className={styles.frontText}> Så varför inte utnyttja att du själv har den fantastiska makten att skapa din egna lycka? </p>
+      <p className={styles.frontText}> Välkommen till Tänder, din plattform för att hitta den rätta att dela ett leende med! </p>
       </div>
-      </a></Link>
-      <img src="IMG/Start-img/orange2.jpg" alt="picture of oranges" className={styles.frontPic} />
-        <h1 className={styles.Bestsellers}>Bästsäljare</h1>
+      <img src="IMG/Start-img/LovingCouple.jpg" alt="picture of a couple in love" className={styles.frontPic} />
+        <h1 className={styles.Bestsellers}>Populära medlemmar</h1>
           <div className={styles.bestsellerProducts}>
-    {newArray.map((product)=>(
-        <Link 
-        href={`/Products/${product._id}`} key={product._id}>
-           <a>
-              <div className={styles.itemCard} key={product._id}>
-                <h5 className={styles.bestHeadline}>{product.name}</h5>
-              <img className={styles.bestPics} src={`IMG/Products/${product.image}`}/>
-            <p>{product.price}:-</p>
+
+
+       
+          <Link href="/login">
+          <div className={styles.itemCard}>
+                <h5 className={styles.bestHeadline}>Lena Handén</h5>
+              <img className={styles.bestPics} src="IMG/Products/Lena.png"/>
+              <p>Ålder: 36</p>
+            <p>"En bra bok och en kopp té, det är en riktig fredagskväll"</p>
           </div>
-        </a></Link>
-      ))}
+          </Link>
+
+          <Link href="/login">
+              <div className={styles.itemCard}>
+                <h5 className={styles.bestHeadline}>James Breden</h5>
+              <img className={styles.bestPics} src="IMG/Products/James.jpg"/>
+            <p>Ålder: 27</p>
+            <p>"Letar efter den rätta som tuggar med stängd mun"</p>
+          </div>
+          </Link>
+
+          <Link href="/login">
+          <div className={styles.itemCard}>
+                <h5 className={styles.bestHeadline}>Serafina Pahntbaunk</h5>
+              <img className={styles.bestPics} src="IMG/Products/Serafina.png"/>
+              <p>Ålder: 25</p>
+            <p>"Carpe Diem"</p>
+          </div>
+          </Link>
+
+          <Link href="/login">
+          <div className={styles.itemCard}>
+                <h5 className={styles.bestHeadline}>Jafafar Månsson</h5>
+              <img className={styles.bestPics} src="IMG/Products/Jafafar.jpg"/>
+              <p>Ålder: 32</p>
+            <p>"Vill bara dansa"</p>
+          </div>
+          </Link>
+
+          <Link href="/login">
+          <div className={styles.itemCard}>
+                <h5 className={styles.bestHeadline}>Alma Harth</h5>
+              <img className={styles.bestPics} src="IMG/Products/Alma.png"/>
+              <p>Ålder: 24</p>
+            <p>"Dricker helst röda hatten på första dejten"</p>
+          </div>
+          </Link>
+
+         
+
       </div>
     </div>
   )

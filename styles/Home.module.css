@@ -115,11 +115,13 @@
   }
 } */
 .frontPic{
-  margin-top: 30px;
   margin-bottom: 15px;
+
   width: 100%;
-  object-fit: cover;
+  height: 700px;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: auto;
+  margin-right: auto;
   
 }
 .frontHeadline{
@@ -162,10 +164,18 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 50px;
   transition: 0.5s ease-in-out;
+  padding: 10px;
+  transition: ease-in-out 0.7s;
 }
+
+.itemCard img {
+  border-radius: 10%;
+}
+
 .itemCard:hover {
   transition: 0.5s ease-in-out;
   border-radius: 10%;
+  box-shadow: 0 4px 8px 0 #8a0d0d, 0 6px 20px 0 #a50c0c;
 }
 .bestHeadline{
   text-align: center;

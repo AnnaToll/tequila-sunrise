@@ -5,13 +5,13 @@ const Footer = () => {
         <footer>
             <div className="footerLogo">
                 <Link href="/">
-                    <a><img src="/IMG/Logo/logo2.png" alt="logo" /></a>
+                    <a><img src="/IMG/Logo/logo.png" alt="logo" /></a>
                 </Link>
             </div>
 
             <div className="footerFlex">
                 <div className="footerBox">
-                    <h2>Tech-iLa</h2>
+                    <h2>Tänder Lovefinder AB</h2>
                     <p>Isafjordsgatan 32</p>
                     <p>164 40 KISTA</p>
                 </div>
@@ -19,7 +19,7 @@ const Footer = () => {
                 <div className="footerBox">
                     <h2>Kontakta oss</h2>
                     <p>Telefon: +46 (0) 736-34 59 10</p>
-                    <p>E-mail: Tomas@Tech-iLa.se</p>
+                    <p>E-mail: Tomas@TenderDuPoMig.se</p>
                 </div>
 
 

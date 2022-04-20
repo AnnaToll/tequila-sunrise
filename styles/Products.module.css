@@ -39,7 +39,7 @@
 }
 
 .singleProduct:hover {
-    box-shadow: 0 4px 8px 0 #032c13, 0 6px 20px 0 #032c13;
+    box-shadow: 0 4px 8px 0 #8a0d0d, 0 6px 20px 0 #a50c0c;
     transition: ease-in-out 0.3s;
 }
 
