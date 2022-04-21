@@ -5,7 +5,38 @@ import React from 'react';
 
 
 export default function Home() {
-
+  const arrayOfMembers = [
+    {
+    name: "Lena Handén",
+    image: "IMG/Products/Lena.png",
+    age: "36",
+    description: "En bra bok och en kopp té, det är en riktig fredagskväll"
+},
+{
+    name: "James Breden",
+    image: "IMG/Products/James.jpg",
+    age: "27",
+    description: "Letar efter den rätta som tuggar med stängd mun"
+},
+{
+    name: "Serafina Pahntbaunk",
+    image: "IMG/Products/Serafina.png",
+    age: "25",
+    description: "Carpe Diem"
+},
+{
+    name: "Jafafar Månsson",
+    image: "IMG/Products/Jafafar.jpg",
+    age: "32",
+    description: "Vill bara dansa"
+},
+{
+    name: "Alma Harth",
+    image: "IMG/Products/Alma.png",
+    age: "24",
+    description: "Dricker helst röda hatten på första dejten"
+}
+]
   return (
     <div className={styles.container}>
 
@@ -18,55 +49,19 @@ export default function Home() {
         <h1 className={styles.Bestsellers}>Populära medlemmar</h1>
           <div className={styles.bestsellerProducts}>
 
+          <img src="IMG/Products/Lena.png"></img>
 
-       
+        {arrayOfMembers.map((product) => (
           <Link href="/login">
           <div className={styles.itemCard}>
-                <h5 className={styles.bestHeadline}>Lena Handén</h5>
-              <img className={styles.bestPics} src="IMG/Products/Lena.png"/>
-              <p>Ålder: 36</p>
-            <p>"En bra bok och en kopp té, det är en riktig fredagskväll"</p>
+                <h5 className={styles.bestHeadline}>{product.name}</h5>
+              <img className={styles.bestPics} src="{`IMG/Products/{product.image}`}"/>
+              <p>Ålder: {product.age} år</p>
+            <p>"{product.description}"</p>
           </div>
           </Link>
-
-          <Link href="/login">
-              <div className={styles.itemCard}>
-                <h5 className={styles.bestHeadline}>James Breden</h5>
-              <img className={styles.bestPics} src="IMG/Products/James.jpg"/>
-            <p>Ålder: 27</p>
-            <p>"Letar efter den rätta som tuggar med stängd mun"</p>
-          </div>
-          </Link>
-
-          <Link href="/login">
-          <div className={styles.itemCard}>
-                <h5 className={styles.bestHeadline}>Serafina Pahntbaunk</h5>
-              <img className={styles.bestPics} src="IMG/Products/Serafina.png"/>
-              <p>Ålder: 25</p>
-            <p>"Carpe Diem"</p>
-          </div>
-          </Link>
-
-          <Link href="/login">
-          <div className={styles.itemCard}>
-                <h5 className={styles.bestHeadline}>Jafafar Månsson</h5>
-              <img className={styles.bestPics} src="IMG/Products/Jafafar.jpg"/>
-              <p>Ålder: 32</p>
-            <p>"Vill bara dansa"</p>
-          </div>
-          </Link>
-
-          <Link href="/login">
-          <div className={styles.itemCard}>
-                <h5 className={styles.bestHeadline}>Alma Harth</h5>
-              <img className={styles.bestPics} src="IMG/Products/Alma.png"/>
-              <p>Ålder: 24</p>
-            <p>"Dricker helst röda hatten på första dejten"</p>
-          </div>
-          </Link>
-
-         
-
+          ))}
+              
       </div>
     </div>
   )

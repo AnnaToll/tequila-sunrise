@@ -11,7 +11,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Bodoni Moda', serif;
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(243, 243, 243);
 }
 
 main {
@@ -19,7 +19,7 @@ main {
   min-height: calc(100vh - 100px);
   margin: 20px;
   padding: 20px 60px;
-  background-color: rgba(248, 248, 248, 0.932);
+  background-color: rgb(255, 255, 255);
 }
 
 button {
@@ -42,7 +42,7 @@ button {
 nav{
   border-bottom: solid gray 1.5px;
   margin: 0 20px;
-  min-height: 10vh;
+  min-height: 100px;
 }
 
 nav li {
