@@ -3,7 +3,7 @@ import styles from '../styles/Login.module.css'
 
 
 export default function Register() {
-  const [details, setDetails] = useState({name: "", email: "", password: "", phone: ""})
+  const [details, setDetails] = useState({name: "", email: "", password: "", phone: "", social: ""})
   const [message, setMessage] = useState("")
 
     const registerHandler = async (e) => {
@@ -13,7 +13,8 @@ export default function Register() {
           name: details.name,
           phone: details.phone,
           email: details.email,
-          password: details.password
+          password: details.password,
+          social: details.social
       }
 
       fetch('/api/register', {
@@ -54,8 +55,13 @@ export default function Register() {
             </div>
 
             <div className={styles.formGroup}>
-                <label htmlFor='password'>Lössenord:</label>
+                <label htmlFor='password'>Lösenord:</label>
                 <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
+            </div>
+
+            <div className={styles.formGroup}>
+                <label htmlFor='social'>Personnummer:</label>
+                <input type="social" social="social" id="social" required onChange={e =>setDetails({...details, social: e.target.value})} value={details.social}/>
             </div>
 
             <input type="submit" value="REGISTER" className={styles.btn}/>
