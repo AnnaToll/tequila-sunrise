@@ -54,12 +54,12 @@ const LoginComponent = ({ pathName }) => {
           <p> {error} </p> {/* message for the user if details does not match */}
 
           <div className={styles.formGroup}>
-            <label htmlFor='email'>Epost:</label>
+            <label htmlFor='email'>E-post:</label>
             <input type="text" email="email" id="email" required onChange={e =>setDetails({...details, email: e.target.value})} value={details.email}/>
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor='password'>Lössenord:</label>
+            <label htmlFor='password'>Lösenord:</label>
             <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
           </div>
             

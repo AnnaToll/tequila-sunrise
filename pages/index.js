@@ -49,13 +49,11 @@ export default function Home() {
         <h1 className={styles.Bestsellers}>Populära medlemmar</h1>
           <div className={styles.bestsellerProducts}>
 
-          <img src="IMG/Products/Lena.png"></img>
-
         {arrayOfMembers.map((product) => (
           <Link href="/login">
           <div className={styles.itemCard}>
                 <h5 className={styles.bestHeadline}>{product.name}</h5>
-              <img className={styles.bestPics} src="{`IMG/Products/{product.image}`}"/>
+              <img className={styles.bestPics} src={`${product.image}`}/>
               <p>Ålder: {product.age} år</p>
             <p>"{product.description}"</p>
           </div>
