@@ -41,7 +41,6 @@ button {
 
 nav{
   border-bottom: solid gray 1.5px;
-  margin: 0 20px;
   min-height: 100px;
 }
 
@@ -51,9 +50,9 @@ nav li {
 }
 
 nav img{
-  width: 150px;
+  width: 200px;
   position: relative;
-  top: +17px
+  top: 11px;
 }
 
 nav li:hover {
@@ -63,7 +62,7 @@ nav li:hover {
 
 .navbar {
   list-style: none;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 a {
@@ -82,7 +81,7 @@ footer {
 }
 
 .footerLogo img {
-  height: 100px;
+  height: 80px;
 }
 
 .footerFlex {
