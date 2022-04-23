@@ -1,10 +1,17 @@
 import { useState } from 'react'
+import BankID from '../components/Bankid';
 import styles from '../styles/Login.module.css' 
 
 
 export default function Register() {
   const [details, setDetails] = useState({name: "", email: "", password: "", phone: "", social: ""})
   const [message, setMessage] = useState("")
+
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
 
     const registerHandler = async (e) => {
       e.preventDefault()
@@ -64,8 +71,18 @@ export default function Register() {
                 <input type="social" social="social" id="social" required onChange={e =>setDetails({...details, social: e.target.value})} value={details.social}/>
             </div>
 
-            <input type="submit" value="REGISTER" className={styles.btn}/>
+            <input type="submit" value="REGISTER" className={styles.btn} onClick={togglePopup}/>
         </div>
+        <div>
+ 
+    {isOpen && <BankID
+      content={<>
+        <h2>Vänligen starta ditt mobila bank ID</h2>
+        <p>Tänk på att aldrig starta ditt bank ID på uppmaning av okänd part!</p>
+      </>}
+      handleClose={togglePopup}
+    />}
+  </div>
     </form>
   )
 }

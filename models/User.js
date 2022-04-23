@@ -21,6 +21,10 @@ const UserSchema = new Schema({
     },
     buyhistory: {
         type: Array
+    },
+    social: {
+        type: String,
+        required: true
     }
 
 }, { timestamps: true });
