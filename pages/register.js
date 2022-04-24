@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BankID from '../components/Bankid';
 import styles from '../styles/Login.module.css' 
 
@@ -11,7 +11,12 @@ export default function Register() {
  
   const togglePopup = () => {
     setIsOpen(!isOpen);
+      setTimeout(() => {
+          setIsOpen(isOpen)
+      }, 4000);
   }
+
+
 
     const registerHandler = async (e) => {
       e.preventDefault()
@@ -71,7 +76,7 @@ export default function Register() {
                 <input type="social" social="social" id="social" required onChange={e =>setDetails({...details, social: e.target.value})} value={details.social}/>
             </div>
 
-            <input type="submit" value="REGISTER" className={styles.btn} onClick={togglePopup}/>
+            <input type="submit" value="Registrera" className={styles.btn} onClick={togglePopup}/>
         </div>
         <div>
  

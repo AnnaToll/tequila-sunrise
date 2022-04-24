@@ -6,9 +6,6 @@ import PutInCart from '../../components/PutInCart';
 
 const ProductPage = () => {
 
-    const [products, setProducts] = useState([]);
-    const [quantity, setQuantity] = useState(1);
-
     const arrayOfMembers = [
         {
         name: "Lena Handén",
@@ -41,56 +38,33 @@ const ProductPage = () => {
         description: "Dricker helst röda hatten på första dejten"
     }
 ]
+    
 
 
-    const changeFilter = (filters) => {
-        console.log(filters)
-        const differentFilters = {
-            highest: 'price',
-            lowest: 'price'
-        };
-
-        if (filters == "highest") {
-            const sortFilter = differentFilters[filters];
-            const sorted = [...products].sort((a, b) => b[sortFilter] - a[sortFilter])
-            setProducts(sorted)
-        } if (filters == "lowest") {
-            const sortFilter = differentFilters[filters];
-            const sorted = [...products].sort((a, b) => a[sortFilter] - b[sortFilter])
-            setProducts(sorted)
-        }
-    }
-
-
-    useEffect(() => {
-        fetch("/api/products")
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                setProducts(data)
-            })
-
-    }, [])
     return (
         <main className={styles.main}>
 
             <div className={styles.productDiv}>
-                <h1>Vårt urval av Tequila</h1>
-                <p>Vi på <i>Tech-ila</i> arbetar endast med de bästa producenterna i världen, vårt fokus ligger på fair-trade och ekologiskt odlade råvaror.</p>
-                <p>Vår tequila skall helst avnjutas rumstempererad och utan tillbehör, njut t.ex. av Röda hatten en varm sommardag med några vänner och en skön minneslucka. </p>
+                <h1>Swipea med ett leende</h1>
 
-                {arrayOfMembers.map((product) => (
+                    <div className='swipe'>
+                    
+                {arrayOfMembers.map((members) => (
 
                     <div className={styles.singleProduct}>
                        
-                                <h2>{product.name}</h2>
-                                <img src={product.image} className={styles.productImage}></img>
-                                <p>Ålder: {product.age} år</p>
-                                <p> {product.description}</p>
+                                <h2>{members.name}</h2>
+                                <img src={members.image} className={styles.productImage}></img>
+                                <p>Ålder: {members.age} år</p>
+                                <p> {members.description}</p>
+                                <button value="Ja"></button>
+                                <button value="Nej" onClick={arrayOfMembers++}></button>
                     </div>
+                    
+                ))[0]}
 
-                ))}
+            
+            </div>
             </div>
         </main>
     );

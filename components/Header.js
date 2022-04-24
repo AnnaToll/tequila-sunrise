@@ -30,10 +30,13 @@ const Header = ({ itemsInCart, userID }) => {
                 </li>
 
                 <li>
+                    {userID ? 
                     <Link href="/Products">
                         <a>MEDLEMMAR</a>
                     </Link>
-                </li>
+                 : null
+                     }
+                     </li>
 
                 <li>
                     {userID ?

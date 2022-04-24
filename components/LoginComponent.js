@@ -62,16 +62,11 @@ const LoginComponent = ({ pathName }) => {
             <label htmlFor='password'>Lösenord:</label>
             <input type="password" password="password" id="password" required onChange={e =>setDetails({...details, password: e.target.value})} value={details.password}/>
           </div>
-
-          <div className={styles.formGroup}>
-            <label htmlFor='socialID'>Personnummer:</label>
-            <input type="text" socialID="social" id="social" required onChange={e =>setDetails({...details, social: e.target.value})} value={details.social}/>
-          </div>
             
-          <input type="submit" value="LOGGA IN" className={styles.btn}/>
+          <input type="submit" value="Logga in" className={styles.btn}/>
           <button className={styles.btn}>
            <Link href="/register" >
-               <a> REGISTRERA </a>
+               <a>Registrera</a>
            </Link>
            </button>
         </div>
