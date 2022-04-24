@@ -39,6 +39,12 @@ const ProductPage = () => {
     }
 ]
     
+const [swipe, setSwipe] = useState({0})
+
+
+const swipeFunction = () => {
+    setSwipe= +1;
+}
 
 
     return (
@@ -47,22 +53,25 @@ const ProductPage = () => {
             <div className={styles.productDiv}>
                 <h1>Swipea med ett leende</h1>
 
-                    <div className='swipe'>
+                    <div className={styles.swipe}>
                     
-                {arrayOfMembers.map((members) => (
+                    
 
+                        <button className={styles.swipeButtonYes} onClick={swipeFunction}>✓</button>
+
+                      {arrayOfMembers.map((members) => (
                     <div className={styles.singleProduct}>
+
                        
                                 <h2>{members.name}</h2>
                                 <img src={members.image} className={styles.productImage}></img>
                                 <p>Ålder: {members.age} år</p>
                                 <p> {members.description}</p>
-                                <button value="Ja"></button>
-                                <button value="Nej" onClick={arrayOfMembers++}></button>
                     </div>
                     
-                ))[0]}
+                    ))[swipe]}
 
+                    <button className={styles.swipeButtonNo}> ✘ </button>
             
             </div>
             </div>

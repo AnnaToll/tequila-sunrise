@@ -73,8 +73,8 @@ const Register = ({ userID }) => {
         </div>
 
         <div className={styles.userInfo} >
-          <p> Användar information </p>
-          <p>Epost: {userEmail} </p>
+          <p> Användarinformation </p>
+          <p>E-post: {userEmail} </p>
           <p>Mobil: {userPhone} </p>
         </div>
 
