@@ -39,17 +39,15 @@ const ProductPage = () => {
     }
 ]
     
-const [swipe, setSwipe] = useState({0})
-
+const [swipe, setSwipe] = useState(0)
 
 const swipeFunction = () => {
-    setSwipe= +1;
+    setSwipe(swipe + 1);
 }
 
 
     return (
         <main className={styles.main}>
-
             <div className={styles.productDiv}>
                 <h1>Swipea med ett leende</h1>
 
@@ -71,7 +69,7 @@ const swipeFunction = () => {
                     
                     ))[swipe]}
 
-                    <button className={styles.swipeButtonNo}> ✘ </button>
+                    <button className={styles.swipeButtonNo} onClick={swipeFunction}> ✘ </button>
             
             </div>
             </div>

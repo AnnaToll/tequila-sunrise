@@ -78,11 +78,6 @@ const Register = ({ userID }) => {
           <p>Mobil: {userPhone} </p>
         </div>
 
-        <div>
-          <p> Köp historik: </p>
-          {item}
-        </div>
-
       </div>
     )
     } else {
